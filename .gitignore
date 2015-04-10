@@ -1,0 +1,13 @@
+Assets/desktop.ini
+Library
+Temp
+*.userprefs
+*.suo
+*.sln
+*.csproj
+*.db
+*.db.meta
+*.unityproj
+Web
+obj
+Assembly-UnityScript-Editor-vs.unityproj
