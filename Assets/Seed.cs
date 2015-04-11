@@ -5,9 +5,11 @@ public class Seed : MonoBehaviour
 {
 
     public Transform Flower;
+    public GameObject Planet;
 	// Use this for initialization
-	void Start () {
-	
+	void Start ()
+	{
+	    Planet = GameObject.FindGameObjectWithTag("Planet");
 	}
 	
 	// Update is called once per frame
@@ -21,7 +23,8 @@ public class Seed : MonoBehaviour
         {
             print("collision " + coll.contacts[0]);
 
-            Instantiate(Flower, coll.contacts[0].point, Quaternion.identity);
+            var instantiate = (GameObject) Instantiate(Flower, coll.contacts[0].point, Quaternion.identity);
+            instantiate.transform.SetParent(Planet.transform);
             Destroy(gameObject);
         }
     }
