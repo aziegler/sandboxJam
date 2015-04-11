@@ -6,11 +6,13 @@ public class LevelManager : MonoBehaviour {
     public Ground Ground;
     public GameObject[] FlowerPrefabs;
     public GameObject[] SeedPrefabs;
+    public int minNumberOfFlower;
+    public int maxNumberOfFlower;
 
 	// Use this for initialization
 	void Start ()
     {
-        int numberOfFlower = Random.Range(5, 8);
+        int numberOfFlower = Random.Range(minNumberOfFlower, maxNumberOfFlower);
 
         for(int i = 0; i < numberOfFlower; i++)
         {

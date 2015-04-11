@@ -15,7 +15,7 @@ public class Seed : MonoBehaviour {
 
     void OnMouseOver()
     {
-        Destroy(gameObject);
+       /* Destroy(gameObject);*/
     }
 
     private bool exploded = false;

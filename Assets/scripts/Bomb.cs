@@ -1,17 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Bomb : MonoBehaviour {
 
     public float Range;
-    float TimeToExplose = 3f;
+    float TimeToExplose = 0f;
 
     float dateToExplose;
     bool exploded = false;
     Collider2D collider2d;
 
 	// Use this for initialization
-	void Start () 
+	public void Init () 
     {
         collider2d = GetComponent<Collider2D>();
         collider2d.enabled = false;
@@ -35,8 +38,9 @@ public class Bomb : MonoBehaviour {
         collider2d.enabled = true;
 
         GameObject.Destroy(collider2d, 1f);
+        Destroy(gameObject,1f);
 
-        StartCoroutine("ResetGame");
+      //  StartCoroutine("ResetGame");
     }
 
     IEnumerator ResetGame ()
@@ -50,16 +54,19 @@ public class Bomb : MonoBehaviour {
         Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
        
         rb.isKinematic = false;
-        if(this.transform.position.x < other.transform.position.x)
-        {
-            rb.AddForce(new Vector2(Random.Range(0.05f,0.15f), 1f) * Random.Range(9f,12f), ForceMode2D.Impulse);
-        }
-        else
-        {
-            rb.AddForce(new Vector2(Random.Range(-0.15f,-0.05f), 1f) * Random.Range(9f,12f), ForceMode2D.Impulse);
-        }
+
+        var vector3 = other.transform.position - transform.position;
+
+        var dir = new Vector2(Random.Range(vector3.x - 0.2f, vector3.x + 0.2f),
+            Random.Range(vector3.y - 0.2f, vector3.y + 0.2f));
+        dir.Normalize();
+        var force = dir * (10/vector3.magnitude);
+      
+        rb.AddForce(force, ForceMode2D.Impulse);
+        
         
         Physics2D.IgnoreCollision(this.collider2d, other);
         var seed = other.GetComponent<Seed>();
+        seed.Explode();
     }
 }
