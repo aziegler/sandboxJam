@@ -31,7 +31,7 @@ public class Seed : MonoBehaviour {
             var joint = gameObject.AddComponent<DistanceJoint2D>();
             joint.distance = 0.3f;
             joint.maxDistanceOnly = true;
-            joint.collideConnected = true;
+            //joint.collideConnected = true;
             joint.connectedAnchor = new Vector2(0.5f, 0f);
 
             joint.connectedBody = col.rigidbody;
