@@ -47,6 +47,7 @@ public class Laser : MonoBehaviour
             bomb.GetComponent<Bomb>().Init();
             bomb.transform.parent = Planet;                       
         }
+        
         Invoke("Back", 0.1f);
     }
 
