@@ -18,6 +18,7 @@ public class Flower : MonoBehaviour {
 
     private void SpawnSpores()
     {
+        HasSpore = true;
         foreach (Transform t in SeedSpawns)
         {
             GameObject go = GameObject.Instantiate(SporePrefab);
