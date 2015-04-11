@@ -10,10 +10,15 @@ GameObject:
   - 4: {fileID: 427160}
   - 212: {fileID: 21271320}
   - 58: {fileID: 5825048}
+<<<<<<< HEAD
+  m_Layer: 10
+  m_Name: seed
+=======
   - 50: {fileID: 5057494}
   - 114: {fileID: 11426246}
   m_Layer: 2
   m_Name: Seed
+>>>>>>> 7ca5c4f9664e9eae4291f8014639bf245513b7e0
   m_TagString: Seed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

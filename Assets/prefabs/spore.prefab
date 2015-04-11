@@ -12,9 +12,9 @@ GameObject:
   - 114: {fileID: 11417648}
   - 58: {fileID: 5884812}
   - 50: {fileID: 5052972}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: spore
-  m_TagString: Seed
+  m_TagString: Spore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ca1580f28338e54481f8e9dd1196810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Level: 0
 --- !u!212 &21213996
 SpriteRenderer:
   m_ObjectHideFlags: 1

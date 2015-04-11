@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Flower : MonoBehaviour {
 
+    public int Level;
     public Transform[] SeedSpawns;
     public GameObject SporePrefab;
 
@@ -16,6 +17,7 @@ public class Flower : MonoBehaviour {
             GameObject go = GameObject.Instantiate(SporePrefab);
             go.transform.parent = t;
             go.transform.localPosition = Vector3.zero;
+            go.GetComponent<Spore>().Level = Level;
         }
 	}
 	
