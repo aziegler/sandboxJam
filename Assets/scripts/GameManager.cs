@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public Transform Laser;
     private Transform _laser;
     public Transform PlanetObject;
-
+    public Transform Seed;
     
 
     // Use this for initialization
@@ -32,6 +32,10 @@ public class GameManager : MonoBehaviour
         PlanetObject.Rotate(new Vector3(0f, 0f, 90f * horizontal * Time.deltaTime));
 
 	    var random = new Random();
-        random.Next()
+	    var nextDouble = random.NextDouble();
+	    if (nextDouble > 0.5f)
+	    {
+	        Instantiate(Seed, new Vector3(0f, 0f), Quaternion.identity);
+	    }
 	}
 }
