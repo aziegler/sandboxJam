@@ -50,13 +50,17 @@ public class Slot : MonoBehaviour {
         GameObject.Destroy(other.gameObject);
     }
 
-    public void HitByLaser()
+    public void HitByLaser(Vector3 hitVector)
     {
         if (null != PlantedFlower)
         {
             IsFertil = false;
-            GameObject.Destroy(PlantedFlower);
-            PlantedFlower = null;
+
+            if (Mathf.Abs(hitVector.x) <= 0.05)
+            {
+                GameObject.Destroy(PlantedFlower);
+                PlantedFlower = null;
+            }
         }
         else if(!IsFertil)
         {
