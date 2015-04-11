@@ -158,7 +158,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.4116001, y: 3.98924589, z: 0}
+  m_LocalPosition: {x: -.047117468, y: 2.31660438, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 496720}
@@ -242,8 +242,7 @@ MonoBehaviour:
   - {fileID: 432396}
   - {fileID: 442472}
   - {fileID: 452028}
-  SeedPrefab: {fileID: 0}
-  Planet: {fileID: 0}
+  SeedPrefab: {fileID: 157764, guid: 48d07dc9107f7d04f9c724e24fff1fb6, type: 2}
 --- !u!212 &21222628
 SpriteRenderer:
   m_ObjectHideFlags: 1
