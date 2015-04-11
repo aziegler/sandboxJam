@@ -37,8 +37,8 @@ public class Bomb : MonoBehaviour {
     {
         collider2d.enabled = true;
 
-        GameObject.Destroy(collider2d, 1f);
-        Destroy(gameObject,1f);
+        GameObject.Destroy(collider2d, Time.fixedDeltaTime*2f);
+        Destroy(gameObject,Time.fixedDeltaTime*2f);
 
       //  StartCoroutine("ResetGame");
     }
