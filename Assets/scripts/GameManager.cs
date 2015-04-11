@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
         _laser.transform.eulerAngles = new Vector3(0f, 0f,180-angle);
 	    if (Input.GetMouseButtonDown(0))
 	    {
-	        _laser.gameObject.GetComponent<Laser>().Shoot();
+	        _laser.gameObject.GetComponent<Laser>().ShootRound();
 	       
 	    }
 	}
