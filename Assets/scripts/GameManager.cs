@@ -35,6 +35,6 @@ public class GameManager : MonoBehaviour
 	    }
 
         float horizontal = Input.GetAxis("Horizontal");
-        PlanetObject.Rotate(new Vector3(0f, 0f, -90f * horizontal * Time.deltaTime));
+        PlanetObject.Rotate(new Vector3(0f, 0f, 90f * horizontal * Time.deltaTime));
 	}
 }
