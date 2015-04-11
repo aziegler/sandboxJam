@@ -5,7 +5,7 @@ public class OrbitMove : MonoBehaviour {
 
     Transform planet;
     Rigidbody2D rb;
-    public float Force = .1f;
+    public float Force = .05f;
 
 	// Use this for initialization
 	void Start () 
