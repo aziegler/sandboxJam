@@ -87,6 +87,52 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &190602232
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 463504, guid: 152f2d95e39243e449e3fac62a602528, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 463504, guid: 152f2d95e39243e449e3fac62a602528, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 463504, guid: 152f2d95e39243e449e3fac62a602528, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 463504, guid: 152f2d95e39243e449e3fac62a602528, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 463504, guid: 152f2d95e39243e449e3fac62a602528, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 463504, guid: 152f2d95e39243e449e3fac62a602528, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 463504, guid: 152f2d95e39243e449e3fac62a602528, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 463504, guid: 152f2d95e39243e449e3fac62a602528, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 106898, guid: 152f2d95e39243e449e3fac62a602528, type: 2}
+      propertyPath: m_Name
+      value: spore
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 152f2d95e39243e449e3fac62a602528, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &354270662
 Transform:
   m_ObjectHideFlags: 0
@@ -477,6 +523,17 @@ MonoBehaviour:
   Laser: {fileID: 440518, guid: 481dc56962b84c541822f4da619c8ff8, type: 2}
   PlanetObject: {fileID: 0}
   Seed: {fileID: 427160, guid: 634d20bf458243c4fb351cd5652c7a64, type: 2}
+  nextSeed: 0
+  Flowers:
+  - {fileID: 11441052, guid: 97bfd9fc8efeeaa40801ef3c46972b8b, type: 2}
+  - {fileID: 11481368, guid: e957ae6c132aa384cb25b3515939dd51, type: 2}
+  - {fileID: 11472522, guid: d3f558cd1c109e148843f842079c6ad3, type: 2}
+  - {fileID: 11418046, guid: 0b6a0d3f28e45fe40bb9a41ace1d219b, type: 2}
+  Seeds:
+  - {fileID: 116886, guid: 634d20bf458243c4fb351cd5652c7a64, type: 2}
+  - {fileID: 126066, guid: 2e632728ca5195f4bb6c0effaf386d1f, type: 2}
+  - {fileID: 145854, guid: 19d80bb7b30f2d142b54079ef924f52a, type: 2}
+  - {fileID: 107172, guid: 06eaec1545136ea46a3faaab5c5a51f1, type: 2}
 --- !u!1 &1771827267
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,6 +566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabFlower: {fileID: 144006, guid: 97bfd9fc8efeeaa40801ef3c46972b8b, type: 2}
   FlowerSpawnAngle: 10
+  SlotFertilSprite: {fileID: 0}
 --- !u!58 &1771827269
 CircleCollider2D:
   m_ObjectHideFlags: 0
