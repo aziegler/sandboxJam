@@ -616,7 +616,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabFlower: {fileID: 144006, guid: 97bfd9fc8efeeaa40801ef3c46972b8b, type: 2}
   FlowerSpawnAngle: 10
-  SlotFertilSprite: {fileID: 0}
+  SlotPrefab: {fileID: 178108, guid: 7c66d166118563940aecc94e419f2bdb, type: 2}
 --- !u!58 &1771827269
 CircleCollider2D:
   m_ObjectHideFlags: 0
