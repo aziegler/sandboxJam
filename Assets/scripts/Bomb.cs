@@ -51,6 +51,10 @@ public class Bomb : MonoBehaviour {
 
     void OnTriggerEnter2D (Collider2D other)
     {
+        var spore = other.GetComponent<Spore>();
+        if (spore == null)
+            return;
+
         Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
        
         rb.isKinematic = false;
@@ -69,7 +73,6 @@ public class Bomb : MonoBehaviour {
         
         
         Physics2D.IgnoreCollision(this.collider2d, other);
-        var spore = other.GetComponent<Spore>();
         spore.gameObject.AddComponent<OrbitMove>();
         spore.Explode();
     }
