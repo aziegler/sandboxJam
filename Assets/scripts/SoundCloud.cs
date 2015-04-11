@@ -6,8 +6,8 @@ public class SoundCloud : MonoBehaviour {
 	public AudioSource sound;
     public Transform laser;
     private float nextShoot;
-    private float longInterval = 6;
-    private float shortInterval = 3;
+    private float longInterval = 6f;
+    private float shortInterval = 1.5f;
     private bool nextIsLong = false;
 
 	// Use this for initialization
@@ -18,7 +18,7 @@ public class SoundCloud : MonoBehaviour {
 
     void OnGUI()
     {
-        GUILayout.Label(string.Format("Countdown : {0:#}", nextShoot - Time.time));
+        GUILayout.Label(string.Format("Countdown : {0}", nextShoot - Time.time));
     }
 
 
