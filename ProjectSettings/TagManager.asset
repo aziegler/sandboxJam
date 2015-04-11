@@ -7,7 +7,6 @@ TagManager:
   - Planet
   - Seed
   - Laser
-  - Spore
   layers:
   - Default
   - TransparentFX
