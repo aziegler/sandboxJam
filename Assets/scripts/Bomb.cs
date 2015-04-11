@@ -40,7 +40,9 @@ public class Bomb : MonoBehaviour {
     void OnTriggerEnter2D (Collider2D other)
     {
         Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
+       
         rb.isKinematic = false;
         rb.velocity = new Vector2(0f, 6f);
+        var seed = other.GetComponent<Seed>();
     }
 }
