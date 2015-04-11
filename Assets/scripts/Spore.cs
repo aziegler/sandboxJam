@@ -5,6 +5,7 @@ public class Spore : MonoBehaviour {
 
     public int Level;
     SpriteRenderer sprite;
+    TrailRenderer trail;
 
 	// Use this for initialization
 	void Start ()
@@ -12,6 +13,10 @@ public class Spore : MonoBehaviour {
 	    HasCollided = false;
         sprite = GetComponent<SpriteRenderer>();
         sprite.enabled = false;
+        trail = GetComponent<TrailRenderer>();
+        trail.sortingLayerName = "Flowers";
+        trail.sortingOrder = 5;
+        trail.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -51,5 +56,6 @@ public class Spore : MonoBehaviour {
     {
         flying = true;
         sprite.enabled = true;
+        trail.enabled = true;
     }
 }

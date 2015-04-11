@@ -76,7 +76,7 @@ public class Slot : MonoBehaviour {
         {
             IsFertil = false;
             ShowSprites(false);
-            if (Mathf.Abs(hitVector.x) <= 0.05)
+            if (Mathf.Abs(hitVector.x) <= 0.5)
             {
                 GameObject.Destroy(PlantedFlower);
                 PlantedFlower = null;
