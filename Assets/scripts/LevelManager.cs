@@ -5,7 +5,7 @@ public class LevelManager : MonoBehaviour {
 
     public Ground Ground;
     public GameObject[] FlowerPrefabs;
-    public GameObject[] SeedPrefabs;
+    public GameObject[] SporePrefabs;
     public int minNumberOfFlower;
     public int maxNumberOfFlower;
 
@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour {
             Ground.BorderLeft.position.y,
             Ground.transform.position.z);
 
-            go.GetComponent<Flower>().SeedPrefab = SeedPrefabs[Random.Range(0, SeedPrefabs.Length)];
+            go.GetComponent<Flower>().SporePrefab = SporePrefabs[Random.Range(0, SporePrefabs.Length)];
 
             go.transform.position = position;
         }

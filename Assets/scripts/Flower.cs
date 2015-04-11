@@ -4,7 +4,7 @@ using System.Collections;
 public class Flower : MonoBehaviour {
 
     public Transform[] SeedSpawns;
-    public GameObject SeedPrefab;
+    public GameObject SporePrefab;
 
 	// Use this for initialization
 	void Start ()
@@ -13,7 +13,7 @@ public class Flower : MonoBehaviour {
 
         foreach(Transform t in SeedSpawns)
         {
-            GameObject go = GameObject.Instantiate(SeedPrefab);
+            GameObject go = GameObject.Instantiate(SporePrefab);
             go.transform.parent = t;
             go.transform.localPosition = Vector3.zero;
         }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Seed : MonoBehaviour {
+public class Spore : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +22,7 @@ public class Seed : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        var seed = col.gameObject.GetComponent<Seed>();
+        var spore = col.gameObject.GetComponent<Spore>();
        /* if (seed != null && seed.exploded)
         {
 
