@@ -480,6 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrefabFlower: {fileID: 144006, guid: 97bfd9fc8efeeaa40801ef3c46972b8b, type: 2}
+  FlowerSpawnAngle: 10
 --- !u!58 &1476369206
 CircleCollider2D:
   m_ObjectHideFlags: 0

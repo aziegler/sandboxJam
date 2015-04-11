@@ -69,8 +69,8 @@ public class Bomb : MonoBehaviour {
         
         
         Physics2D.IgnoreCollision(this.collider2d, other);
-        var seed = other.GetComponent<Seed>();
-        seed.gameObject.AddComponent<OrbitMove>();
-        seed.Explode();
+        var spore = other.GetComponent<Spore>();
+        spore.gameObject.AddComponent<OrbitMove>();
+        spore.Explode();
     }
 }
