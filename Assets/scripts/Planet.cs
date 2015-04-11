@@ -45,7 +45,7 @@ public class Planet : MonoBehaviour {
             sprite.sortingOrder = 20;
             sprite.sortingLayerName = "Flowers";
 
-            Slot slot = go.AddComponent<Slot>();           
+            Slot slot = go.AddComponent<Slot>(); 
             slot.FertilSprite = SlotFertilSprite;
             slot.IsFertil = false;
 
