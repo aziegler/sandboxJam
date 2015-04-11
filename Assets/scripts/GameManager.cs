@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     public Transform Seed;
     public float nextSeed;
 
+    public Flower[] Flowers;
+    public GameObject[] Seeds;
+
     void Awake ()
     {
         Instance = this;
@@ -53,12 +56,21 @@ public class GameManager : MonoBehaviour
 
     public void CreateSeed (Spore s1, Spore s2)
     {
-        GameObject go = GameObject.Instantiate(Seed.gameObject);
-        go.transform.position = s1.transform.position;
-
         if (s1.Level == s2.Level)
         {
-           
+            int newLevel = s1.Level + 1 ;
+            if(newLevel < Flowers.Length)
+            {
+                GameObject go = GameObject.Instantiate(Seeds[newLevel]);
+                go.transform.position = s1.transform.position;
+            }
+
+            GameObject.Destroy(s1.gameObject);
+            GameObject.Destroy(s2.gameObject);
+        }
+        else
+        {
+            Physics2D.IgnoreCollision(s1.GetComponent<Collider2D>(), s2.GetComponent<Collider2D>());
         }
     }
 }
