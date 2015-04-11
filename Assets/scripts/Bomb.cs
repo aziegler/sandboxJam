@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class Bomb : MonoBehaviour {
 
     public float Range;
-    float TimeToExplose = 1f;
+    float TimeToExplose = 0.1f;
 
     float dateToExplose;
     bool exploded = false;

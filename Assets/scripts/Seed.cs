@@ -36,6 +36,12 @@ public class Seed : MonoBehaviour {
 
             joint.connectedBody = col.rigidbody;
         }
+
+        var planet = col.gameObject.GetComponent<Planet>();
+        if(null != planet)
+        {
+            GameObject.Destroy(this.gameObject, 0.2f);
+        }
     }
 
 
@@ -43,4 +49,6 @@ public class Seed : MonoBehaviour {
     {
         exploded = true;
     }
+
+
 }
