@@ -23,7 +23,7 @@ public class Seed : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D col)
     {
         var seed = col.gameObject.GetComponent<Seed>();
-        if (seed != null && seed.exploded)
+       /* if (seed != null && seed.exploded)
         {
 
 
@@ -36,7 +36,7 @@ public class Seed : MonoBehaviour {
 
             joint.connectedBody = col.rigidbody;
         }
-
+*/
         var planet = col.gameObject.GetComponent<Planet>();
         if(null != planet)
         {
