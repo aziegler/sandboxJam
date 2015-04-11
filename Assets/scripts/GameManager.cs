@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     private Transform _laser;
     public Transform PlanetObject;
 
+    
+
     // Use this for initialization
 	void Start ()
 	{
