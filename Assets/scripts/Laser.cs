@@ -33,13 +33,21 @@ public class Laser : MonoBehaviour
         Vector2 direction = new Vector2(0f, -1f);
 
         //var raycastHit2D = Physics2D.Raycast(transform.position, Planet.transform.position - transform.position, Mask);
-        var raycastHit2D = Physics2D.Raycast(origin, direction, Mask);
+        var raycastHit2D = Physics2D.Raycast(origin, direction, 10f, Mask);
+        if (null != raycastHit2D.collider)
+        {
+            Slot slot = raycastHit2D.collider.gameObject.GetComponent<Slot>();
+            if(null != slot)
+            {
+                slot.HitByLaser();
+            }
 
-        var bomb = (Transform)Instantiate(Bomb, new Vector3(raycastHit2D.point.x,raycastHit2D.point.y), Quaternion.identity);
-        bomb.GetComponent<Bomb>().Init();
-        bomb.transform.parent = Planet;
+            //Bomb
+            var bomb = (Transform)Instantiate(Bomb, new Vector3(raycastHit2D.point.x, raycastHit2D.point.y), Quaternion.identity);
+            bomb.GetComponent<Bomb>().Init();
+            bomb.transform.parent = Planet;                       
+        }
         Invoke("Back", 0.1f);
-
     }
 
     public void Update()
