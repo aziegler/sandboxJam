@@ -213,7 +213,7 @@ MonoBehaviour:
   - {fileID: 432396}
   - {fileID: 442472}
   - {fileID: 452028}
-  SporePrefab: {fileID: 157764, guid: 48d07dc9107f7d04f9c724e24fff1fb6, type: 2}
+  SporePrefab: {fileID: 0}
 --- !u!212 &21281802
 SpriteRenderer:
   m_ObjectHideFlags: 1
