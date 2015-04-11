@@ -140,7 +140,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c668a6a54a2a5486193bf21bd3ece67d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -236,10 +236,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1d1865a5070850141ae1df3de6b58cf5, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
+  m_PlayOnAwake: 1
+  m_Volume: 0
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Priority: 128
   DopplerLevel: 1
@@ -318,7 +318,7 @@ GameObject:
   - 82: {fileID: 1167027905}
   m_Layer: 0
   m_Name: FirstLoop
-  m_TagString: Untagged
+  m_TagString: FirstLoop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -430,10 +430,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a50b1aceb605be1438aebf8a3661ad30, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
+  m_PlayOnAwake: 1
+  m_Volume: 0
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Priority: 128
   DopplerLevel: 1
@@ -769,6 +769,9 @@ MonoBehaviour:
   PlanetObject: {fileID: 0}
   Seed: {fileID: 427160, guid: 634d20bf458243c4fb351cd5652c7a64, type: 2}
   nextSeed: 0
+  firstSource: {fileID: 1167027905}
+  secondSource: {fileID: 984093245}
+  thirdSource: {fileID: 1240808526}
   Flowers:
   - {fileID: 11441052, guid: 97bfd9fc8efeeaa40801ef3c46972b8b, type: 2}
   - {fileID: 11481368, guid: e957ae6c132aa384cb25b3515939dd51, type: 2}

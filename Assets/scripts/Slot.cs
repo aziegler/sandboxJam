@@ -41,7 +41,23 @@ public class Slot : MonoBehaviour {
             flower.transform.rotation = transform.rotation;
             flower.transform.parent = Planet.Instance.transform;
 
+            
+
             PlantedFlower = flower;
+
+            if (PlantedFlower.GetComponent<Flower>().Level > GameManager.Instance.currentMaxLevel)
+            {
+                GameManager.Instance.currentMaxLevel = PlantedFlower.GetComponent<Flower>().Level;
+                if (GameManager.Instance.currentMaxLevel == 1)
+                {
+                    GameManager.Instance.SwitchSoundSource(2);
+                }
+
+                if (GameManager.Instance.currentMaxLevel == 2)
+                {
+                    GameManager.Instance.SwitchSoundSource(3);
+                }
+            }
 
             IsFertil = false;
         }

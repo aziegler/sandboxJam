@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -10,6 +13,8 @@ public class GameManager : MonoBehaviour
     public Transform PlanetObject;
     public Transform Seed;
     public float nextSeed;
+
+    public int currentMaxLevel = 0;
 
     public AudioSource firstSource;
     public AudioSource secondSource;
@@ -40,6 +45,25 @@ public class GameManager : MonoBehaviour
     private void GetNextSeedDate()
     {
         nextSeed = Time.time + Random.Range(1f, 2f);
+    }
+
+    public void SwitchSoundSource(int index)
+    {
+        switch (index)
+        {
+            case 1:
+                _sourceToPlay = firstSource;
+                break;
+            case 2:
+                _sourceToPlay = secondSource;
+                break;
+            case 3:
+                _sourceToPlay = thirdSource;
+                break;
+        }
+        StartCoroutine("FadeInOut", firstSource);
+        StartCoroutine("FadeInOut", secondSource);
+        StartCoroutine("FadeInOut", thirdSource);
     }
 
     // Update is called once per frame
@@ -84,17 +108,18 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator  FadeInOut( AudioSource audioSource)
     {
-        print("Fading In");
         float time = 0f;
-        var fadeTime = 5f;
+        var fadeTime = 1f;
         while (time < fadeTime)
         {
             time = time + 0.1f;
-            print("Time " + time);
+            var targetVolume = 0f;
             if(audioSource == _sourceToPlay)
-                audioSource.volume = time/fadeTime;
+                targetVolume = Mathf.Max(time/fadeTime,audioSource.volume);
             else
-                audioSource.volume = 1f - time/fadeTime;
+                targetVolume = Mathf.Min(1f - time/fadeTime, audioSource.volume);
+            audioSource.volume = targetVolume;
+            print("Setting "+audioSource.tag+" to "+targetVolume);
             yield return new WaitForSeconds(0.1f);
          }
 
