@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -10,8 +11,13 @@ public class GameManager : MonoBehaviour
     public Transform Seed;
     public float nextSeed;
 
+    public AudioSource firstSource;
+    public AudioSource secondSource;
+    public AudioSource thirdSource;
+
     public Flower[] Flowers;
     public GameObject[] Seeds;
+    private AudioSource _sourceToPlay;
 
     void Awake ()
     {
@@ -26,7 +32,9 @@ public class GameManager : MonoBehaviour
 	    _laser = (Transform)Instantiate(Laser, new Vector3(0f,30f), Quaternion.identity);
 	    _laser.GetComponent<BoxCollider2D>().enabled = false;
 
-        
+	 
+
+
 	}
 
     private void GetNextSeedDate()
@@ -41,7 +49,25 @@ public class GameManager : MonoBehaviour
 	        _laser.gameObject.GetComponent<Laser>().ShootRound();
 	       
 	    }
-        float horizontal = Input.GetAxis("Horizontal");
+	    var F1 = Input.GetKeyDown(KeyCode.R);
+	    var F2 = Input.GetKeyDown(KeyCode.T);
+	    var F3 = Input.GetKeyDown(KeyCode.Y);
+	    if (F1 || F2 || F3)
+	    {
+	        if (F1)
+	            _sourceToPlay = firstSource;
+	        if (F2)
+	            _sourceToPlay = secondSource;
+	        if (F3)
+	            _sourceToPlay = thirdSource;
+
+	        StartCoroutine("FadeInOut", firstSource);
+            StartCoroutine("FadeInOut", secondSource);
+            StartCoroutine("FadeInOut", thirdSource);
+	        
+	    }
+
+	    float horizontal = Input.GetAxis("Horizontal");
         PlanetObject.Rotate(new Vector3(0f, 0f, 90f * horizontal * Time.deltaTime));
 
 	    if (Time.time > nextSeed)
@@ -53,6 +79,27 @@ public class GameManager : MonoBehaviour
 	  
 	   
 	}
+
+    
+
+    private IEnumerator  FadeInOut( AudioSource audioSource)
+    {
+        print("Fading In");
+        float time = 0f;
+        var fadeTime = 5f;
+        while (time < fadeTime)
+        {
+            time = time + 0.1f;
+            print("Time " + time);
+            if(audioSource == _sourceToPlay)
+                audioSource.volume = time/fadeTime;
+            else
+                audioSource.volume = 1f - time/fadeTime;
+            yield return new WaitForSeconds(0.1f);
+         }
+
+    
+    }
 
     public void CreateSeed (Spore s1, Spore s2)
     {

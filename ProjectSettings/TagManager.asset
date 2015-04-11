@@ -8,6 +8,9 @@ TagManager:
   - Seed
   - Laser
   - Spore
+  - FirstLoop
+  - ThirdLoop
+  - SecondLoop
   layers:
   - Default
   - TransparentFX
