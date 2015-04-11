@@ -3,12 +3,31 @@ using System.Collections;
 
 public class Slot : MonoBehaviour {
 
-    public bool IsFertil;
+    bool isFertil;
+    public bool IsFertil
+    {
+        get { return isFertil; }
+
+        set
+        {
+            isFertil = value;
+            if(IsFertil)
+            {
+                sprite.enabled = true;
+                sprite.sprite = FertilSprite;
+            }
+            else
+            {
+                sprite.enabled = false;
+            }
+        }
+    }
+    public GameObject PlantedFlower;
+
     public Sprite FertilSprite;
-    public Sprite DefaultSprite;
     SpriteRenderer sprite;
 
-    void Start ()
+    void Awake ()
     {
         sprite = GetComponent<SpriteRenderer>();
     }
@@ -23,11 +42,29 @@ public class Slot : MonoBehaviour {
             flower.transform.rotation = transform.rotation;
             flower.transform.parent = Planet.Instance.transform;
 
-            IsFertil = false;
+            PlantedFlower = flower;
 
-            sprite.color = Color.black;
+            IsFertil = false;
         }
 
         GameObject.Destroy(other.gameObject);
+    }
+
+    public void HitByLaser()
+    {
+        if (null != PlantedFlower)
+        {
+            IsFertil = false;
+            GameObject.Destroy(PlantedFlower);
+            PlantedFlower = null;
+        }
+        else if(!IsFertil)
+        {
+            IsFertil = true;
+        }
+        else if(IsFertil)
+        {
+            //
+        }
     }
 }

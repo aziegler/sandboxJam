@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21273868}
   - 114: {fileID: 11471958}
   - 61: {fileID: 6109084}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Laser
   m_TagString: Laser
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ MonoBehaviour:
   Planet: {fileID: 0}
   Mask:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 16384
 --- !u!212 &21273868
 SpriteRenderer:
   m_ObjectHideFlags: 1

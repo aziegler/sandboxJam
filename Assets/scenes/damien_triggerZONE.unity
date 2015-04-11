@@ -477,6 +477,7 @@ MonoBehaviour:
   Laser: {fileID: 440518, guid: 481dc56962b84c541822f4da619c8ff8, type: 2}
   PlanetObject: {fileID: 0}
   Seed: {fileID: 427160, guid: 634d20bf458243c4fb351cd5652c7a64, type: 2}
+  nextSeed: 0
   Flowers: []
   Seeds: []
 --- !u!1 &1771827267
