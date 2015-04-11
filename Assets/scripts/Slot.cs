@@ -11,25 +11,26 @@ public class Slot : MonoBehaviour {
         set
         {
             isFertil = value;
-            if(IsFertil)
-            {
-                foreach (SpriteRenderer sprite in sprites)
-                {
-                    sprite.enabled = true;
-                }
-            }
-            else
-            {
-                foreach (SpriteRenderer sprite in sprites)
-                {
-                    sprite.enabled = false;
-                }
-            }
         }
     }
     public GameObject PlantedFlower;
 
-    public SpriteRenderer[] sprites;
+    public SpriteRenderer BackSprite;
+    public SpriteRenderer FrontSprite;
+
+    public SpriteBackFront[] Sprites;
+
+    public Transform Center;
+
+    void Start ()
+    {
+        int index = Random.Range(0, Sprites.Length);
+
+        BackSprite.sprite = Sprites[index].BackSprite;
+        FrontSprite.sprite = Sprites[index].FrontSprite;
+
+        ShowSprites(false);
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -44,9 +45,29 @@ public class Slot : MonoBehaviour {
             PlantedFlower = flower;
 
             IsFertil = false;
-        }
 
-        GameObject.Destroy(other.gameObject);
+            ScaleObject scale = seed.gameObject.AddComponent<ScaleObject>();
+            scale.GetComponent<Rigidbody2D>().isKinematic = true;
+            
+            scale.Scale(0.2f, Vector3.zero, true, Center.position, AbsorbIsFinish);     
+        }
+    }
+
+    void AbsorbIsFinish()
+    {
+        IsFertil = false;
+
+        ShowSprites(false);
+    }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        Seed seed = coll.gameObject.GetComponent<Seed>();
+        if (null != seed)
+        {
+            coll.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up*2f);
+            GameObject.Destroy(coll.gameObject, 0.4f);
+        }
     }
 
     public void HitByLaser(Vector3 hitVector)
@@ -54,7 +75,7 @@ public class Slot : MonoBehaviour {
         if (null != PlantedFlower)
         {
             IsFertil = false;
-
+            ShowSprites(false);
             if (Mathf.Abs(hitVector.x) <= 0.05)
             {
                 GameObject.Destroy(PlantedFlower);
@@ -64,10 +85,19 @@ public class Slot : MonoBehaviour {
         else if(!IsFertil)
         {
             IsFertil = true;
+
+            ShowSprites(true);
         }
         else if(IsFertil)
         {
             //
         }
+    }
+
+    void ShowSprites(bool show)
+    {
+        BackSprite.enabled = show;
+        FrontSprite.enabled = show;
+        GetComponent<BoxCollider2D>().isTrigger = show;
     }
 }
