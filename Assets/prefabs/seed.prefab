@@ -10,6 +10,8 @@ GameObject:
   - 4: {fileID: 427160}
   - 212: {fileID: 21271320}
   - 58: {fileID: 5825048}
+  - 50: {fileID: 5057494}
+  - 114: {fileID: 11426246}
   m_Layer: 10
   m_Name: seed
   m_TagString: Seed
@@ -31,7 +33,7 @@ Transform:
   m_RootOrder: 0
 --- !u!50 &5057494
 Rigidbody2D:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116886}
@@ -59,7 +61,7 @@ CircleCollider2D:
   m_Radius: 1
 --- !u!114 &11426246
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116886}
@@ -68,7 +70,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae6675ef161d70d49a211598446bb4a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Flower: {fileID: 0}
+  Flower: {fileID: 439052, guid: 97bfd9fc8efeeaa40801ef3c46972b8b, type: 2}
+  Planet: {fileID: 0}
 --- !u!212 &21271320
 SpriteRenderer:
   m_ObjectHideFlags: 1

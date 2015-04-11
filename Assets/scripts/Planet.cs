@@ -8,6 +8,9 @@ public class Planet : MonoBehaviour {
     public GameObject PrefabFlower;
     public float FlowerSpawnAngle = 10f;
 
+    public Sprite SlotFertilSprite;
+    public Sprite SlotSterilSprite;
+
     void Awake ()
     {
         Instance = this;
@@ -17,18 +20,42 @@ public class Planet : MonoBehaviour {
     void Start ()
     {
         float total = 0f;
-
-        /*do
+        float numberOfSlot = 360f / FlowerSpawnAngle;
+        do
         {
+            /*
             GameObject go = GameObject.Instantiate(PrefabFlower);
+            go.transform.position = Vector3.zero;
+            go.transform.eulerAngles = new Vector3(0f, 0f, total);
+            go.transform.Translate(Vector3.up * (circle.radius));
+            go.transform.parent = transform;*/
+
+            total += FlowerSpawnAngle;
+
+            float size = 2 * circle.radius * Mathf.PI;
+
+            GameObject go = new GameObject();
+            go.layer = 14;
+
+            BoxCollider2D box = go.AddComponent<BoxCollider2D>();            
+            box.isTrigger = true;
+            box.size = new Vector2(size / numberOfSlot, 1f);
+
+            Slot slot = go.AddComponent<Slot>();
+            slot.IsFertil = true;
+            slot.DefaultSprite = SlotSterilSprite;
+            slot.FertilSprite = SlotFertilSprite;
+
+            SpriteRenderer sprite = go.AddComponent<SpriteRenderer>();
+            sprite.sprite = slot.DefaultSprite;
+
             go.transform.position = Vector3.zero;
             go.transform.eulerAngles = new Vector3(0f, 0f, total);
             go.transform.Translate(Vector3.up * (circle.radius));
             go.transform.parent = transform;
 
-            total += FlowerSpawnAngle;
 
-        } while (total < 360f);*/
+        } while (total < 360f);
     }
 
     public float GetOrientedAngle (Transform t)
