@@ -18,7 +18,7 @@ public class Planet : MonoBehaviour {
     {
         float total = 0f;
 
-        do
+        /*do
         {
             GameObject go = GameObject.Instantiate(PrefabFlower);
             go.transform.position = Vector3.zero;
@@ -28,7 +28,7 @@ public class Planet : MonoBehaviour {
 
             total += FlowerSpawnAngle;
 
-        } while (total < 360f);
+        } while (total < 360f);*/
     }
 
     public float GetOrientedAngle (Transform t)

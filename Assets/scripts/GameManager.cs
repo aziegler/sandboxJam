@@ -33,9 +33,9 @@ public class GameManager : MonoBehaviour
 
 	    var random = new Random();
 	    var nextDouble = random.NextDouble();
-	    if (nextDouble > 0.5f)
+       if (nextDouble > 0.99f)
 	    {
-	        Instantiate(Seed, new Vector3(0f, 0f), Quaternion.identity);
+	        Instantiate(Seed, new Vector3(0f, 30f), Quaternion.identity);
 	    }
 	}
 }

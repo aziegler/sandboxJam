@@ -476,6 +476,7 @@ MonoBehaviour:
   Bomb: {fileID: 440382, guid: c0f899ec27a372643a938ead1acf65a9, type: 2}
   Laser: {fileID: 440518, guid: 481dc56962b84c541822f4da619c8ff8, type: 2}
   PlanetObject: {fileID: 0}
+  Seed: {fileID: 427160, guid: 634d20bf458243c4fb351cd5652c7a64, type: 2}
 --- !u!1 &1771827267
 GameObject:
   m_ObjectHideFlags: 0
