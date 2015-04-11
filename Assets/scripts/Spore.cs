@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Spore : MonoBehaviour {
 
+    public int Level;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -25,6 +27,7 @@ public class Spore : MonoBehaviour {
        var spore = col.gameObject.GetComponent<Spore>();
        if (spore != null && spore.exploded)
         {
+            GameManager.Instance.CreateSeed(this, spore);
             GameObject.Destroy(col.gameObject);
             GameObject.Destroy(gameObject);
         }
@@ -32,7 +35,7 @@ public class Spore : MonoBehaviour {
         var planet = col.gameObject.GetComponent<Planet>();
         if(null != planet)
         {
-            GameObject.Destroy(this.gameObject, 0.2f);
+            GameObject.Destroy(this.gameObject);
         }
     }
 

@@ -10,8 +10,8 @@ GameObject:
   - 4: {fileID: 427160}
   - 212: {fileID: 21271320}
   - 58: {fileID: 5825048}
-  m_Layer: 0
-  m_Name: Seed
+  m_Layer: 10
+  m_Name: seed
   m_TagString: Seed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

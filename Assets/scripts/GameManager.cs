@@ -3,13 +3,18 @@ using Random = System.Random;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
 
     public Transform Bomb;
     public Transform Laser;
     private Transform _laser;
     public Transform PlanetObject;
     public Transform Seed;
-    
+
+    void Awake ()
+    {
+        Instance = this;
+    }
 
     // Use this for initialization
 	void Start ()
@@ -38,4 +43,15 @@ public class GameManager : MonoBehaviour
 	        Instantiate(Seed, new Vector3(0f, 0f), Quaternion.identity);
 	    }
 	}
+
+    public void CreateSeed (Spore s1, Spore s2)
+    {
+        GameObject go = GameObject.Instantiate(Seed.gameObject);
+        go.transform.position = s1.transform.position;
+
+        if (s1.Level == s2.Level)
+        {
+           
+        }
+    }
 }
