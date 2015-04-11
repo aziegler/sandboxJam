@@ -6,14 +6,14 @@ public class SoundCloud : MonoBehaviour {
 	public AudioSource sound;
     public Transform laser;
     private float nextShoot;
-    private float longInterval = 6f;
+    private float longInterval = 4.5f;
     private float shortInterval = 1.5f;
     private bool nextIsLong = false;
     
 	// Use this for initialization
 	void Start ()
 	{
-	    nextShoot = Time.time + longInterval;
+	    nextShoot = Time.time + 3.75f;
 	}
 
     void OnGUI()
