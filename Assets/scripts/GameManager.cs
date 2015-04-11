@@ -1,6 +1,5 @@
-﻿using System;
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
+using Random = System.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,19 +21,15 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
 	void Update () {
-        /*
-        var mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-	    _laser.position = new Vector3(mouseWorldPosition.x,mouseWorldPosition.y);
-        Vector3 dir = _laser.transform.position - Planet.position;
-	    float angle = (float) (Math.Atan(dir.x/dir.y)*Mathf.Rad2Deg);
-        _laser.transform.eulerAngles = new Vector3(0f, 0f,180-angle);*/
-	    if (Input.GetMouseButtonDown(0))
+ 	    if (Input.GetMouseButtonDown(0))
 	    {
 	        _laser.gameObject.GetComponent<Laser>().ShootRound();
 	       
 	    }
-
         float horizontal = Input.GetAxis("Horizontal");
         PlanetObject.Rotate(new Vector3(0f, 0f, 90f * horizontal * Time.deltaTime));
+
+	    var random = new Random();
+        random.Next()
 	}
 }
