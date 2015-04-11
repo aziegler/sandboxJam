@@ -22,21 +22,13 @@ public class Spore : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        var spore = col.gameObject.GetComponent<Spore>();
-       /* if (seed != null && seed.exploded)
+       var spore = col.gameObject.GetComponent<Spore>();
+       if (spore != null && spore.exploded)
         {
-
-
-            Debug.Log(col.gameObject.name);
-            var joint = gameObject.AddComponent<DistanceJoint2D>();
-            joint.distance = 0.3f;
-            joint.maxDistanceOnly = true;
-            //joint.collideConnected = true;
-            joint.connectedAnchor = new Vector2(0.5f, 0f);
-
-            joint.connectedBody = col.rigidbody;
+            GameObject.Destroy(col.gameObject);
+            GameObject.Destroy(gameObject);
         }
-*/
+
         var planet = col.gameObject.GetComponent<Planet>();
         if(null != planet)
         {
