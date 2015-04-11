@@ -4,11 +4,14 @@ using System.Collections;
 public class Spore : MonoBehaviour {
 
     public int Level;
+    SpriteRenderer sprite;
 
 	// Use this for initialization
 	void Start ()
 	{
 	    HasCollided = false;
+        sprite = GetComponent<SpriteRenderer>();
+        sprite.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -47,7 +50,6 @@ public class Spore : MonoBehaviour {
     public void Explode()
     {
         flying = true;
+        sprite.enabled = true;
     }
-
-
 }
