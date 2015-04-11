@@ -24,6 +24,7 @@ public class Flower : MonoBehaviour {
             GameObject go = GameObject.Instantiate(SporePrefab);
             go.transform.parent = t;
             go.transform.localPosition = Vector3.zero;
+            go.transform.localEulerAngles = new Vector3(0f, 0f, Random.Range(0f, 360f));
             go.GetComponent<Spore>().Level = Level;
             go.GetComponent<Spore>().Flower = this;
         }
