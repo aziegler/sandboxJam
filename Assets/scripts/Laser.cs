@@ -39,7 +39,8 @@ public class Laser : MonoBehaviour
             Slot slot = raycastHit2D.collider.gameObject.GetComponent<Slot>();
             if(null != slot)
             {
-                slot.HitByLaser();
+                Vector3 hitVector = slot.transform.InverseTransformPoint(raycastHit2D.point);
+                slot.HitByLaser(hitVector);
             }
 
             //Bomb
