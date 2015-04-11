@@ -50,6 +50,9 @@ TagManager:
   - name: Laser
     uniqueID: 1533748501
     locked: 0
+  - name: Planet
+    uniqueID: 1342470251
+    locked: 0
   - name: Flowers
     uniqueID: 2346810161
     locked: 0

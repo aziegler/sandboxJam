@@ -9,7 +9,7 @@ public class SoundCloud : MonoBehaviour {
     private float longInterval = 6f;
     private float shortInterval = 1.5f;
     private bool nextIsLong = false;
-
+    
 	// Use this for initialization
 	void Start ()
 	{

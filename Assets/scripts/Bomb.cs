@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class Bomb : MonoBehaviour {
 
     public float Range;
-    float TimeToExplose = 0.1f;
+    float TimeToExplose = 0.1f; 
 
     float dateToExplose;
     bool exploded = false;
@@ -60,7 +60,7 @@ public class Bomb : MonoBehaviour {
         var dir = new Vector2(Random.Range(vector3.x - 0.2f, vector3.x + 0.2f),
             Random.Range(vector3.y - 0.2f, vector3.y + 0.2f));
 
-        dir = new Vector2(Math.Sign(vector3.x) * Random.RandomRange(0.3f, 0.4f), 1f);
+        dir = new Vector2(Math.Sign(vector3.x) * Random.RandomRange(0.3f, 0.4f), 0.3f);
 
         dir.Normalize();
         var force = dir * 30f;
