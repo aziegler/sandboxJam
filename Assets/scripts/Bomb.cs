@@ -48,6 +48,7 @@ public class Bomb : MonoBehaviour {
     void OnTriggerEnter2D (Collider2D other)
     {
         Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
+       
         rb.isKinematic = false;
         if(this.transform.position.x < other.transform.position.x)
         {
@@ -59,5 +60,6 @@ public class Bomb : MonoBehaviour {
         }
         
         Physics2D.IgnoreCollision(this.collider2d, other);
+        var seed = other.GetComponent<Seed>();
     }
 }
