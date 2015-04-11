@@ -5,14 +5,34 @@ using System.Collections;
 public class SoundCloud : MonoBehaviour {
 	public AudioSource sound;
     public Transform laser;
-
+    private float nextShoot;
+    private float longInterval = 6;
+    private float shortInterval = 3;
+    private bool nextIsLong = false;
 
 	// Use this for initialization
-	void Start () {
-	   
+	void Start ()
+	{
+	    nextShoot = Time.time + longInterval;
 	}
-	
-	// Update is called once per frame
+
+    void OnGUI()
+    {
+        GUILayout.Label(string.Format("Countdown : {0:#}", nextShoot - Time.time));
+    }
+
+
+    private void Shoot()
+    {
+         laser.gameObject.GetComponent<Laser>().ShootRound();
+        if (nextIsLong)
+            nextShoot = Time.time + longInterval;
+        else
+            nextShoot = Time.time + shortInterval;
+        nextIsLong = !nextIsLong;
+    }
+
+    // Update is called once per frame
 	void Update () {
 	    if (laser == null)
 	    {
@@ -25,6 +45,8 @@ public class SoundCloud : MonoBehaviour {
 	            
 	        }
 	    }
+        if(Time.time > nextShoot)
+            Shoot();
 		float[] samples = new float[256];
 		sound.GetOutputData (samples, 0);
 		float average = 0;
@@ -32,12 +54,11 @@ public class SoundCloud : MonoBehaviour {
 			average += samples[count];
 		}
 
+     
 		
-		print("Average reading: "+average);
-
 		float sphereScale = Mathf.Abs (average);
-		if (sphereScale > 1) {
-		    laser.gameObject.GetComponent<Laser>().ShootRound();	
+		/*if (sphereScale > 1) {
+		    laser.gameObject.GetComponent<Laser>().ShootRound();	*/
         }
 		
 
@@ -45,5 +66,5 @@ public class SoundCloud : MonoBehaviour {
 
 	
 	}
-}
+
 
