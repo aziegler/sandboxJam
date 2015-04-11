@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Laser : MonoBehaviour
 {
-     public Sprite _wideLaser;
+    public Sprite _wideLaser;
     public Sprite _aim;
     public Transform Bomb;
     public Transform Planet;
@@ -19,8 +19,7 @@ public class Laser : MonoBehaviour
         var bomb =(Transform) Instantiate(Bomb, new Vector3(gameObject.GetComponent<Transform>().localPosition.x,0.5f,0f), Quaternion.identity);
         bomb.GetComponent<Bomb>().Init();
         bomb.transform.parent = Planet;
-        Invoke("Back",0.1f); 
-        
+        Invoke("Back",0.1f);
     }
 
     public void ShootRound()
@@ -28,6 +27,8 @@ public class Laser : MonoBehaviour
         Planet = GameObject.FindGameObjectWithTag("Planet").transform;
         var spriteRenderer = (SpriteRenderer)gameObject.GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = _wideLaser;
+
+        this.GetComponent<BoxCollider2D>().enabled = true;
 
         Vector2 origin = new Vector2(Planet.transform.position.x, 20f);
         Vector2 direction = new Vector2(0f, -1f);
@@ -50,6 +51,8 @@ public class Laser : MonoBehaviour
         }
         
         Invoke("Back", 0.1f);
+
+        this.GetComponent<BoxCollider2D>().enabled = false;
     }
 
     public void Update()
@@ -64,5 +67,9 @@ public class Laser : MonoBehaviour
 
     }
 
+    void OnTrigerEnter2D(Collider other)
+    {
+        Debug.Log("Triger on " + other.name);
+    }
     
 }
