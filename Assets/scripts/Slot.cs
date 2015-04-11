@@ -13,24 +13,23 @@ public class Slot : MonoBehaviour {
             isFertil = value;
             if(IsFertil)
             {
-                sprite.enabled = true;
-                sprite.sprite = FertilSprite;
+                foreach (SpriteRenderer sprite in sprites)
+                {
+                    sprite.enabled = true;
+                }
             }
             else
             {
-                sprite.enabled = false;
+                foreach (SpriteRenderer sprite in sprites)
+                {
+                    sprite.enabled = false;
+                }
             }
         }
     }
     public GameObject PlantedFlower;
 
-    public Sprite FertilSprite;
-    SpriteRenderer sprite;
-
-    void Awake ()
-    {
-        sprite = GetComponent<SpriteRenderer>();
-    }
+    public SpriteRenderer[] sprites;
 
     void OnTriggerEnter2D(Collider2D other)
     {

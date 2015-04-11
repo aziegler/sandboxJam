@@ -454,6 +454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabFlower: {fileID: 144006, guid: 97bfd9fc8efeeaa40801ef3c46972b8b, type: 2}
   FlowerSpawnAngle: 10
+  SlotPrefab: {fileID: 178108, guid: 7c66d166118563940aecc94e419f2bdb, type: 2}
 --- !u!58 &1476369206
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -550,5 +551,6 @@ MonoBehaviour:
   Laser: {fileID: 440518, guid: 481dc56962b84c541822f4da619c8ff8, type: 2}
   PlanetObject: {fileID: 0}
   Seed: {fileID: 427160, guid: 634d20bf458243c4fb351cd5652c7a64, type: 2}
+  nextSeed: 0
   Flowers: []
   Seeds: []

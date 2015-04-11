@@ -8,7 +8,7 @@ public class Planet : MonoBehaviour {
     public GameObject PrefabFlower;
     public float FlowerSpawnAngle = 10f;
 
-    public Sprite SlotFertilSprite;
+    public GameObject SlotPrefab;
 
     void Awake ()
     {
@@ -33,22 +33,16 @@ public class Planet : MonoBehaviour {
 
             float size = 2 * circle.radius * Mathf.PI;
 
-            GameObject go = new GameObject();
+            GameObject go = GameObject.Instantiate(SlotPrefab);
             go.name = "slot";
             go.layer = 14;
 
-            BoxCollider2D box = go.AddComponent<BoxCollider2D>();            
+            BoxCollider2D box = go.GetComponent<BoxCollider2D>();            
             box.isTrigger = true;
             box.size = new Vector2(size / numberOfSlot, 1f);
 
-            SpriteRenderer sprite = go.AddComponent<SpriteRenderer>();
-            sprite.sortingOrder = 20;
-            sprite.sortingLayerName = "Flowers";
-
-            Slot slot = go.AddComponent<Slot>();           
-            slot.FertilSprite = SlotFertilSprite;
+            Slot slot = go.GetComponent<Slot>();
             slot.IsFertil = false;
-
 
             go.transform.position = Vector3.zero;
             go.transform.eulerAngles = new Vector3(0f, 0f, total);
