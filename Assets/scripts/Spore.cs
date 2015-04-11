@@ -20,12 +20,14 @@ public class Spore : MonoBehaviour {
        /* Destroy(gameObject);*/
     }
 
-    private bool exploded = false;
+    private bool flying = false;
+
+    public bool IsFlying { get; set; }
 
     void OnCollisionEnter2D(Collision2D col)
     {
        var spore = col.gameObject.GetComponent<Spore>();
-       if (spore != null && spore.exploded)
+       if (spore != null && spore.flying)
         {
             GameManager.Instance.CreateSeed(this, spore);
             GameObject.Destroy(col.gameObject);
@@ -42,7 +44,7 @@ public class Spore : MonoBehaviour {
 
     public void Explode()
     {
-        exploded = true;
+        flying = true;
     }
 
 

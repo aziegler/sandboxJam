@@ -52,7 +52,7 @@ public class Bomb : MonoBehaviour {
     void OnTriggerEnter2D (Collider2D other)
     {
         var spore = other.GetComponent<Spore>();
-        if (spore == null)
+        if (spore == null || spore.IsFlying)
             return;
 
         Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
