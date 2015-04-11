@@ -28,8 +28,6 @@ public class Spore : MonoBehaviour {
        if (spore != null && spore.exploded)
         {
             GameManager.Instance.CreateSeed(this, spore);
-            GameObject.Destroy(col.gameObject);
-            GameObject.Destroy(gameObject);
         }
 
         var planet = col.gameObject.GetComponent<Planet>();
