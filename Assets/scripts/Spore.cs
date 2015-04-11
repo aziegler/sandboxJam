@@ -6,8 +6,9 @@ public class Spore : MonoBehaviour {
     public int Level;
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start ()
+	{
+	    HasCollided = false;
 	}
 	
 	// Update is called once per frame
@@ -23,12 +24,15 @@ public class Spore : MonoBehaviour {
     private bool flying = false;
 
     public bool IsFlying { get; set; }
+    public Flower Flower { get; set; }
+    public bool HasCollided { get; set; }
 
     void OnCollisionEnter2D(Collision2D col)
     {
        var spore = col.gameObject.GetComponent<Spore>();
-       if (spore != null && spore.flying)
+       if (spore != null && spore.flying && this.flying)
         {
+            
             GameManager.Instance.CreateSeed(this, spore);
         }
 

@@ -54,7 +54,7 @@ public class Bomb : MonoBehaviour {
         var spore = other.GetComponent<Spore>();
         if (spore == null || spore.IsFlying)
             return;
-
+        spore.Flower.HasSpore = false;
         Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
        
         rb.isKinematic = false;

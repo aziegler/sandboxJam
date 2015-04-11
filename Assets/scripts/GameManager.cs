@@ -56,8 +56,10 @@ public class GameManager : MonoBehaviour
 
     public void CreateSeed (Spore s1, Spore s2)
     {
-        if (s1.Level == s2.Level)
+        if (s1.Level == s2.Level && s1.Flower != s2.Flower && !s1.HasCollided && !s2.HasCollided)
         {
+            s1.HasCollided = true;
+            s2.HasCollided = true;
             int newLevel = s1.Level + 1 ;
             if(newLevel < Flowers.Length)
             {
