@@ -42,6 +42,8 @@ public class Planet : MonoBehaviour {
             box.size = new Vector2(size / numberOfSlot, 1f);
 
             SpriteRenderer sprite = go.AddComponent<SpriteRenderer>();
+            sprite.sortingOrder = 20;
+            sprite.sortingLayerName = "Flowers";
 
             Slot slot = go.AddComponent<Slot>();           
             slot.FertilSprite = SlotFertilSprite;
