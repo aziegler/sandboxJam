@@ -25,7 +25,6 @@ public class Laser : MonoBehaviour
 
     public void ShootRound()
     {
-        print("ShootRound");
         Planet = GameObject.FindGameObjectWithTag("Planet").transform;
         var spriteRenderer = (SpriteRenderer)gameObject.GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = _wideLaser;
