@@ -34,13 +34,30 @@ public class Bomb : MonoBehaviour {
     {
         collider2d.enabled = true;
 
-        GameObject.Destroy(gameObject, 1f);
+        GameObject.Destroy(collider2d, 1f);
+
+        StartCoroutine("ResetGame");
+    }
+
+    IEnumerator ResetGame ()
+    {
+        yield return new WaitForSeconds(5f);
+        Application.LoadLevel(0);
     }
 
     void OnTriggerEnter2D (Collider2D other)
     {
         Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
         rb.isKinematic = false;
-        rb.velocity = new Vector2(0f, 6f);
+        if(this.transform.position.x < other.transform.position.x)
+        {
+            rb.AddForce(new Vector2(Random.Range(0.05f,0.15f), 1f) * Random.Range(9f,12f), ForceMode2D.Impulse);
+        }
+        else
+        {
+            rb.AddForce(new Vector2(Random.Range(-0.15f,-0.05f), 1f) * Random.Range(9f,12f), ForceMode2D.Impulse);
+        }
+        
+        Physics2D.IgnoreCollision(this.collider2d, other);
     }
 }
