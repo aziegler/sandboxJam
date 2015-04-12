@@ -143,12 +143,12 @@ public class GameManager : MonoBehaviour
 
             GameObject.Destroy(s1.gameObject);
             GameObject.Destroy(s2.gameObject);
-            /*foreach (var seedSpawn in s1.Flower.SeedSpawns)
+           foreach (var seedSpawn in s1.Flower.SeedSpawns)
             {
                 foreach (Transform child in seedSpawn.transform)
                 {
 
-                    GameObject.Destroy(child);
+                    GameObject.Destroy(child.gameObject);
                 }
             }
             foreach (var seedSpawn in s2.Flower.SeedSpawns)
@@ -158,7 +158,7 @@ public class GameManager : MonoBehaviour
 
                     GameObject.Destroy(child.gameObject);
                 }
-            }*/
+            }
         }
         else
         {
