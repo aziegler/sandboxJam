@@ -7,7 +7,7 @@ public class Seed : MonoBehaviour
     public Transform Flower;
     public GameObject Planet;
     public ParticleSystem particle;
-
+    public bool IsCaptured = false;
 	// Use this for initialization
 	void Start ()
 	{

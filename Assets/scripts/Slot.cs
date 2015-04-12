@@ -39,8 +39,10 @@ public class Slot : MonoBehaviour {
         Seed seed = other.GetComponent<Seed>();
         Spore spore = other.GetComponent<Spore>();
 
-        if(IsFertil && null != seed)
+        if(IsFertil && null != seed && !seed.IsCaptured)
         {
+            seed.IsCaptured = true;
+
             GameObject flower = GameObject.Instantiate(seed.Flower.gameObject);
             flower.transform.position = transform.position;
             flower.transform.rotation = transform.rotation;
