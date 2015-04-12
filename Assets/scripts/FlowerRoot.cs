@@ -1,37 +1,47 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FlowerRoot : MonoBehaviour {
+public class FlowerRoot : MonoBehaviour
+{
 
     public int Level;
     public Transform[] SeedSpawns;
     public GameObject SporePrefab;
-    bool hasSpore;
-    public bool HasSpore { get { return hasSpore; } set { hasSpore = value; } }
+    private bool hasSpore;
+
+    public bool HasSpore
+    {
+        get { return hasSpore; }
+        set { hasSpore = value; }
+    }
+
     public Voices Voice { get; set; }
 
-    int sporeCount = 0;
-    int SporeCount
+    private int sporeCount = 0;
+
+    private int SporeCount
     {
         get { return sporeCount; }
         set
         {
-            if(value == 0 && sporeCount == 1)
+            if (value == 0 && sporeCount == 1)
             {
                 Invoke("SpawnSpores", 0.7f);
             }
             sporeCount = value;
         }
     }
+
     // Use this for initialization
-	void Start ()
-	{
-	    transform.eulerAngles = new Vector3(0f, 0f, Planet.Instance.GetOrientedAngle(transform));
+    private void Start()
+    {
+        transform.eulerAngles = new Vector3(0f, 0f, Planet.Instance.GetOrientedAngle(transform));
         Voice.Growth();
-	}
+        HasSpore = true;
+    }
 
     public void SpawnSpores()
-    { 
+    {
         HasSpore = true;
         foreach (Transform t in SeedSpawns)
         {
@@ -48,13 +58,42 @@ public class FlowerRoot : MonoBehaviour {
     }
 
     // Update is called once per frame
-	void Update () {
+    private void Update()
+    {
+
         if (!HasSpore)
-	    {
-	        HasSpore = true;
-            //Invoke("SpawnSpores", 0.7f);
-	    }
-	}
+        {
+            HasSpore = true;
+            Invoke("SpawnSpores", 0.7f);
+        }
+        else
+        {
+            /*bool foundSittingSpore = false;
+	        foreach (Transform t in SeedSpawns)
+	        {
+	            foreach (var componentsInChild in t.GetComponentsInChildren<Transform>())
+	            {
+	                var component = componentsInChild.GetComponent<Spore>();
+	                if (component != null)
+	                {
+	                    if (!component.IsFlying)
+	                        foundSittingSpore = true;
+	                }
+	            }
+	        }
+	        if (!foundSittingSpore)
+	        {
+                Invoke("SpawnSpores", 0.7f);
+	        }*/
+            if (!HasSpore)
+            {
+                HasSpore = true;
+                //Invoke("SpawnSpores", 0.7f);
+            }
+        }
+
+
+    }
 
     public void Kill()
     {
