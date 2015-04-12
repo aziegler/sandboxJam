@@ -59,6 +59,7 @@ public class FlowerRoot : MonoBehaviour {
     public void Kill()
     {
         Voice.Death();
+        GameObject.Destroy(gameObject);
     }
 
     public void SporeDie()

@@ -68,9 +68,8 @@ public class Laser : MonoBehaviour
 
     }
 
-    void OnTrigerEnter2D(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Triger on " + other.name);
         FlowerFinder ff = other.GetComponent<FlowerFinder>();
         FlowerRoot flower = ff.Flower;
         flower.Kill();

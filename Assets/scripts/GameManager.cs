@@ -119,7 +119,6 @@ public class GameManager : MonoBehaviour
             else
                 targetVolume = Mathf.Min(1f - time/fadeTime, audioSource.volume);
             audioSource.volume = targetVolume;
-            print("Setting "+audioSource.tag+" to "+targetVolume);
             yield return new WaitForSeconds(0.1f);
          }
 
