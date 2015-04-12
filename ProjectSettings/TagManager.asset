@@ -13,6 +13,7 @@ TagManager:
   - ThirdLoop
   - SecondLoop
   - SFXPlayer
+  - FlowerHead
   layers:
   - Default
   - TransparentFX

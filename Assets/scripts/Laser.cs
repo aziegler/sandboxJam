@@ -24,6 +24,8 @@ public class Laser : MonoBehaviour
 
     public void ShootRound()
     {
+        GetComponent<BoxCollider2D>().enabled = true;
+
         Planet = GameObject.FindGameObjectWithTag("Planet").transform;
         var spriteRenderer = (SpriteRenderer)gameObject.GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = _wideLaser;
@@ -49,10 +51,8 @@ public class Laser : MonoBehaviour
             bomb.GetComponent<Bomb>().Init();
             bomb.transform.parent = Planet;                       
         }
-        
-        Invoke("Back", 0.1f);
 
-        this.GetComponent<BoxCollider2D>().enabled = false;
+        Invoke("Back", 0.1f);
     }
 
     public void Update()
@@ -64,12 +64,15 @@ public class Laser : MonoBehaviour
     {
         var spriteRenderer = (SpriteRenderer)gameObject.GetComponent<SpriteRenderer>();
        spriteRenderer.sprite = _aim;
+       GetComponent<BoxCollider2D>().enabled = false;
 
     }
 
     void OnTrigerEnter2D(Collider other)
     {
         Debug.Log("Triger on " + other.name);
-    }
-    
+        FlowerFinder ff = other.GetComponent<FlowerFinder>();
+        FlowerRoot flower = ff.Flower;
+        flower.Kill();
+    }    
 }

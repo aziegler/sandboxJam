@@ -36,15 +36,15 @@ public class Slot : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(IsFertil)
+        Seed seed = other.GetComponent<Seed>();
+        Spore spore = other.GetComponent<Spore>();
+
+        if(IsFertil && null != seed)
         {
-            Seed seed = other.GetComponent<Seed>();
             GameObject flower = GameObject.Instantiate(seed.Flower.gameObject);
             flower.transform.position = transform.position;
             flower.transform.rotation = transform.rotation;
             flower.transform.parent = Planet.Instance.transform;
-
-            
 
             PlantedFlower = flower;
 
@@ -73,6 +73,11 @@ public class Slot : MonoBehaviour {
             
             scale.Scale(0.2f, Vector3.zero, true, Center.position, AbsorbIsFinish);     
         }
+
+        if(null != spore)
+        {
+            GameObject.Destroy(other.gameObject);
+        }
     }
 
     void AbsorbIsFinish()
@@ -100,22 +105,9 @@ public class Slot : MonoBehaviour {
 
     public void HitByLaser(Vector3 hitVector)
     {
-        if (null != PlantedFlower)
-        {
-            IsFertil = false;
-            ShowSprites(false);
-            if (Mathf.Abs(hitVector.x) <= 0.5)
-            {
-                var component = PlantedFlower.GetComponent<FlowerRoot>();
-                component.Kill();  
-                Destroy(PlantedFlower);
-                PlantedFlower = null;
-            }
-        }
-        else if(!IsFertil)
+        if(!IsFertil)
         {
             IsFertil = true;
-
             ShowSprites(true);
         }
         else if(IsFertil)
