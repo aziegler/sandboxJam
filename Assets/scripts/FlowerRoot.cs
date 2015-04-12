@@ -6,9 +6,23 @@ public class FlowerRoot : MonoBehaviour {
     public int Level;
     public Transform[] SeedSpawns;
     public GameObject SporePrefab;
-    public bool HasSpore { get; set; }
+    bool hasSpore;
+    public bool HasSpore { get { return hasSpore; } set { hasSpore = value; } }
     public Voices Voice { get; set; }
 
+    int sporeCount = 0;
+    int SporeCount
+    {
+        get { return sporeCount; }
+        set
+        {
+            if(value == 0 && sporeCount == 1)
+            {
+                Invoke("SpawnSpores", 0.7f);
+            }
+            sporeCount = value;
+        }
+    }
     // Use this for initialization
 	void Start ()
 	{
@@ -17,7 +31,7 @@ public class FlowerRoot : MonoBehaviour {
 	}
 
     public void SpawnSpores()
-    {
+    { 
         HasSpore = true;
         foreach (Transform t in SeedSpawns)
         {
@@ -28,20 +42,27 @@ public class FlowerRoot : MonoBehaviour {
             go.transform.localEulerAngles = new Vector3(0f, 0f, Random.Range(0f, 360f));
             go.GetComponent<Spore>().Level = Level;
             go.GetComponent<Spore>().Flower = this;
+
+            SporeCount++;
         }
     }
 
     // Update is called once per frame
 	void Update () {
-	    if (!HasSpore)
+        if (!HasSpore)
 	    {
 	        HasSpore = true;
-            Invoke("SpawnSpores",0.7f);
+            //Invoke("SpawnSpores", 0.7f);
 	    }
 	}
 
     public void Kill()
     {
         Voice.Death();
+    }
+
+    public void SporeDie()
+    {
+        SporeCount--;
     }
 }
