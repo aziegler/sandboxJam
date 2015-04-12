@@ -92,7 +92,7 @@ public class Slot : MonoBehaviour {
         if (null != seed)
         {
             coll.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up*2f);
-            GameObject.Destroy(coll.gameObject, 0.4f);
+            seed.FadeAndKill();
         }
         Spore spore = coll.gameObject.GetComponent<Spore>();
         if(null != spore && spore.IsFlying)
