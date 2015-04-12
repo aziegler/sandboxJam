@@ -38,7 +38,15 @@ public class FlowerRoot : MonoBehaviour
     private void Start()
     {
         transform.eulerAngles = new Vector3(0f, 0f, Planet.Instance.GetOrientedAngle(transform));
-        Voice.Growth();
+        if (GrowthLevel > 1)
+        {
+            var component = GameObject.FindGameObjectWithTag("SFXPlayerEvolve").GetComponent<FX>();
+            component.PlaySound();
+        }
+        else
+        {
+            Voice.Growth();
+        }
         HasSpore = true;
     }
 
