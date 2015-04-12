@@ -4,12 +4,15 @@ using System.Collections;
 public class FlowerFinder : MonoBehaviour {
 
     public Transform SporeRoot;
+    public FlowerRoot Flower;
 
 	// Use this for initialization
 	void Start () 
     {
         Transform root = FindRoot(transform);
         FlowerRoot f = root.GetComponent<FlowerRoot>();
+        Flower = f;
+
         if (null != SporeRoot)
         {
             f.SeedSpawns = new Transform[SporeRoot.childCount];
