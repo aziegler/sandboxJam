@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 	{
 	    GetNextSeedDate();
 	    PlanetObject = GameObject.FindGameObjectWithTag("Planet").transform;
-	    _laser = (Transform)Instantiate(Laser, new Vector3(0f,30f), Quaternion.identity);
+	    _laser = (Transform)Instantiate(Laser, new Vector3(0f,5f), Quaternion.identity);
 	    _laser.GetComponent<BoxCollider2D>().enabled = false;
 
 	 
