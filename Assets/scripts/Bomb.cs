@@ -36,7 +36,6 @@ public class Bomb : MonoBehaviour {
     void Explode ()
     {
         collider2d.enabled = true;
-
         GameObject.Destroy(collider2d, Time.fixedDeltaTime*2f);
         Destroy(gameObject,Time.fixedDeltaTime*2f);
 
