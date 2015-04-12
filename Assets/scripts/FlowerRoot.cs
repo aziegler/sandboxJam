@@ -53,7 +53,8 @@ public class FlowerRoot : MonoBehaviour
             GameObject go = GameObject.Instantiate(SporePrefab);
             go.transform.parent = null;
             go.transform.localScale = Vector3.one;
-            //go.transform.parent = t;
+            go.transform.parent = t;
+            go.transform.localScale = Vector3.one;
             go.transform.position = t.position;          
             go.transform.localEulerAngles = new Vector3(0f, 0f, Random.Range(0f, 360f));
             go.GetComponent<Spore>().Level = Level;

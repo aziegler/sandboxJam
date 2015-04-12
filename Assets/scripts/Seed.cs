@@ -9,6 +9,8 @@ public class Seed : MonoBehaviour
     public ParticleSystem particle;
     public bool IsCaptured = false;
 	// Use this for initialization
+    public SpriteRenderer[] Sprites;
+
 	void Start ()
 	{
         particle.GetComponent<Renderer>().sortingLayerName = "Flowers";
@@ -19,4 +21,19 @@ public class Seed : MonoBehaviour
 	void Update () {
 	
 	}
+
+    public void FadeAndKill()
+    {
+        foreach(SpriteRenderer sr in Sprites)
+        {
+            FadeObject fo = sr.gameObject.AddComponent<FadeObject>();
+            fo.OnHide = Kill;
+        }
+    }
+
+    public void Kill()
+    {
+        GameObject.Destroy(gameObject);
+    }
+ 
 }

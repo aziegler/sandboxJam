@@ -27,6 +27,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 467946}
   - 114: {fileID: 11484412}
+  - 114: {fileID: 11466042}
   m_Layer: 0
   m_Name: FlowerThree
   m_TagString: Flower
@@ -98,8 +99,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.38000011, y: 17.5100002, z: -.100000001}
-  m_LocalScale: {x: 2.93073225, y: 2.93073201, z: 2.93073201}
+  m_LocalPosition: {x: -4.99432659, y: 20.0899086, z: -.100000001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 449818}
   m_Father: {fileID: 0}
@@ -155,10 +156,25 @@ MeshCollider:
   m_GameObject: {fileID: 108676}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &11466042
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e60749de0b0504b6eb48488384da3c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+  level: 0
+  RandomSeed: 0
+  stem: {fileID: 172496}
 --- !u!114 &11482528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,6 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bdf3bc3c352f493ab30db769dd3fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  root: {fileID: 0}
   stemObject: {fileID: 172496}
   leafObject: {fileID: 126358, guid: a351f0f3d24944f209f845653ad3f116, type: 2}
   stemEnd: {fileID: 167068}

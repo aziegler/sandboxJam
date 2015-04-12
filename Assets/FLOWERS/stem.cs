@@ -3,7 +3,7 @@ using System.Collections;
 
 public class stem : MonoBehaviour
 {
-
+	public GameObject	root;
 	public GameObject 	stemObject;
 	public GameObject	leafObject;
 	public GameObject 	stemEnd;
@@ -19,10 +19,97 @@ public class stem : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-
 		//Make sure stem starts in ungrown state
 		finished = false;
 		transform.localScale = Vector3.zero;
+
+		//Find Root Object
+		if (transform.parent.name == "FlowerOne(Clone)" || transform.parent.name == "FlowerOne" ||
+			transform.parent.name == "FlowerTwo(Clone)" || transform.parent.name == "FlowerTwo" ||
+			transform.parent.name == "FlowerThree(Clone)" || transform.parent.name == "FlowerThree" ||
+			transform.parent.name == "FlowerFour(Clone)" || transform.parent.name == "FlowerFour")
+		{
+			root = transform.parent.gameObject;
+		}
+
+		//Set up stuff based on which level is defined in 'root'
+		if (root != null) {
+
+			//Flower One
+			if(root.GetComponent<flowerLevel>().type == 0)
+			{
+				//Flower One Level 0
+				if(root.GetComponent<flowerLevel>().level == 0){
+					splitNode = 0; angleVariation = 50;
+				}
+
+				//Flower One Level 1
+				if(root.GetComponent<flowerLevel>().level == 1){
+					splitNode = 1; angleVariation = 50;
+				}
+
+				//Flower One Level 2
+				if(root.GetComponent<flowerLevel>().level == 2){
+					splitNode = 2; angleVariation = 50;
+				}
+
+				//Flower Two
+				if(root.GetComponent<flowerLevel>().type == 1)
+				{
+					//Flower One Level 0
+					if(root.GetComponent<flowerLevel>().level == 0){
+						splitNode = 1; angleVariation = 50;
+					}
+					
+					//Flower One Level 1
+					if(root.GetComponent<flowerLevel>().level == 1){
+						splitNode = 0; angleVariation = 50;
+					}
+					
+					//Flower One Level 2
+					if(root.GetComponent<flowerLevel>().level >= 2){
+						splitNode = 1; angleVariation = 50;
+					}
+				}
+
+				//Flower Three
+				if(root.GetComponent<flowerLevel>().type == 2)
+				{
+					//Flower One Level 0
+					if(root.GetComponent<flowerLevel>().level == 0){
+						splitNode = 1; angleVariation = 50;
+					}
+					
+					//Flower One Level 1
+					if(root.GetComponent<flowerLevel>().level == 1){
+						splitNode = 0; angleVariation = 50;
+					}
+					
+					//Flower One Level 2
+					if(root.GetComponent<flowerLevel>().level >= 2){
+						splitNode = 1; angleVariation = 50;
+					}
+				}
+				//Flower Four
+				if(root.GetComponent<flowerLevel>().type == 3)
+				{
+					//Flower One Level 0
+					if(root.GetComponent<flowerLevel>().level == 0){
+						splitNode = 1; angleVariation = 50;
+					}
+					
+					//Flower One Level 1
+					if(root.GetComponent<flowerLevel>().level == 1){
+						splitNode = 1; angleVariation = 50;
+					}
+					
+					//Flower One Level 2
+					if(root.GetComponent<flowerLevel>().level >= 2){
+						splitNode = 1; angleVariation = 70;
+					}
+				}
+			}
+		}
 	}
 	
 	// Update is called once per frame
