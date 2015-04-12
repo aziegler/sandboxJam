@@ -143,6 +143,22 @@ public class GameManager : MonoBehaviour
 
             GameObject.Destroy(s1.gameObject);
             GameObject.Destroy(s2.gameObject);
+            /*foreach (var seedSpawn in s1.Flower.SeedSpawns)
+            {
+                foreach (Transform child in seedSpawn.transform)
+                {
+
+                    GameObject.Destroy(child);
+                }
+            }
+            foreach (var seedSpawn in s2.Flower.SeedSpawns)
+            {
+                foreach (Transform child in seedSpawn.transform)
+                {
+
+                    GameObject.Destroy(child.gameObject);
+                }
+            }*/
         }
         else
         {

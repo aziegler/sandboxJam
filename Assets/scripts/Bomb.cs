@@ -56,7 +56,7 @@ public class Bomb : MonoBehaviour {
             return;
         if (spore.Flower.HasSpore)
         {
-            if(Random.Range(0,20)>8)
+            if(Random.Range(0,20)>15)
                 spore.Flower.Voice.Touch();
         }
         spore.Explode();
