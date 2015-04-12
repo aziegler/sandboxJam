@@ -57,9 +57,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 432362}
+  - 114: {fileID: 11412204}
   m_Layer: 0
   m_Name: FlowerOne
-  m_TagString: Untagged
+  m_TagString: Flower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,9 +71,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190094}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .319999993, y: 18.6299992, z: -.170000002}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: .276733965, w: .96094662}
+  m_LocalPosition: {x: -33.2000008, y: 19.7000008, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 440440}
   m_Father: {fileID: 0}
@@ -84,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 115178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 491018}
@@ -158,6 +159,20 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &11412204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c8626630cbfee43b69d3b4eb825eab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Level: 0
+  SeedSpawns: []
+  SporePrefab: {fileID: 157764, guid: 48d07dc9107f7d04f9c724e24fff1fb6, type: 2}
 --- !u!114 &11414566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,10 +187,11 @@ MonoBehaviour:
   stemObject: {fileID: 115178}
   leafObject: {fileID: 105010, guid: 7040ce4c10ef94dd2bea784a3949134f, type: 2}
   stemEnd: {fileID: 171280}
+  flowerHead: {fileID: 106300, guid: 2067ac713b97545ed991bec8138ceb6f, type: 2}
   finished: 0
-  nodeNumber: 2
-  anotherNode: 0
-  angleVariation: 90
+  nodeNumber: 1
+  splitNode: 0
+  angleVariation: 50
   angle: 0
   animate: 0
   endScale: 1

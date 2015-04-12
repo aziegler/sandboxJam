@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public Transform Seed;
     public float nextSeed;
 
-    public Flower[] Flowers;
+    public GameObject[] Flowers;
     public GameObject[] Seeds;
 
     void Awake ()

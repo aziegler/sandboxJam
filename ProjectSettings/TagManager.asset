@@ -8,6 +8,7 @@ TagManager:
   - Seed
   - Laser
   - Spore
+  - Flower
   layers:
   - Default
   - TransparentFX

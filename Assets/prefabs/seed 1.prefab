@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae6675ef161d70d49a211598446bb4a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Flower: {fileID: 448846, guid: e957ae6c132aa384cb25b3515939dd51, type: 2}
+  Flower: {fileID: 478508, guid: 6205f62a522ff4d17ac42d2137d13ad5, type: 2}
   Planet: {fileID: 0}
   particle: {fileID: 19875188}
 --- !u!198 &19875188

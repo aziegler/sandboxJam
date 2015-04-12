@@ -7,9 +7,10 @@ public class stem : MonoBehaviour
 	public GameObject 	stemObject;
 	public GameObject	leafObject;
 	public GameObject 	stemEnd;
+	public GameObject	flowerHead;
 	public bool			finished;
 	public int			nodeNumber;
-	public bool			anotherNode;
+	public int			splitNode;
 	public float		angleVariation;
 	public float 		angle;
 	public float		animate;
@@ -28,10 +29,10 @@ public class stem : MonoBehaviour
 	void FixedUpdate () 
 	{
 
-		GameObject nextNode,secondNode,leaf,leaf2;
+		GameObject nextNode,secondNode,thirdNode,leaf,Head;
 
 		//Grow Stem
-		transform.localScale = Vector3.Lerp (transform.localScale, Vector3.one * endScale, 0.02f);
+		transform.localScale = Vector3.Lerp (transform.localScale, Vector3.one * endScale, 0.04f);
 
 		//Check to see if we ready for another node
 		if (finished == false) {
@@ -41,46 +42,94 @@ public class stem : MonoBehaviour
 				//Should I generate another node?
 				if (nodeNumber > 0) {
 
-					//Create 2 Leafs
+					//Create Leaf
 					leaf = (GameObject)Instantiate (leafObject, stemEnd.transform.position, Quaternion.identity);
-					//leaf2 = (GameObject)Instantiate (leafObject, transform.position, Quaternion.identity);
-
-					//Set Up Leaf Variables
 					leaf.GetComponent<leaf> ().angle = Random.Range (-9, 9)*10;
 					leaf.GetComponent<leaf> ().animate = animate - 0.4f;
-					//leaf2.GetComponent<leaf> ().angle = Random.Range (-9, 9)*10;
-					//leaf2.GetComponent<leaf> ().animate = animate - 0.4f;
 
 					int nextNodeNUmber = nodeNumber - 1;
 
 					//Create Node
-					nextNode = (GameObject)Instantiate (stemObject, stemEnd.transform.position, Quaternion.identity);
-						
-					//Set up Node Variables
-					nextNode.GetComponent<stem> ().nodeNumber = nextNodeNUmber;
-					nextNode.GetComponent<stem> ().angle = Random.Range (-angleVariation, angleVariation);
-					nextNode.GetComponent<stem> ().animate = animate - 0.4f;
-					nextNode.GetComponent<stem> ().finished = false;
-					nextNode.GetComponent<stem> ().endScale = endScale - 0.15f;
+					if(splitNode == 0){
 
-					if (anotherNode == true) {
-						//Create Another Node
-						secondNode = (GameObject)Instantiate (stemObject, stemEnd.transform.position, Quaternion.identity);
-						
-						//Set up second node variables
-						secondNode.GetComponent<stem> ().nodeNumber = nextNodeNUmber;
-						secondNode.GetComponent<stem> ().angle = Random.Range (-angleVariation, angleVariation);
-						secondNode.GetComponent<stem> ().animate = animate - 0.4f;
-						secondNode.GetComponent<stem> ().finished = false;
-						secondNode.transform.parent = transform;
-						secondNode.GetComponent<stem> ().endScale = endScale - 0.15f;
+						float randomAngle = Random.Range (-angleVariation, angleVariation);
+						nextNode = (GameObject)Instantiate (stemObject, stemEnd.transform.position, Quaternion.identity);
+						nextNode.GetComponent<stem> ().nodeNumber = nextNodeNUmber;
+						nextNode.GetComponent<stem> ().angle = randomAngle;
+						nextNode.GetComponent<stem> ().animate = animate - 0.4f;
+						nextNode.GetComponent<stem> ().finished = false;
+						nextNode.GetComponent<stem> ().endScale = endScale - 0.15f;
+
+						nextNode.transform.parent = transform;
 					}
 
-					//Parent new bits to me!
-					nextNode.transform.parent = transform;
-					leaf.transform.parent = transform;
-					//leaf2.transform.parent = transform;
+					if (splitNode == 1) {
+						float randomAngle = Random.Range (-angleVariation, angleVariation);
 
+						//Create Node
+						nextNode = (GameObject)Instantiate (stemObject, stemEnd.transform.position, Quaternion.identity);
+						nextNode.GetComponent<stem> ().nodeNumber = nextNodeNUmber;
+						nextNode.GetComponent<stem> ().angle = randomAngle - Random.Range (35, 45);
+						nextNode.GetComponent<stem> ().animate = animate - 0.4f;
+						nextNode.GetComponent<stem> ().finished = false;
+						nextNode.GetComponent<stem> ().endScale = endScale - 0.15f;
+
+						//Create Another Node
+						secondNode = (GameObject)Instantiate (stemObject, stemEnd.transform.position, Quaternion.identity);
+						secondNode.GetComponent<stem> ().nodeNumber = nextNodeNUmber;
+						secondNode.GetComponent<stem> ().angle = randomAngle + Random.Range (35, 45);
+						secondNode.GetComponent<stem> ().animate = animate - 0.4f;
+						secondNode.GetComponent<stem> ().finished = false;
+						secondNode.GetComponent<stem> ().endScale = endScale - 0.15f;
+
+						nextNode.transform.parent = transform;
+						secondNode.transform.parent = transform;
+					}
+
+					if (splitNode == 2) {
+						float randomAngle = Random.Range (-angleVariation, angleVariation);
+
+						//Create Node
+						nextNode = (GameObject)Instantiate (stemObject, stemEnd.transform.position, Quaternion.identity);
+						nextNode.GetComponent<stem> ().nodeNumber = nextNodeNUmber;
+						nextNode.GetComponent<stem> ().angle = randomAngle - Random.Range (55, 65);
+						nextNode.GetComponent<stem> ().animate = animate - 0.4f;
+						nextNode.GetComponent<stem> ().finished = false;
+						nextNode.GetComponent<stem> ().endScale = endScale - 0.15f;
+						
+						//Create Another Node
+						secondNode = (GameObject)Instantiate (stemObject, stemEnd.transform.position, Quaternion.identity);
+						secondNode.GetComponent<stem> ().nodeNumber = nextNodeNUmber;
+						secondNode.GetComponent<stem> ().angle = randomAngle;
+						secondNode.GetComponent<stem> ().animate = animate - 0.4f;
+						secondNode.GetComponent<stem> ().finished = false;
+						secondNode.GetComponent<stem> ().endScale = endScale - 0.15f;
+
+						//Create Third Node
+						thirdNode = (GameObject)Instantiate (stemObject, stemEnd.transform.position, Quaternion.identity);
+						thirdNode.GetComponent<stem> ().nodeNumber = nextNodeNUmber;
+						thirdNode.GetComponent<stem> ().angle = randomAngle + Random.Range (55, 65);
+						thirdNode.GetComponent<stem> ().animate = animate - 0.4f;
+						thirdNode.GetComponent<stem> ().finished = false;
+						thirdNode.GetComponent<stem> ().endScale = endScale - 0.15f;
+
+						nextNode.transform.parent = transform;
+						secondNode.transform.parent = transform;
+						thirdNode.transform.parent = transform;
+					}
+				
+					//Parent leaf to me!
+					leaf.transform.parent = transform;
+				}
+
+				if(nodeNumber == 0)
+				{
+					//FlowerHaad
+					Head = (GameObject)Instantiate (flowerHead, stemEnd.transform.position, Quaternion.identity);
+					Head.transform.localEulerAngles = new Vector3(0,0,Random.Range(-15,15));
+
+					//Parent Flower Head
+					Head.transform.parent = transform;
 				}
 			}
 		}
