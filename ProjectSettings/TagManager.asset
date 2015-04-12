@@ -11,6 +11,7 @@ TagManager:
   - FirstLoop
   - ThirdLoop
   - SecondLoop
+  - SFXPlayer
   layers:
   - Default
   - TransparentFX

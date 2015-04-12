@@ -137,6 +137,8 @@ public class GameManager : MonoBehaviour
             {
                 GameObject go = GameObject.Instantiate(Seeds[newLevel]);
                 go.transform.position = s1.transform.position;
+                var component = GameObject.FindGameObjectWithTag("SFXPlayer").GetComponent<FX>();
+                component.PlaySound();
             }
 
             GameObject.Destroy(s1.gameObject);
