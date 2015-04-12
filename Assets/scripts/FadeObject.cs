@@ -21,13 +21,13 @@ public class FadeObject : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-        float t = (Time.time - startTime)/Delay;
+        float t = Mathf.Clamp((Time.time - startTime)/Delay, 0f, 1f);
         float alpha = Mathf.Lerp(startAlpha, 0f, t);
         Color c = sprite.color;
         c.a = alpha;
         sprite.color = c;
         
-        if(Mathf.Approximately(t,1f))
+        if(t >= 1f)
         {
             if(null != OnHide)
             {

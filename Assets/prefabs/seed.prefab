@@ -224,6 +224,10 @@ MonoBehaviour:
   Flower: {fileID: 432362, guid: 0c5eb1b6ae4b14372ba2614599b65519, type: 2}
   Planet: {fileID: 0}
   particle: {fileID: 19858888}
+  IsCaptured: 0
+  Sprites:
+  - {fileID: 21277288}
+  - {fileID: 21235224}
 --- !u!198 &19858888
 ParticleSystem:
   m_ObjectHideFlags: 1

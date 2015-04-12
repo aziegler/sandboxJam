@@ -24,14 +24,11 @@ public class Seed : MonoBehaviour
 
     public void FadeAndKill()
     {
-        GameObject.Destroy(gameObject, 0.4f);
-        /*
         foreach(SpriteRenderer sr in Sprites)
         {
             FadeObject fo = sr.gameObject.AddComponent<FadeObject>();
             fo.OnHide = Kill;
         }
-         * */
     }
 
     public void Kill()
