@@ -38,10 +38,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c1262943ecadc224185ee04c565e1fc7, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: .300000012
+  m_Pitch: 1.10000002
   Loop: 0
   Mute: 0
   Priority: 128
@@ -110,19 +110,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   births:
-  - {fileID: 8300000, guid: 4f25af0040001934fba2512d53ee61a8, type: 3}
-  - {fileID: 8300000, guid: b21fdb90192b0be4a9eea3b7ba328f9e, type: 3}
-  - {fileID: 8300000, guid: 6d5b4bd647749fa4093d49ff146613fe, type: 3}
-  - {fileID: 8300000, guid: 60524acdbb9cb4746b7078e7bea6d49d, type: 3}
+  - {fileID: 8300000, guid: a687af3390bffcf4190c7b7870a2af29, type: 3}
+  - {fileID: 8300000, guid: d0917c271adb6c7478d8c7799212a9bc, type: 3}
+  - {fileID: 8300000, guid: 01c47d833e4e35c418b08e6acb5875bf, type: 3}
+  - {fileID: 8300000, guid: daba5854272c3ef419426e222b77ef9f, type: 3}
+  - {fileID: 8300000, guid: ae92da5fc7bbced418bdde1bff4df1b4, type: 3}
   touches:
-  - {fileID: 8300000, guid: 8d66ba5abce2c8347b3d20868f5ae8d4, type: 3}
-  - {fileID: 8300000, guid: f5dd34e8c167b304da4896767ea948a1, type: 3}
-  - {fileID: 8300000, guid: 30286519a3cda7d4bac042fec100cfd4, type: 3}
+  - {fileID: 8300000, guid: 01c47d833e4e35c418b08e6acb5875bf, type: 3}
+  - {fileID: 8300000, guid: daba5854272c3ef419426e222b77ef9f, type: 3}
+  - {fileID: 8300000, guid: ae92da5fc7bbced418bdde1bff4df1b4, type: 3}
   deaths:
-  - {fileID: 8300000, guid: c8bca2a153ad2be4f92b8a5ccaf6e26f, type: 3}
-  - {fileID: 8300000, guid: 9baf7e7f3156b9541815b9a014cedba9, type: 3}
-  - {fileID: 8300000, guid: 0a520732693a9ce44970999d71c9bf6c, type: 3}
-  - {fileID: 8300000, guid: 3a19754a32cce5c46a0160850eb0732d, type: 3}
+  - {fileID: 8300000, guid: 3daedf12aabe6a34b8cc6e7300a92467, type: 3}
+  - {fileID: 8300000, guid: 719ccbb1140914445a95531464c5e0da, type: 3}
+  - {fileID: 8300000, guid: e9e18f7f1052c4745afcfcb4360409b3, type: 3}
   source: {fileID: 8200104}
 --- !u!1001 &100100000
 Prefab:

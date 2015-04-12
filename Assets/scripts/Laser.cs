@@ -24,11 +24,11 @@ public class Laser : MonoBehaviour
 
     public void ShootRound()
     {
-        GetComponent<BoxCollider2D>().enabled = true;
+         GetComponent<BoxCollider2D>().enabled = true;
 
         Planet = GameObject.FindGameObjectWithTag("Planet").transform;
-        var spriteRenderer = (SpriteRenderer)gameObject.GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = _wideLaser;
+   /*     var spriteRenderer = (SpriteRenderer)gameObject.GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = _wideLaser;*/
 
         this.GetComponent<BoxCollider2D>().enabled = true;
 

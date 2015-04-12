@@ -21,7 +21,7 @@ public class SoundSynchronisation : MonoBehaviour
 	        return;
         }
 
-	    var soundCloud = GameObject.FindGameObjectWithTag("SoundSync").GetComponent<SoundCloud>();
-        soundCloud.ResyncSound(source.time);
+	   /* var soundCloud = GameObject.FindGameObjectWithTag("SoundSync").GetComponent<SoundCloud>();
+        soundCloud.ResyncSound(source.time);*/
 	}
 }

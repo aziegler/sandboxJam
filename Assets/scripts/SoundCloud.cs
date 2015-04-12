@@ -6,21 +6,54 @@ public class SoundCloud : MonoBehaviour {
 	public AudioSource sound;
     public Transform laser;
     private float nextShoot;
+    private float nextLoad;
+    private float nextShootAnim;
     private float longInterval = 4.5f;
     private float shortInterval = 1.5f;
     private bool nextIsLong = false;
-    
+
+    private bool loading = false;
+    private bool shooting = false;
+
 	// Use this for initialization
 	void Start ()
 	{
-	    nextShoot = Time.time + 3.75f;
+	    var shoot = Time.time + 3.75f;
+	    SetShootTime(shoot);
 	}
+
+    private void SetShootTime(float shoot)
+    {
+        loading = false;
+        shooting = false;
+        nextShoot = shoot;
+        nextLoad = shoot - 2.5f;
+        nextShootAnim = shoot - 0.5f;
+        print("Shoot time : " + nextShoot + " shootA " + nextShootAnim + " nextLoad " + nextLoad);
+    }
+
+    private void LaunchShootAnim()
+    {
+        print("Load shoot anim time " + Time.time);        
+        LoadAnim.Stop();       
+        ShootAnim.Play();
+        shooting = true;
+    }
+
+    private void LaunchLoadAnim()
+    {
+       ShootAnim.Stop();
+        LoadAnim.Play();
+        loading = true;
+        
+    }
 
     public void ResyncSound(float timeFromMusiStart)
     {
         if (timeFromMusiStart > 3.75f)
             return;
-        nextShoot = Time.time + 3.75f - timeFromMusiStart;
+        var shoot = Time.time + 3.75f - timeFromMusiStart;
+        SetShootTime(shoot);
         nextIsLong = false;
 
     }
@@ -31,15 +64,38 @@ public class SoundCloud : MonoBehaviour {
     }
 
 
-    private void Shoot()
+    public void Shoot()
     {
+        print("Shoot time " + Time.time);
          laser.gameObject.GetComponent<Laser>().ShootRound();
         if (nextIsLong)
-            nextShoot = Time.time + longInterval;
+            SetShootTime(nextShoot + longInterval);
         else
-            nextShoot = Time.time + shortInterval;
+            SetShootTime(nextShoot + shortInterval);
         nextIsLong = !nextIsLong;
     }
+
+    private PlayAnimation ShootAnim
+    {
+        get
+        {
+            var playAnimation = GameObject.FindGameObjectWithTag("Shooting").GetComponent<PlayAnimation>();
+            playAnimation.synchronisator = this;
+            return playAnimation;
+        }
+    }
+
+    private PlayAnimation LoadAnim
+    {
+        get
+        {
+            var playAnimation = GameObject.FindGameObjectWithTag("Loading").GetComponent<PlayAnimation>();
+            playAnimation.synchronisator = this;
+            return playAnimation;
+        }
+    }
+
+    
 
     // Update is called once per frame
 	void Update () {
@@ -54,8 +110,14 @@ public class SoundCloud : MonoBehaviour {
 	            
 	        }
 	    }
-        if(Time.time > nextShoot)
-            Shoot();
+        if (Time.time > nextShootAnim && !shooting)
+            LaunchShootAnim();
+        /*if(Time.time > nextShoot)
+            Shoot();*/
+        if(Time.time > nextLoad && !loading)
+            LaunchLoadAnim();
+        
+
 		float[] samples = new float[256];
 		sound.GetOutputData (samples, 0);
 		float average = 0;
