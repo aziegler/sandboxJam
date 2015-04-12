@@ -7,6 +7,7 @@ public class Flower : MonoBehaviour {
     public Transform[] SeedSpawns;
     public GameObject SporePrefab;
     public bool HasSpore { get; set; }
+    public Voices Voice { get; set; }
 
     // Use this for initialization
 	void Start ()
@@ -14,6 +15,7 @@ public class Flower : MonoBehaviour {
 	    transform.eulerAngles = new Vector3(0f, 0f, Planet.Instance.GetOrientedAngle(transform));
 
 	    SpawnSpores();
+        Voice.Growth();
 	}
 
     private void SpawnSpores()
@@ -38,4 +40,9 @@ public class Flower : MonoBehaviour {
             Invoke("SpawnSpores",0.7f);
 	    }
 	}
+
+    public void Kill()
+    {
+        Voice.Death();
+    }
 }

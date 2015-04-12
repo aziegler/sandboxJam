@@ -54,6 +54,11 @@ public class Bomb : MonoBehaviour {
         var spore = other.GetComponent<Spore>();
         if (spore == null || spore.IsFlying)
             return;
+        if (spore.Flower.HasSpore)
+        {
+            if(Random.Range(0,20)>8)
+                spore.Flower.Voice.Touch();
+        }
         spore.Flower.HasSpore = false;
         Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
        

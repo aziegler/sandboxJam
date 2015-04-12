@@ -769,6 +769,7 @@ MonoBehaviour:
   PlanetObject: {fileID: 0}
   Seed: {fileID: 427160, guid: 634d20bf458243c4fb351cd5652c7a64, type: 2}
   nextSeed: 0
+  currentMaxLevel: 0
   firstSource: {fileID: 1167027905}
   secondSource: {fileID: 984093245}
   thirdSource: {fileID: 1240808526}
