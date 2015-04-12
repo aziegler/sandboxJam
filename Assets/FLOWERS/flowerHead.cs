@@ -6,12 +6,15 @@ public class flowerHead : MonoBehaviour {
 	//public float		angleVariation;
 	public float 		angle;
 	public float		animate;
+	float				endscaleVariation;
 
 	// Use this for initialization
 	void Start () {
 
 		//Make sure head starts in ungrown state
 		transform.localScale = Vector3.zero;
+		//endscaleVariation = Random.Range (0.8f, 1.4f);
+
 	}
 	
 	// Update is called once per frame

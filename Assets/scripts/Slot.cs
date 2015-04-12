@@ -55,7 +55,7 @@ public class Slot : MonoBehaviour {
                     FlowerRoot flower = PlantedFlower.GetComponent<FlowerRoot>();
                     FlowerRoot seedFlower = seed.Flower.GetComponent<FlowerRoot>();
 
-                    if (flower.Level ==seedFlower.Level)
+                    if (flower.Level ==seedFlower.Level && flower.GrowthLevel<3)
                     {
                         previousLevel = flower.GrowthLevel;
                         PlantedFlower.GetComponent<FlowerRoot>().Kill();
@@ -128,6 +128,7 @@ public class Slot : MonoBehaviour {
         flower.transform.rotation = transform.rotation;
         flower.transform.parent = Planet.Instance.transform;
         flower.GetComponent<FlowerRoot>().GrowthLevel = growthlevel;
+        flower.GetComponent<flowerLevel>().level = (growthlevel - 1);
         PlantedFlower = flower;
 
         var flowerObject = PlantedFlower.GetComponent<FlowerRoot>();

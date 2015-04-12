@@ -58,6 +58,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 478508}
   - 114: {fileID: 11404642}
+  - 114: {fileID: 11462886}
   m_Layer: 0
   m_Name: FlowerTwo
   m_TagString: Flower
@@ -98,8 +99,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163210}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .341919988, y: 19.3400002, z: -.639999986}
-  m_LocalScale: {x: 2.56515312, y: 2.56515455, z: 2.56515455}
+  m_LocalPosition: {x: -20.7085667, y: 16.4689827, z: -.639999986}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 407608}
   m_Father: {fileID: 0}
@@ -155,7 +156,7 @@ MeshCollider:
   m_GameObject: {fileID: 158720}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
@@ -173,7 +174,7 @@ MonoBehaviour:
   Level: 1
   GrowthLevel: 1
   SeedSpawns: []
-  SporePrefab: {fileID: 105162, guid: 83d30dcf0f0bce5409aef3d2b0e15441, type: 2}
+  SporePrefab: {fileID: 106898, guid: 152f2d95e39243e449e3fac62a602528, type: 2}
 --- !u!114 &11404692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,6 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bdf3bc3c352f493ab30db769dd3fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  root: {fileID: 0}
   stemObject: {fileID: 148606}
   leafObject: {fileID: 183286, guid: 9b084b1b47bb44deda566f5eb45f36e2, type: 2}
   stemEnd: {fileID: 129006}
@@ -196,6 +198,21 @@ MonoBehaviour:
   angle: 0
   animate: 0
   endScale: 1
+--- !u!114 &11462886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e60749de0b0504b6eb48488384da3c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  level: 0
+  RandomSeed: 0
+  stem: {fileID: 148606}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
