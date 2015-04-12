@@ -822,6 +822,8 @@ MonoBehaviour:
   - {fileID: 126066, guid: 2e632728ca5195f4bb6c0effaf386d1f, type: 2}
   - {fileID: 145854, guid: 19d80bb7b30f2d142b54079ef924f52a, type: 2}
   - {fileID: 107172, guid: 06eaec1545136ea46a3faaab5c5a51f1, type: 2}
+  IsLaserKillFlower: 0
+  IsNewFlowerReplaceOldOne: 1
 --- !u!1 &1771827267
 GameObject:
   m_ObjectHideFlags: 0

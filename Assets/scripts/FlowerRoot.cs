@@ -5,6 +5,8 @@ public class FlowerRoot : MonoBehaviour
 {
 
     public int Level;
+    public int GrowthLevel = 1;
+
     public Transform[] SeedSpawns;
     public GameObject SporePrefab;
     private bool hasSpore;
