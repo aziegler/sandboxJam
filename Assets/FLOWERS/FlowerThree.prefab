@@ -29,7 +29,7 @@ GameObject:
   - 114: {fileID: 11484412}
   m_Layer: 0
   m_Name: FlowerThree
-  m_TagString: Untagged
+  m_TagString: Flower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
