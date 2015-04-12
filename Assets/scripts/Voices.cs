@@ -33,6 +33,9 @@ public class Voices : MonoBehaviour
 
     private void RandomSound(AudioClip[] clips)
     {
+        //Source can ben null if flower of the spore is destroy
+        if (null == source) { return; }
+
         if (source.isPlaying) return;
         source.clip = clips[Random.Range(0, clips.Length)];
         source.Play();

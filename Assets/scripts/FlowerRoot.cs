@@ -51,9 +51,10 @@ public class FlowerRoot : MonoBehaviour
         foreach (Transform t in SeedSpawns)
         {
             GameObject go = GameObject.Instantiate(SporePrefab);
-            go.transform.parent = t;
-            go.transform.localPosition = Vector3.zero;
+            go.transform.parent = null;
             go.transform.localScale = Vector3.one;
+            //go.transform.parent = t;
+            go.transform.position = t.position;          
             go.transform.localEulerAngles = new Vector3(0f, 0f, Random.Range(0f, 360f));
             go.GetComponent<Spore>().Level = Level;
             go.GetComponent<Spore>().Flower = this;
@@ -102,6 +103,7 @@ public class FlowerRoot : MonoBehaviour
 
     public void Kill()
     {
+        CancelInvoke("SpawnSpores");
         Voice.Death();
         GameObject.Destroy(gameObject);
     }
@@ -109,5 +111,10 @@ public class FlowerRoot : MonoBehaviour
     public void SporeDie()
     {
         SporeCount--;
+    }
+
+    void OnDestroy()
+    {
+        CancelInvoke("SpawnSpores");
     }
 }
