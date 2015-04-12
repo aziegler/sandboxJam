@@ -1,21 +1,44 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FlowerRoot : MonoBehaviour {
+public class FlowerRoot : MonoBehaviour
+{
 
     public int Level;
     public Transform[] SeedSpawns;
     public GameObject SporePrefab;
-    public bool HasSpore { get; set; }
+    private bool hasSpore;
+
+    public bool HasSpore
+    {
+        get { return hasSpore; }
+        set { hasSpore = value; }
+    }
+
     public Voices Voice { get; set; }
 
+    private int sporeCount = 0;
+
+    private int SporeCount
+    {
+        get { return sporeCount; }
+        set
+        {
+            if (value == 0 && sporeCount == 1)
+            {
+                Invoke("SpawnSpores", 0.7f);
+            }
+            sporeCount = value;
+        }
+    }
+
     // Use this for initialization
-	void Start ()
-	{
-	    transform.eulerAngles = new Vector3(0f, 0f, Planet.Instance.GetOrientedAngle(transform));
+    private void Start()
+    {
+        transform.eulerAngles = new Vector3(0f, 0f, Planet.Instance.GetOrientedAngle(transform));
         Voice.Growth();
-	    HasSpore = true;
-	}
+        HasSpore = true;
+    }
 
     public void SpawnSpores()
     {
@@ -29,20 +52,23 @@ public class FlowerRoot : MonoBehaviour {
             go.transform.localEulerAngles = new Vector3(0f, 0f, Random.Range(0f, 360f));
             go.GetComponent<Spore>().Level = Level;
             go.GetComponent<Spore>().Flower = this;
+
+            SporeCount++;
         }
     }
 
     // Update is called once per frame
-	void Update () {
-        
-	    if (!HasSpore)
-	    {
-	        HasSpore = true;
-	        Invoke("SpawnSpores", 0.7f);
-	    }
-	    else
-	    {
-	        /*bool foundSittingSpore = false;
+    private void Update()
+    {
+
+        if (!HasSpore)
+        {
+            HasSpore = true;
+            Invoke("SpawnSpores", 0.7f);
+        }
+        else
+        {
+            /*bool foundSittingSpore = false;
 	        foreach (Transform t in SeedSpawns)
 	        {
 	            foreach (var componentsInChild in t.GetComponentsInChildren<Transform>())
@@ -59,11 +85,23 @@ public class FlowerRoot : MonoBehaviour {
 	        {
                 Invoke("SpawnSpores", 0.7f);
 	        }*/
-	    }
-	}
+            if (!HasSpore)
+            {
+                HasSpore = true;
+                //Invoke("SpawnSpores", 0.7f);
+            }
+        }
+
+
+    }
 
     public void Kill()
     {
         Voice.Death();
+    }
+
+    public void SporeDie()
+    {
+        SporeCount--;
     }
 }
