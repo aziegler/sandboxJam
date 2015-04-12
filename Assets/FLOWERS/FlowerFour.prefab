@@ -57,6 +57,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 497624}
+  - 114: {fileID: 11477240}
   m_Layer: 0
   m_Name: FlowerFour
   m_TagString: Untagged
@@ -95,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103588}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 459362}
@@ -109,8 +110,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.26841307, y: 18.9160347, z: -.439999998}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: .226290002, y: 17.5809994, z: -.439999998}
+  m_LocalScale: {x: 2.07136965, y: 2.07137012, z: 2.07137012}
   m_Children:
   - {fileID: 493288}
   m_Father: {fileID: 0}
@@ -170,15 +171,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stemObject: {fileID: 103588}
-  leafObject: {fileID: 148566, guid: 137e97c96e2914da4b850cc5f8de7596, type: 2}
+  leafObject: {fileID: 126358, guid: 075fe42c08a09440d8c588164df8ec21, type: 2}
   stemEnd: {fileID: 111238}
+  flowerHead: {fileID: 108300, guid: 9e997a0719dcc4bb1ada31d31a4a5911, type: 2}
   finished: 0
   nodeNumber: 2
-  anotherNode: 1
-  angleVariation: 80
+  splitNode: 1
+  angleVariation: 45
   angle: 0
   animate: 0
   endScale: 1
+--- !u!114 &11477240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c8626630cbfee43b69d3b4eb825eab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Level: 3
+  SeedSpawns: []
+  SporePrefab: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

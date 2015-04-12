@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour {
             Ground.BorderLeft.position.y,
             Ground.transform.position.z);
 
-            go.GetComponent<Flower>().SporePrefab = SporePrefabs[Random.Range(0, SporePrefabs.Length)];
+            go.GetComponent<FlowerRoot>().SporePrefab = SporePrefabs[Random.Range(0, SporePrefabs.Length)];
 
             go.transform.position = position;
         }

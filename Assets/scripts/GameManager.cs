@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public AudioSource secondSource;
     public AudioSource thirdSource;
 
-    public Flower[] Flowers;
+    public GameObject[] Flowers;
     public GameObject[] Seeds;
     private AudioSource _sourceToPlay;
 

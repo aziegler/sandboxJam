@@ -36,7 +36,7 @@ public class Spore : MonoBehaviour {
         get { return flying; }
     }
 
-    public Flower Flower { get; set; }
+    public FlowerRoot Flower { get; set; }
     public bool HasCollided { get; set; }
 
     void OnCollisionEnter2D(Collision2D col)

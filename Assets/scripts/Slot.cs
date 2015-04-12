@@ -48,7 +48,7 @@ public class Slot : MonoBehaviour {
 
             PlantedFlower = flower;
 
-            var flowerObject = PlantedFlower.GetComponent<Flower>();
+            var flowerObject = PlantedFlower.GetComponent<FlowerRoot>();
 
             flowerObject.Voice = Instantiate(possibleVoices[Random.Range(0, possibleVoices.Length)]);
             flowerObject.Voice.transform.SetParent(flowerObject.transform);
@@ -90,6 +90,12 @@ public class Slot : MonoBehaviour {
             coll.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up*2f);
             GameObject.Destroy(coll.gameObject, 0.4f);
         }
+        Spore spore = coll.gameObject.GetComponent<Spore>();
+        if(null != spore)
+        {
+           
+            GameObject.Destroy(coll.gameObject);  
+        }
     }
 
     public void HitByLaser(Vector3 hitVector)
@@ -100,7 +106,7 @@ public class Slot : MonoBehaviour {
             ShowSprites(false);
             if (Mathf.Abs(hitVector.x) <= 0.5)
             {
-                var component = PlantedFlower.GetComponent<Flower>();
+                var component = PlantedFlower.GetComponent<FlowerRoot>();
                 component.Kill();  
                 Destroy(PlantedFlower);
                 PlantedFlower = null;

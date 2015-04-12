@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Flower : MonoBehaviour {
+public class FlowerRoot : MonoBehaviour {
 
     public int Level;
     public Transform[] SeedSpawns;
@@ -13,12 +13,10 @@ public class Flower : MonoBehaviour {
 	void Start ()
 	{
 	    transform.eulerAngles = new Vector3(0f, 0f, Planet.Instance.GetOrientedAngle(transform));
-
-	    SpawnSpores();
         Voice.Growth();
 	}
 
-    private void SpawnSpores()
+    public void SpawnSpores()
     {
         HasSpore = true;
         foreach (Transform t in SeedSpawns)
@@ -26,6 +24,7 @@ public class Flower : MonoBehaviour {
             GameObject go = GameObject.Instantiate(SporePrefab);
             go.transform.parent = t;
             go.transform.localPosition = Vector3.zero;
+            go.transform.localScale = Vector3.one;
             go.transform.localEulerAngles = new Vector3(0f, 0f, Random.Range(0f, 360f));
             go.GetComponent<Spore>().Level = Level;
             go.GetComponent<Spore>().Flower = this;

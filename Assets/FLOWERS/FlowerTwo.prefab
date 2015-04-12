@@ -57,9 +57,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 478508}
+  - 114: {fileID: 11404642}
   m_Layer: 0
   m_Name: FlowerTwo
-  m_TagString: Untagged
+  m_TagString: Flower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148606}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 419230}
@@ -97,8 +98,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163210}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.29999995, y: 4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: .341919988, y: 19.3400002, z: -.639999986}
+  m_LocalScale: {x: 2.56515312, y: 2.56515455, z: 2.56515455}
   m_Children:
   - {fileID: 407608}
   m_Father: {fileID: 0}
@@ -158,6 +159,20 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &11404642
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c8626630cbfee43b69d3b4eb825eab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Level: 1
+  SeedSpawns: []
+  SporePrefab: {fileID: 106898, guid: 152f2d95e39243e449e3fac62a602528, type: 2}
 --- !u!114 &11404692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,11 +185,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stemObject: {fileID: 148606}
-  leafObject: {fileID: 103642, guid: 9b084b1b47bb44deda566f5eb45f36e2, type: 2}
+  leafObject: {fileID: 183286, guid: 9b084b1b47bb44deda566f5eb45f36e2, type: 2}
   stemEnd: {fileID: 129006}
+  flowerHead: {fileID: 128052, guid: ee818ac5818744dc2b304c50fed5fcd5, type: 2}
   finished: 0
-  nodeNumber: 2
-  anotherNode: 1
+  nodeNumber: 1
+  splitNode: 1
   angleVariation: 80
   angle: 0
   animate: 0
