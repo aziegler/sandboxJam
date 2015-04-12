@@ -16,6 +16,15 @@ public class SoundCloud : MonoBehaviour {
 	    nextShoot = Time.time + 3.75f;
 	}
 
+    public void ResyncSound(float timeFromMusiStart)
+    {
+        if (timeFromMusiStart > 3.75f)
+            return;
+        nextShoot = Time.time + 3.75f - timeFromMusiStart;
+        nextIsLong = false;
+
+    }
+
     void OnGUI()
     {
         GUILayout.Label(string.Format("Countdown : {0}", nextShoot - Time.time));

@@ -66,10 +66,8 @@ public class Bomb : MonoBehaviour {
 
         var vector3 = other.transform.position - transform.position;
 
-        var dir = new Vector2(Random.Range(vector3.x - 0.2f, vector3.x + 0.2f),
-            Random.Range(vector3.y - 0.2f, vector3.y + 0.2f));
-
-        dir = new Vector2(Math.Sign(vector3.x) * Random.Range(0.3f, 0.4f), 0.3f);
+        
+        var dir = new Vector2(Math.Sign(vector3.x) * Random.Range(0.3f, 0.7f), 0.7f);
 
         dir.Normalize();
         var force = dir * 30f;
