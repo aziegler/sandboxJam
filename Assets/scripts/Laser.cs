@@ -74,7 +74,11 @@ public class Laser : MonoBehaviour
         if (null != ff)
         {
             FlowerRoot flower = ff.Flower;
-            flower.Kill();
+
+            if (GameManager.Instance.IsLaserKillFlower)
+            {
+                flower.Kill();
+            }
         }
         else
         {

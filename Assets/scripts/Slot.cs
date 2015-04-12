@@ -43,6 +43,14 @@ public class Slot : MonoBehaviour {
         {
             seed.IsCaptured = true;
 
+            if(GameManager.Instance.IsNewFlowerReplaceOldOne)
+            {
+                if(null != PlantedFlower)
+                {
+                    PlantedFlower.GetComponent<FlowerRoot>().Kill();
+                }
+            }
+
             GameObject flower = GameObject.Instantiate(seed.Flower.gameObject);
             flower.transform.position = transform.position;
             flower.transform.rotation = transform.rotation;
@@ -78,7 +86,7 @@ public class Slot : MonoBehaviour {
 
         if(null != spore)
         {
-            GameObject.Destroy(other.gameObject);
+            spore.Kill();
         }
     }
 
@@ -98,10 +106,9 @@ public class Slot : MonoBehaviour {
             GameObject.Destroy(coll.gameObject, 0.4f);
         }
         Spore spore = coll.gameObject.GetComponent<Spore>();
-        if(null != spore)
+        if(null != spore && spore.IsFlying)
         {
-           
-         //   GameObject.Destroy(coll.gameObject);  
+            spore.Kill();
         }
     }
 

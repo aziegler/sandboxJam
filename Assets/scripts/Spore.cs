@@ -51,7 +51,7 @@ public class Spore : MonoBehaviour {
         var planet = col.gameObject.GetComponent<Planet>();
         if(null != planet && this.flying)
         {
-            GameObject.Destroy(this.gameObject);
+            Kill();
         }
     }
 
@@ -66,5 +66,10 @@ public class Spore : MonoBehaviour {
     public void OnDestroy ()
     {
         Flower.SporeDie();
+    }
+
+    public void Kill ()
+    {
+        GameObject.Destroy(this.gameObject);
     }
 }

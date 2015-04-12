@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
     public GameObject[] Seeds;
     private AudioSource _sourceToPlay;
 
+    public bool IsLaserKillFlower;
+    public bool IsNewFlowerReplaceOldOne;
+
     void Awake ()
     {
         Instance = this;
@@ -141,8 +144,8 @@ public class GameManager : MonoBehaviour
                 component.PlaySound();
             }
 
-            GameObject.Destroy(s1.gameObject);
-            GameObject.Destroy(s2.gameObject);
+            s1.Kill();
+            s2.Kill();
            /*foreach (var seedSpawn in s1.Flower.SeedSpawns)
             {
                 foreach (Transform child in seedSpawn.transform)
