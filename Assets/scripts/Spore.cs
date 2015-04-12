@@ -24,6 +24,10 @@ public class Spore : MonoBehaviour {
 	
 	}
 
+    void OnDestroy()
+    {
+    }
+
     void OnMouseOver()
     {
        /* Destroy(gameObject);*/

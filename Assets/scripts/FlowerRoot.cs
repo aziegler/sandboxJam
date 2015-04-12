@@ -14,6 +14,7 @@ public class FlowerRoot : MonoBehaviour {
 	{
 	    transform.eulerAngles = new Vector3(0f, 0f, Planet.Instance.GetOrientedAngle(transform));
         Voice.Growth();
+	    HasSpore = true;
 	}
 
     public void SpawnSpores()
@@ -33,10 +34,31 @@ public class FlowerRoot : MonoBehaviour {
 
     // Update is called once per frame
 	void Update () {
+        
 	    if (!HasSpore)
 	    {
 	        HasSpore = true;
-            Invoke("SpawnSpores",0.7f);
+	        Invoke("SpawnSpores", 0.7f);
+	    }
+	    else
+	    {
+	        /*bool foundSittingSpore = false;
+	        foreach (Transform t in SeedSpawns)
+	        {
+	            foreach (var componentsInChild in t.GetComponentsInChildren<Transform>())
+	            {
+	                var component = componentsInChild.GetComponent<Spore>();
+	                if (component != null)
+	                {
+	                    if (!component.IsFlying)
+	                        foundSittingSpore = true;
+	                }
+	            }
+	        }
+	        if (!foundSittingSpore)
+	        {
+                Invoke("SpawnSpores", 0.7f);
+	        }*/
 	    }
 	}
 

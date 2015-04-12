@@ -94,7 +94,7 @@ public class Slot : MonoBehaviour {
         if(null != spore)
         {
            
-            GameObject.Destroy(coll.gameObject);  
+         //   GameObject.Destroy(coll.gameObject);  
         }
     }
 

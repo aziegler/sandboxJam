@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
 	        if (F3)
 	            _sourceToPlay = thirdSource;
 
+            print(_sourceToPlay);
 	        StartCoroutine("FadeInOut", firstSource);
             StartCoroutine("FadeInOut", secondSource);
             StartCoroutine("FadeInOut", thirdSource);
@@ -143,7 +144,7 @@ public class GameManager : MonoBehaviour
 
             GameObject.Destroy(s1.gameObject);
             GameObject.Destroy(s2.gameObject);
-           foreach (var seedSpawn in s1.Flower.SeedSpawns)
+           /*foreach (var seedSpawn in s1.Flower.SeedSpawns)
             {
                 foreach (Transform child in seedSpawn.transform)
                 {
@@ -158,7 +159,7 @@ public class GameManager : MonoBehaviour
 
                     GameObject.Destroy(child.gameObject);
                 }
-            }
+            }*/
         }
         else
         {

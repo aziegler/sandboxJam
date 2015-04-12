@@ -60,6 +60,7 @@ public class Bomb : MonoBehaviour {
                 spore.Flower.Voice.Touch();
         }
         spore.Explode();
+        print("HasSpore : " + spore.Flower.HasSpore);
         spore.Flower.HasSpore = false;
         Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
        
