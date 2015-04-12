@@ -8,6 +8,7 @@ public class SoundCloud : MonoBehaviour {
     private float nextShoot;
     private float nextLoad;
     private float nextShootAnim;
+    private float stopAll;
     private float longInterval = 4.5f;
     private float shortInterval = 1.5f;
     private bool nextIsLong = false;
@@ -25,24 +26,28 @@ public class SoundCloud : MonoBehaviour {
     private void SetShootTime(float shoot)
     {
         loading = false;
+        print("Shooting is false");
         shooting = false;
         nextShoot = shoot;
         nextLoad = shoot - 2.5f;
-        nextShootAnim = shoot - 0.5f;
+        nextShootAnim = shoot - 1f;
+       // stopAll = shoot + 0.3f;
         print("Shoot time : " + nextShoot + " shootA " + nextShootAnim + " nextLoad " + nextLoad);
     }
 
     private void LaunchShootAnim()
     {
-        print("Load shoot anim time " + Time.time);        
+        print("Load shoot anim time " + Time.time);
+        print("Shooting is true");
+        shooting = true;
         LoadAnim.Stop();       
         ShootAnim.Play();
-        shooting = true;
+       
     }
 
     private void LaunchLoadAnim()
     {
-       ShootAnim.Stop();
+        ShootAnim.Stop();
         LoadAnim.Play();
         loading = true;
         
@@ -73,6 +78,7 @@ public class SoundCloud : MonoBehaviour {
         else
             SetShootTime(nextShoot + shortInterval);
         nextIsLong = !nextIsLong;
+        ShootAnim.Stop();
     }
 
     private PlayAnimation ShootAnim
@@ -112,10 +118,9 @@ public class SoundCloud : MonoBehaviour {
 	    }
         if (Time.time > nextShootAnim && !shooting)
             LaunchShootAnim();
-        /*if(Time.time > nextShoot)
-            Shoot();*/
-        if(Time.time > nextLoad && !loading)
-            LaunchLoadAnim();
+      
+       /* if(Time.time > nextLoad && !loading)
+            LaunchLoadAnim();*/
         
 
 		float[] samples = new float[256];
@@ -131,11 +136,16 @@ public class SoundCloud : MonoBehaviour {
 		/*if (sphereScale > 1) {
 		    laser.gameObject.GetComponent<Laser>().ShootRound();	*/
         }
-		
 
-
-
-	
-	}
+    private void StopAll()
+    {
+        //print("StopAll");
+        loading = false;
+        print("Shooting is false");
+        shooting = false;
+        LoadAnim.Stop();
+        ShootAnim.Stop();
+    }
+}
 
 
