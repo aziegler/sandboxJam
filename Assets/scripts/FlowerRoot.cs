@@ -42,6 +42,9 @@ public class FlowerRoot : MonoBehaviour
 
     public void SpawnSpores()
     {
+        if (Level == 3)
+            return;
+
         HasSpore = true;
         foreach (Transform t in SeedSpawns)
         {

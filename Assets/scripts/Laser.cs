@@ -71,7 +71,14 @@ public class Laser : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         FlowerFinder ff = other.GetComponent<FlowerFinder>();
-        FlowerRoot flower = ff.Flower;
-        flower.Kill();
+        if (null != ff)
+        {
+            FlowerRoot flower = ff.Flower;
+            flower.Kill();
+        }
+        else
+        {
+            Debug.LogWarning("Laser hit a no flower root stuff " + other.name);
+        }
     }    
 }
