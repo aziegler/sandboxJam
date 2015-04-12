@@ -15,6 +15,7 @@ public class FX : MonoBehaviour {
         if (source.isPlaying)
             return;
         source.clip = clips[Random.Range(0, clips.Length)];
+		print ("Playing SFX : " + source.clip.name);
         source.Play();
     }
 	

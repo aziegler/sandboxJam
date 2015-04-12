@@ -65,7 +65,10 @@ public class Spore : MonoBehaviour {
 
     public void OnDestroy ()
     {
-        Flower.SporeDie();
+        if (null != Flower)
+        {
+            Flower.SporeDie();
+        }
     }
 
     public void Kill ()
