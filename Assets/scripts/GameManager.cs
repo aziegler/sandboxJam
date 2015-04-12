@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -10,8 +14,15 @@ public class GameManager : MonoBehaviour
     public Transform Seed;
     public float nextSeed;
 
+    public int currentMaxLevel = 0;
+
+    public AudioSource firstSource;
+    public AudioSource secondSource;
+    public AudioSource thirdSource;
+
     public GameObject[] Flowers;
     public GameObject[] Seeds;
+    private AudioSource _sourceToPlay;
 
     void Awake ()
     {
@@ -26,12 +37,33 @@ public class GameManager : MonoBehaviour
 	    _laser = (Transform)Instantiate(Laser, new Vector3(0f,30f), Quaternion.identity);
 	    _laser.GetComponent<BoxCollider2D>().enabled = false;
 
-        
+	 
+
+
 	}
 
     private void GetNextSeedDate()
     {
         nextSeed = Time.time + Random.Range(1f, 2f);
+    }
+
+    public void SwitchSoundSource(int index)
+    {
+        switch (index)
+        {
+            case 1:
+                _sourceToPlay = firstSource;
+                break;
+            case 2:
+                _sourceToPlay = secondSource;
+                break;
+            case 3:
+                _sourceToPlay = thirdSource;
+                break;
+        }
+        StartCoroutine("FadeInOut", firstSource);
+        StartCoroutine("FadeInOut", secondSource);
+        StartCoroutine("FadeInOut", thirdSource);
     }
 
     // Update is called once per frame
@@ -41,7 +73,25 @@ public class GameManager : MonoBehaviour
 	        _laser.gameObject.GetComponent<Laser>().ShootRound();
 	       
 	    }
-        float horizontal = Input.GetAxis("Horizontal");
+	    var F1 = Input.GetKeyDown(KeyCode.R);
+	    var F2 = Input.GetKeyDown(KeyCode.T);
+	    var F3 = Input.GetKeyDown(KeyCode.Y);
+	    if (F1 || F2 || F3)
+	    {
+	        if (F1)
+	            _sourceToPlay = firstSource;
+	        if (F2)
+	            _sourceToPlay = secondSource;
+	        if (F3)
+	            _sourceToPlay = thirdSource;
+
+	        StartCoroutine("FadeInOut", firstSource);
+            StartCoroutine("FadeInOut", secondSource);
+            StartCoroutine("FadeInOut", thirdSource);
+	        
+	    }
+
+	    float horizontal = Input.GetAxis("Horizontal");
         PlanetObject.Rotate(new Vector3(0f, 0f, 90f * horizontal * Time.deltaTime));
 
 	    if (Time.time > nextSeed)
@@ -54,6 +104,28 @@ public class GameManager : MonoBehaviour
 	   
 	}
 
+    
+
+    private IEnumerator  FadeInOut( AudioSource audioSource)
+    {
+        float time = 0f;
+        var fadeTime = 1f;
+        while (time < fadeTime)
+        {
+            time = time + 0.1f;
+            var targetVolume = 0f;
+            if(audioSource == _sourceToPlay)
+                targetVolume = Mathf.Max(time/fadeTime,audioSource.volume);
+            else
+                targetVolume = Mathf.Min(1f - time/fadeTime, audioSource.volume);
+            audioSource.volume = targetVolume;
+            print("Setting "+audioSource.tag+" to "+targetVolume);
+            yield return new WaitForSeconds(0.1f);
+         }
+
+    
+    }
+
     public void CreateSeed (Spore s1, Spore s2)
     {
         if (s1.Level == s2.Level && s1.Flower != s2.Flower && !s1.HasCollided && !s2.HasCollided)
@@ -65,6 +137,8 @@ public class GameManager : MonoBehaviour
             {
                 GameObject go = GameObject.Instantiate(Seeds[newLevel]);
                 go.transform.position = s1.transform.position;
+                var component = GameObject.FindGameObjectWithTag("SFXPlayer").GetComponent<FX>();
+                component.PlaySound();
             }
 
             GameObject.Destroy(s1.gameObject);

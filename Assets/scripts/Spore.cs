@@ -31,7 +31,11 @@ public class Spore : MonoBehaviour {
 
     private bool flying = false;
 
-    public bool IsFlying { get; set; }
+    public bool IsFlying
+    {
+        get { return flying; }
+    }
+
     public FlowerRoot Flower { get; set; }
     public bool HasCollided { get; set; }
 

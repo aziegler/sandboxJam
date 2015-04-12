@@ -9,6 +9,10 @@ TagManager:
   - Laser
   - Spore
   - Flower
+  - FirstLoop
+  - ThirdLoop
+  - SecondLoop
+  - SFXPlayer
   layers:
   - Default
   - TransparentFX

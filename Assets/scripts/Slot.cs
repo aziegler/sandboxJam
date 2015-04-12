@@ -32,6 +32,8 @@ public class Slot : MonoBehaviour {
         ShowSprites(false);
     }
 
+    public Voices[] possibleVoices; 
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if(IsFertil)
@@ -42,7 +44,27 @@ public class Slot : MonoBehaviour {
             flower.transform.rotation = transform.rotation;
             flower.transform.parent = Planet.Instance.transform;
 
+            
+
             PlantedFlower = flower;
+
+            var flowerObject = PlantedFlower.GetComponent<Flower>();
+
+            flowerObject.Voice = Instantiate(possibleVoices[Random.Range(0, possibleVoices.Length)]);
+            flowerObject.Voice.transform.SetParent(flowerObject.transform);
+            if (flowerObject.Level > GameManager.Instance.currentMaxLevel)
+            {
+                GameManager.Instance.currentMaxLevel = flowerObject.Level;
+                if (GameManager.Instance.currentMaxLevel == 1)
+                {
+                    GameManager.Instance.SwitchSoundSource(2);
+                }
+
+                if (GameManager.Instance.currentMaxLevel == 2)
+                {
+                    GameManager.Instance.SwitchSoundSource(3);
+                }
+            }
 
             IsFertil = false;
 
@@ -78,7 +100,9 @@ public class Slot : MonoBehaviour {
             ShowSprites(false);
             if (Mathf.Abs(hitVector.x) <= 0.5)
             {
-                GameObject.Destroy(PlantedFlower);
+                var component = PlantedFlower.GetComponent<Flower>();
+                component.Kill();  
+                Destroy(PlantedFlower);
                 PlantedFlower = null;
             }
         }
