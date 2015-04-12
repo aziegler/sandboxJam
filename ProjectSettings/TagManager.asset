@@ -12,8 +12,9 @@ TagManager:
   - FirstLoop
   - ThirdLoop
   - SecondLoop
-  - SFXPlayer
+  - SFXPlayerPollen
   - FlowerHead
+  - SFXPlayerEvolve
   layers:
   - Default
   - TransparentFX

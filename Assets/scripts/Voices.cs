@@ -18,7 +18,7 @@ public class Voices : MonoBehaviour
 
     public void Death()
     {
-        RandomSound(deaths);
+        // RandomSound(deaths);
     }
 
     public void Growth()
@@ -28,13 +28,14 @@ public class Voices : MonoBehaviour
 
     public void Touch()
     {
-        RandomSound(touches);
+     //   RandomSound(touches);
     }
 
     private void RandomSound(AudioClip[] clips)
     {
         if (source.isPlaying) return;
         source.clip = clips[Random.Range(0, clips.Length)];
+		print ("Playing "+source.clip.name);
         source.Play();
     }
 }
