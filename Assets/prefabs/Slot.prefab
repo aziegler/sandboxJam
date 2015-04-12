@@ -151,12 +151,12 @@ MonoBehaviour:
     FrontSprite: {fileID: 21300000, guid: 9bbbab9ecc32cee479512801d5b38da3, type: 3}
   Center: {fileID: 461006}
   possibleVoices:
-  - {fileID: 11424612, guid: c85277e6b0f293241bc0764eadf49fb2, type: 2}
   - {fileID: 11401624, guid: 0b1a1a6624ab57545a2ff1f2986f2d25, type: 2}
-  - {fileID: 11416494, guid: ebb79ecf3e0233e458ed2efec086d2de, type: 2}
-  - {fileID: 11471200, guid: cc7fa018a6a600a49b1bac0a1bd24a6a, type: 2}
   - {fileID: 11444954, guid: 59c1ca90559ebc04fbdf0eec29faed45, type: 2}
   - {fileID: 11411570, guid: 87b431f5bda2ac341b79f3cc239ab85c, type: 2}
+  - {fileID: 11424612, guid: c85277e6b0f293241bc0764eadf49fb2, type: 2}
+  - {fileID: 11471200, guid: cc7fa018a6a600a49b1bac0a1bd24a6a, type: 2}
+  - {fileID: 11416494, guid: ebb79ecf3e0233e458ed2efec086d2de, type: 2}
 --- !u!212 &21217064
 SpriteRenderer:
   m_ObjectHideFlags: 1
