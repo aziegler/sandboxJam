@@ -258,7 +258,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9541532}
+  test: {fileID: 0}
   synchronisator: {fileID: 0}
+  waitingShoot: 0
 --- !u!114 &11448654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -271,7 +273,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9510622}
+  test: {fileID: 0}
   synchronisator: {fileID: 0}
+  waitingShoot: 0
 --- !u!114 &11471958
 MonoBehaviour:
   m_ObjectHideFlags: 1

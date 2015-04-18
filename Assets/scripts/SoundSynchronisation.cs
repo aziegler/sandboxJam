@@ -6,22 +6,24 @@ public class SoundSynchronisation : MonoBehaviour
 
     public AudioSource source;
     private float previousTime;
-	// Use this for initialization
-	void Start () {
-	    
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-        
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        /*
 	    if (source.time < previousTime)
 	    {
 	        previousTime = source.time;	        
 	        return;
-        }
+        }*/
 
-	   /* var soundCloud = GameObject.FindGameObjectWithTag("SoundSync").GetComponent<SoundCloud>();
-        soundCloud.ResyncSound(source.time);*/
-	}
+        var soundCloud = GameObject.FindGameObjectWithTag("SoundSync").GetComponent<SoundCloud>();
+        if (source.volume > 0.5f)
+            soundCloud.ResyncSound(source.time);
+    }
 }
