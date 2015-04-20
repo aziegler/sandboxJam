@@ -17,6 +17,7 @@ public class SoundCloud : MonoBehaviour
     private float _nextShootAnim;
     private bool loading = false;
     private bool shooting = false;
+    private bool hasShot = false;
 
     // Use this for initialization
     void Start()
@@ -28,6 +29,7 @@ public class SoundCloud : MonoBehaviour
     {
         loading = false;
         shooting = false;
+        hasShot = false;
         nextShoot = shoot;
         _nextLoad = shoot - 2.5f;
         _nextShootAnim = shoot - animDelay;
@@ -52,15 +54,16 @@ public class SoundCloud : MonoBehaviour
 
     void OnGUI()
     {
-        GUILayout.Label(string.Format("Countdown : {0}", nextShoot - Time.time));
+        GUILayout.Label(string.Format("Countdown : {0}", nextShoot - audioTime));
     }
 
 
     public void Shoot()
     {
+        hasShot = true;
         laser.gameObject.GetComponent<Laser>().ShootRound();
        
-        //print (Time.time);
+        print ("Shooting "+audioTime);
         //print (nextShoot);
     }
 
@@ -81,8 +84,9 @@ public class SoundCloud : MonoBehaviour
 
         if (audioTime < lastFrameAudioTime)
         {
-            // LOOP!
-            SetShootTime(nextShoot % 96.0f);
+            print("Looping sound");
+            var shoot = nextShoot % 96.0f;
+            SetShootTime(shoot);
         }
 
         lastFrameAudioTime = audioTime;
@@ -92,7 +96,7 @@ public class SoundCloud : MonoBehaviour
         
             
 
-        if (audioTime >= nextShoot)
+        if (audioTime >= nextShoot && !hasShot)
             Shoot();
 
         /*float[] samples = new float[256];
@@ -118,8 +122,9 @@ public class SoundCloud : MonoBehaviour
 
     public void RecomputeDelay()
     {
-        animDelay = Time.time - _nextShootAnim;
-        print(animDelay);
+        animDelay = Math.Max(0.25f,audioTime - _nextShootAnim);
+        if(!hasShot)
+            Shoot();
         if (nextIsLong)
             SetShootTime(nextShoot + longInterval);            
         else

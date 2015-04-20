@@ -13,8 +13,7 @@ public class PlayAnimation : MonoBehaviour
 	// Use this for initialization
     public void Play()
     {
-        waitingShoot = true;
-        print("Tringgering play on "+animator.name+" at "+Time.time);
+        waitingShoot = true;        
         animator.SetTrigger("Play");
         //test.Play();       
     }
