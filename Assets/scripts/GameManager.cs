@@ -110,14 +110,17 @@ public class GameManager : MonoBehaviour
             GameManager.Instance.SwitchSoundSource(3);
 	    }
 
-        Unzoom(Time.deltaTime);
+	    if (Time.time > _lastZoomDate + 60f)
+	    {
+	        Unzoom(Time.time - _lastZoomDate);
+	        _lastZoomDate = Time.time;
+	    }
 
-	  
-	   
 	}
 
-    private static int _maxUnzoom = 6;
-    private static int _unzoomDuration = 180;
+    private static float _lastZoomDate = 0f;
+    private static int _maxUnzoom = 4;
+    private static int _unzoomDuration = 120;
     public float CurrentZoom = 0f;
 
     private void Unzoom(float deltaTime) 
@@ -125,7 +128,7 @@ public class GameManager : MonoBehaviour
         GameManager.Instance.currentFlowerCount++;
         var mainCamera = GameObject.FindGameObjectWithTag("MainCamera").gameObject;
         var camera = mainCamera.GetComponent<Camera>();
-        var zoom = ((6*deltaTime)/_unzoomDuration);
+        var zoom = ((_maxUnzoom*deltaTime)/_unzoomDuration);
         CurrentZoom += zoom;
         camera.orthographicSize = camera.orthographicSize +zoom ;
         mainCamera.transform.localPosition = new Vector3(0f, mainCamera.transform.localPosition.y - zoom,mainCamera.transform.localPosition.z);
