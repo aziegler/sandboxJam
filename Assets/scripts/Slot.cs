@@ -138,7 +138,7 @@ public class Slot : MonoBehaviour {
 
         flowerObject.Voice = Instantiate(possibleVoices[Random.Range(0, possibleVoices.Length)]);
         flowerObject.Voice.transform.SetParent(flowerObject.transform);
-        if (flowerObject.Level > GameManager.Instance.currentMaxLevel)
+        /*if (flowerObject.Level > GameManager.Instance.currentMaxLevel)
         {
             GameManager.Instance.currentMaxLevel = flowerObject.Level;
             if (GameManager.Instance.currentMaxLevel == 1)
@@ -150,7 +150,7 @@ public class Slot : MonoBehaviour {
             {
                 GameManager.Instance.SwitchSoundSource(3);
             }
-        }
+        }*/
 
         IsFertil = false;
     }

@@ -105,6 +105,10 @@ public class GameManager : MonoBehaviour
 	        instantiate.gameObject.AddComponent<OrbitMove>();
 	        GetNextSeedDate();    
 	    }
+	    if (Time.time > 90f)
+	    {
+            GameManager.Instance.SwitchSoundSource(3);
+	    }
 
         Unzoom(Time.deltaTime);
 

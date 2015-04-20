@@ -59,7 +59,9 @@ public class Laser : MonoBehaviour
             //Bomb
             var bomb = (Transform)Instantiate(Bomb, new Vector3(raycastHit2D.point.x, raycastHit2D.point.y), Quaternion.identity);
             bomb.GetComponent<Bomb>().Init();
-            bomb.transform.parent = Planet;                       
+            bomb.transform.parent = Planet;
+            var circleCollider2D = bomb.GetComponent<CircleCollider2D>();
+            circleCollider2D.radius = circleCollider2D.radius + GameManager.Instance.CurrentZoom/3f;
         }
 
         Invoke("Back", 0.1f);
