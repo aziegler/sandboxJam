@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public float nextSeed;
 
     public int currentMaxLevel = 0;
+    public int currentFlowerCount = 0;
 
     public AudioSource firstSource;
     public AudioSource secondSource;
@@ -104,9 +105,26 @@ public class GameManager : MonoBehaviour
 	        instantiate.gameObject.AddComponent<OrbitMove>();
 	        GetNextSeedDate();    
 	    }
+
+        Unzoom(Time.deltaTime);
+
 	  
 	   
 	}
+
+    private static int _maxUnzoom = 6;
+    private static int _unzoomDuration = 240;
+
+    private static void Unzoom(float deltaTime) 
+    {
+        GameManager.Instance.currentFlowerCount++;
+        var mainCamera = GameObject.FindGameObjectWithTag("MainCamera").gameObject;
+        var camera = mainCamera.GetComponent<Camera>();
+        var zoom = ((6*deltaTime)/240);
+        camera.orthographicSize = camera.orthographicSize +zoom ;
+        mainCamera.transform.localPosition = new Vector3(0f, mainCamera.transform.localPosition.y - zoom,mainCamera.transform.localPosition.z);
+            
+    }
 
     
 
