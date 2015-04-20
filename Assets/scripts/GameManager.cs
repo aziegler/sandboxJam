@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public bool IsNewFlowerReplaceOldOne;
 
     public int Score = 0;
+    public int Countdown = 180;
 
     void Awake ()
     {
@@ -117,6 +118,7 @@ public class GameManager : MonoBehaviour
 	        Unzoom(Time.time - _lastZoomDate);
 	        _lastZoomDate = Time.time;
 	    }
+	    Countdown = (int) (180 - Time.time);
 
 	}
 
@@ -140,6 +142,7 @@ public class GameManager : MonoBehaviour
     {
         GUI.contentColor = Color.black;
         GUI.Label(new Rect(1200,50,100,20),string.Format("Score : {0}", Score));
+        GUI.Label(new Rect(1200, 100, 100, 20), string.Format("Temps : {0}", Countdown));
     }
 
     

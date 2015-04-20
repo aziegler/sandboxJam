@@ -44,15 +44,22 @@ public class Laser : MonoBehaviour
             {
                 Vector3 hitVector = slot.transform.InverseTransformPoint(raycastHit2D.point);
                 slot.HitByLaser(hitVector);
-                if (GameManager.Instance.CurrentZoom > 2f)
+                if (GameManager.Instance.CurrentZoom > 1f && GameManager.Instance.CurrentZoom < 2f)
+                {
+                    if(hitVector.x >0)
+                        slot.LeftNeighbor.HitByLaser(hitVector);
+                    else
+                        slot.RightNeighbor.HitByLaser(hitVector);
+
+                }
+                else if (GameManager.Instance.CurrentZoom > 2f)
                 {
                     slot.LeftNeighbor.HitByLaser(hitVector);
                     slot.RightNeighbor.HitByLaser(hitVector);
-                    if (GameManager.Instance.CurrentZoom > 4f)
-                    {
+                    if (hitVector.x > 0)
                         slot.LeftNeighbor.LeftNeighbor.HitByLaser(hitVector);
+                    else
                         slot.RightNeighbor.RightNeighbor.HitByLaser(hitVector);
-                    }
                 }
             }
 
