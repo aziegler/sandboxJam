@@ -31,7 +31,7 @@ public class SoundCloud : MonoBehaviour
         shooting = false;
         hasShot = false;
         nextShoot = shoot;
-        _nextLoad = shoot - 2.5f;
+        _nextLoad = shoot - 1.5f;
         _nextShootAnim = shoot - animDelay;
    }
 
@@ -44,6 +44,17 @@ public class SoundCloud : MonoBehaviour
             return playAnimation;
 
         }         
+    }
+
+    private PlayAnimation LoadAnim
+    {
+        get
+        {
+            var playAnimation = GameObject.FindGameObjectWithTag("Loading").GetComponent<PlayAnimation>();
+            playAnimation.synchronisator = this;
+            return playAnimation;
+
+        }
     }
 
     public void ResyncSound(float timeFromMusiStart)
@@ -90,7 +101,10 @@ public class SoundCloud : MonoBehaviour
         }
 
         lastFrameAudioTime = audioTime;
-      
+
+        if (audioTime >= _nextLoad && !loading)
+            PlayLoadAnim();
+
         if(audioTime >= _nextShootAnim && !shooting)
             PlayShootAnim();
         
@@ -114,9 +128,15 @@ public class SoundCloud : MonoBehaviour
             laser.gameObject.GetComponent<Laser>().ShootRound();	*/
     }
 
+    private void PlayLoadAnim()
+    {
+        loading = true;
+        LoadAnim.Play();
+    }
+
     private void PlayShootAnim()
     {
-        shooting = true;
+        shooting = true;        
         ShootAnim.Play();
     }
 
@@ -131,7 +151,9 @@ public class SoundCloud : MonoBehaviour
             SetShootTime(nextShoot + shortInterval);
         nextIsLong = !nextIsLong;
         ShootAnim.Stop();
+        LoadAnim.Stop();
         shooting = false;
+        loading = false;
     }
 }
 
