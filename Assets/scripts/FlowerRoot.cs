@@ -50,28 +50,29 @@ public class FlowerRoot : MonoBehaviour
         HasSpore = true;
     }
 
-    public void SpawnSpores()
+    public GameObject SpawnSpore(Transform t)
     {
         if (Level == 3)
-            return;
+            return null;
         var scale = 1f;
         if (Level > 0)
             scale = 1.7f;
         HasSpore = true;
-        foreach (Transform t in SeedSpawns)
-        {
-            GameObject go = GameObject.Instantiate(SporePrefab);
-            go.transform.parent = null;
-            go.transform.localScale = new Vector3(scale,scale,scale);
-            go.transform.parent = t;            
-            go.transform.position = t.position;
-            go.transform.localScale = new Vector3(scale, scale, scale);
-            go.transform.localEulerAngles = new Vector3(0f, 0f, Random.Range(0f, 360f));
-            go.GetComponent<Spore>().Level = Level;
-            go.GetComponent<Spore>().Flower = this;
+       
+        GameObject go = GameObject.Instantiate(SporePrefab);
+        go.transform.parent = null;
+        go.transform.localScale = new Vector3(scale,scale,scale);
+        go.transform.parent = t;            
+        go.transform.position = t.position;
+        go.transform.localScale = new Vector3(scale, scale, scale);
+        go.transform.localEulerAngles = new Vector3(0f, 0f, Random.Range(0f, 360f));
+        go.GetComponent<Spore>().Init();
+        go.GetComponent<Spore>().Level = Level;
+        go.GetComponent<Spore>().Flower = this;
 
-            SporeCount++;
-        }
+
+        SporeCount++;
+        return go;
     }
 
     // Update is called once per frame

@@ -1036,6 +1036,7 @@ MonoBehaviour:
   - {fileID: 107172, guid: 06eaec1545136ea46a3faaab5c5a51f1, type: 2}
   IsLaserKillFlower: 0
   IsNewFlowerReplaceOldOne: 1
+  CurrentZoom: 0
 --- !u!1 &1771827267
 GameObject:
   m_ObjectHideFlags: 0

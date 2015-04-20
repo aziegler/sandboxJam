@@ -8,7 +8,7 @@ public class Spore : MonoBehaviour {
     TrailRenderer trail;
 
 	// Use this for initialization
-	void Start ()
+	public void Init ()
 	{
 	    HasCollided = false;
         sprite = GetComponent<SpriteRenderer>();

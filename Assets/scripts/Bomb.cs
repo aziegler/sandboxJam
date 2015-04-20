@@ -50,17 +50,18 @@ public class Bomb : MonoBehaviour {
 
     void OnTriggerEnter2D (Collider2D other)
     {
-        var spore = other.GetComponent<Spore>();
-        if (spore == null || spore.IsFlying)
+        var head = other.GetComponent<FlowerFinder>();
+        if (head == null)
             return;
-        if (spore.Flower.HasSpore)
-        {
-            if(Random.Range(0,20)>15)
-                spore.Flower.Voice.Touch();
-        }
-        spore.Explode();
-        spore.Flower.HasSpore = false;
-        Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
+        var spore = head.Flower.SpawnSpore(head.transform);
+        if (spore == null)
+            return;
+        if (Random.Range(0, 20) > 15)
+            head.Flower.Voice.Touch();
+        
+        spore.GetComponent<Spore>().Explode();
+       // spore.Flower.HasSpore = false;
+        Rigidbody2D rb = spore.GetComponent<Rigidbody2D>();
        
         rb.isKinematic = false;
 
@@ -76,7 +77,7 @@ public class Bomb : MonoBehaviour {
         
         
         Physics2D.IgnoreCollision(this.collider2d, other);
-        spore.gameObject.AddComponent<OrbitMove>();
-       
+        spore.AddComponent<OrbitMove>();
+
     }
 }

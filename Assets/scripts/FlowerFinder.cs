@@ -13,7 +13,7 @@ public class FlowerFinder : MonoBehaviour {
         FlowerRoot f = root.GetComponent<FlowerRoot>();
         Flower = f;
 
-        if (null != SporeRoot)
+        /*if (null != SporeRoot)
         {
             f.SeedSpawns = new Transform[SporeRoot.childCount];
             for (int i = 0; i < SporeRoot.childCount; i++)
@@ -21,7 +21,7 @@ public class FlowerFinder : MonoBehaviour {
                 f.SeedSpawns[i] = SporeRoot.GetChild(i);
             }
             f.SpawnSpores();
-        }
+        }*/
 	}
 	
 	// Update is called once per frame
