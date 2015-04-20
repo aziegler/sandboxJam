@@ -63,10 +63,7 @@ public class SoundCloud : MonoBehaviour
         audioTime = timeFromMusiStart;
     }
 
-    void OnGUI()
-    {
-        GUILayout.Label(string.Format("Countdown : {0}", nextShoot - audioTime));
-    }
+   
 
 
     public void Shoot()

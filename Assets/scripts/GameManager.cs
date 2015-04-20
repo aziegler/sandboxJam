@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     public bool IsLaserKillFlower;
     public bool IsNewFlowerReplaceOldOne;
 
+    public int Score = 0;
+
     void Awake ()
     {
         Instance = this;
@@ -119,13 +121,12 @@ public class GameManager : MonoBehaviour
 	}
 
     private static float _lastZoomDate = 0f;
-    private static int _maxUnzoom = 4;
+    private static int _maxUnzoom = 3;
     private static int _unzoomDuration = 120;
     public float CurrentZoom = 0f;
 
     private void Unzoom(float deltaTime) 
     {
-        GameManager.Instance.currentFlowerCount++;
         var mainCamera = GameObject.FindGameObjectWithTag("MainCamera").gameObject;
         var camera = mainCamera.GetComponent<Camera>();
         var zoom = ((_maxUnzoom*deltaTime)/_unzoomDuration);
@@ -133,6 +134,12 @@ public class GameManager : MonoBehaviour
         camera.orthographicSize = camera.orthographicSize +zoom ;
         mainCamera.transform.localPosition = new Vector3(0f, mainCamera.transform.localPosition.y - zoom,mainCamera.transform.localPosition.z);
             
+    }
+
+    void OnGUI()
+    {
+        GUI.contentColor = Color.black;
+        GUI.Label(new Rect(1200,50,100,20),string.Format("Score : {0}", Score));
     }
 
     

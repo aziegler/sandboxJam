@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
+using Random = UnityEngine.Random;
 
 public class Slot : MonoBehaviour {
 
@@ -138,6 +140,7 @@ public class Slot : MonoBehaviour {
 
         flowerObject.Voice = Instantiate(possibleVoices[Random.Range(0, possibleVoices.Length)]);
         flowerObject.Voice.transform.SetParent(flowerObject.transform);
+        GameManager.Instance.Score += (flower.GetComponent<FlowerRoot>().Level + 1);
         /*if (flowerObject.Level > GameManager.Instance.currentMaxLevel)
         {
             GameManager.Instance.currentMaxLevel = flowerObject.Level;
