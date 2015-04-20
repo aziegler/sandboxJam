@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
 	}
 
     private static int _maxUnzoom = 6;
-    private static int _unzoomDuration = 240;
+    private static int _unzoomDuration = 180;
 
     private static void Unzoom(float deltaTime) 
     {
