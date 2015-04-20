@@ -22,6 +22,9 @@ public class Slot : MonoBehaviour {
 
     public Transform Center;
 
+    public Slot LeftNeighbor;
+    public Slot RightNeighbor;
+
     void Start ()
     {
         int index = Random.Range(0, Sprites.Length);

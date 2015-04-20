@@ -20,6 +20,8 @@ public class Planet : MonoBehaviour {
     {
         float total = 0f;
         float numberOfSlot = 360f / FlowerSpawnAngle;
+        Slot firstSlot = null;
+        Slot prevSlot = null;
         do
         {
             /*
@@ -43,6 +45,14 @@ public class Planet : MonoBehaviour {
 
             Slot slot = go.GetComponent<Slot>();
             slot.IsFertil = false;
+            if (firstSlot == null)
+                firstSlot = slot;
+            if (prevSlot != null)
+            {
+                prevSlot.RightNeighbor = slot;
+                slot.LeftNeighbor = prevSlot;             
+            }
+            prevSlot = slot;
 
             go.transform.position = Vector3.zero;
             go.transform.eulerAngles = new Vector3(0f, 0f, total);
@@ -51,6 +61,8 @@ public class Planet : MonoBehaviour {
 
 
         } while (total < 360f);
+        prevSlot.RightNeighbor = firstSlot;
+        firstSlot.LeftNeighbor = prevSlot;
     }
 
     public float GetOrientedAngle (Transform t)

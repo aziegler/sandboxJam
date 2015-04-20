@@ -114,13 +114,15 @@ public class GameManager : MonoBehaviour
 
     private static int _maxUnzoom = 6;
     private static int _unzoomDuration = 180;
+    public float CurrentZoom = 0f;
 
-    private static void Unzoom(float deltaTime) 
+    private void Unzoom(float deltaTime) 
     {
         GameManager.Instance.currentFlowerCount++;
         var mainCamera = GameObject.FindGameObjectWithTag("MainCamera").gameObject;
         var camera = mainCamera.GetComponent<Camera>();
-        var zoom = ((6*deltaTime)/240);
+        var zoom = ((6*deltaTime)/_unzoomDuration);
+        CurrentZoom += zoom;
         camera.orthographicSize = camera.orthographicSize +zoom ;
         mainCamera.transform.localPosition = new Vector3(0f, mainCamera.transform.localPosition.y - zoom,mainCamera.transform.localPosition.z);
             
