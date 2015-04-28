@@ -291,6 +291,7 @@ MonoBehaviour:
   _aim: {fileID: 21300000, guid: e398f8a41234b944980851b5616983e2, type: 3}
   Bomb: {fileID: 440382, guid: c0f899ec27a372643a938ead1acf65a9, type: 2}
   Planet: {fileID: 0}
+  Explosion: {fileID: 492310, guid: 35a7e9049174166438a21fb98de59d3e, type: 2}
   Mask:
     serializedVersion: 2
     m_Bits: 16384
