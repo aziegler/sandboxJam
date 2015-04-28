@@ -174,7 +174,7 @@ MonoBehaviour:
   Level: 1
   GrowthLevel: 1
   SeedSpawns: []
-  SporePrefab: {fileID: 105162, guid: 83d30dcf0f0bce5409aef3d2b0e15441, type: 2}
+  SporePrefab: {fileID: 106898, guid: 152f2d95e39243e449e3fac62a602528, type: 2}
 --- !u!114 &11404692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -198,6 +198,8 @@ MonoBehaviour:
   angle: 0
   animate: 0
   endScale: 1
+  plosion: 0
+  amIBaseOfPlant: 1
 --- !u!114 &11462886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -206,13 +208,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 163210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e60749de0b0504b6eb48488384da3c3a, type: 3}
+  m_Script: {fileID: 11500000, guid: d6d05d92e330b954fbbfaba7af806fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
   level: 0
   RandomSeed: 0
   stem: {fileID: 148606}
+  plosion: 0
+  flowerAnimationManager: {fileID: 0}
+  explosionPosition: {x: 0, y: 0, z: 0}
+  explosionRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

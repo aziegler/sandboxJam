@@ -18,6 +18,9 @@ TagManager:
   - SFXPlayerEvolve
   - Loading
   - Shooting
+  - Text
+  - Particle
+  - AnimManager
   layers:
   - Default
   - TransparentFX

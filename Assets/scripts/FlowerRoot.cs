@@ -25,11 +25,7 @@ public class FlowerRoot : MonoBehaviour
     {
         get { return sporeCount; }
         set
-        {
-            if (value == 0 && sporeCount == 1)
-            {
-                Invoke("SpawnSpores", 0.7f);
-            }
+        {           
             sporeCount = value;
         }
     }

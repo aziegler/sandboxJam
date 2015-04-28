@@ -7,8 +7,8 @@ public class Laser : MonoBehaviour
     public Sprite _aim;
     public Transform Bomb;
     public Transform Planet;
-    public LayerMask Mask;
-   
+    public Transform Explosion;
+    public LayerMask Mask;   
 
     public void Shoot()
     {
@@ -65,8 +65,18 @@ public class Laser : MonoBehaviour
 
             //Bomb
             var bomb = (Transform)Instantiate(Bomb, new Vector3(raycastHit2D.point.x, raycastHit2D.point.y), Quaternion.identity);
+            GameObject flowerAnimationManager = GameObject.FindGameObjectWithTag("AnimManager");
+            if(flowerAnimationManager != null){
+                flowerAnimationManager.GetComponent<flowerAnimateManager>().InitExplosion(bomb.transform.position);
+            }
+
+            var mud =
+                (Transform)
+                    Instantiate(Explosion, new Vector3(raycastHit2D.point.x, raycastHit2D.point.y,-6),
+                        Quaternion.identity);
             bomb.GetComponent<Bomb>().Init();
             bomb.transform.parent = Planet;
+
             var circleCollider2D = bomb.GetComponent<CircleCollider2D>();
             circleCollider2D.radius = circleCollider2D.radius + GameManager.Instance.CurrentZoom/3f;
         }

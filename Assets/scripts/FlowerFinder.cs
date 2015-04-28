@@ -12,8 +12,15 @@ public class FlowerFinder : MonoBehaviour {
         Transform root = FindRoot(transform);
         FlowerRoot f = root.GetComponent<FlowerRoot>();
         Flower = f;
+	    var findGameObjectsWithTag = GameObject.FindGameObjectsWithTag("Text");
+	    foreach (var o in findGameObjectsWithTag)
+	    {
+	        o.GetComponent<MeshRenderer>().sortingLayerID = 4;
+            o.GetComponent<MeshRenderer>().sortingLayerName = "Flowers";
+	        o.GetComponent<MeshRenderer>().sortingOrder = 4;
+	    }
 
-        /*if (null != SporeRoot)
+	    /*if (null != SporeRoot)
         {
             f.SeedSpawns = new Transform[SporeRoot.childCount];
             for (int i = 0; i < SporeRoot.childCount; i++)

@@ -15,6 +15,8 @@ public class stem : MonoBehaviour
 	public float 		angle;
 	public float		animate;
 	public float		endScale;
+	public float		plosion;
+	public bool			amIBaseOfPlant;
 
 	// Use this for initialization
 	void Start () 
@@ -31,6 +33,8 @@ public class stem : MonoBehaviour
 		{
 			root = transform.parent.gameObject;
 		}
+
+		plosion = 0;
 
 		//Set up stuff based on which level is defined in 'root'
 		if (root != null) {
@@ -146,6 +150,7 @@ public class stem : MonoBehaviour
 						nextNode.GetComponent<stem> ().animate = animate - 0.4f;
 						nextNode.GetComponent<stem> ().finished = false;
 						nextNode.GetComponent<stem> ().endScale = endScale - 0.15f;
+						nextNode.GetComponent<stem> ().amIBaseOfPlant = false;
 
 						nextNode.transform.parent = transform;
 					}
@@ -160,6 +165,7 @@ public class stem : MonoBehaviour
 						nextNode.GetComponent<stem> ().animate = animate - 0.4f;
 						nextNode.GetComponent<stem> ().finished = false;
 						nextNode.GetComponent<stem> ().endScale = endScale - 0.15f;
+						nextNode.GetComponent<stem> ().amIBaseOfPlant = false;
 
 						//Create Another Node
 						secondNode = (GameObject)Instantiate (stemObject, stemEnd.transform.position, Quaternion.identity);
@@ -168,6 +174,7 @@ public class stem : MonoBehaviour
 						secondNode.GetComponent<stem> ().animate = animate - 0.4f;
 						secondNode.GetComponent<stem> ().finished = false;
 						secondNode.GetComponent<stem> ().endScale = endScale - 0.15f;
+						secondNode.GetComponent<stem> ().amIBaseOfPlant = false;
 
 						nextNode.transform.parent = transform;
 						secondNode.transform.parent = transform;
@@ -183,7 +190,8 @@ public class stem : MonoBehaviour
 						nextNode.GetComponent<stem> ().animate = animate - 0.4f;
 						nextNode.GetComponent<stem> ().finished = false;
 						nextNode.GetComponent<stem> ().endScale = endScale - 0.15f;
-						
+						nextNode.GetComponent<stem> ().amIBaseOfPlant = false;
+
 						//Create Another Node
 						secondNode = (GameObject)Instantiate (stemObject, stemEnd.transform.position, Quaternion.identity);
 						secondNode.GetComponent<stem> ().nodeNumber = nextNodeNUmber;
@@ -191,6 +199,7 @@ public class stem : MonoBehaviour
 						secondNode.GetComponent<stem> ().animate = animate - 0.4f;
 						secondNode.GetComponent<stem> ().finished = false;
 						secondNode.GetComponent<stem> ().endScale = endScale - 0.15f;
+						secondNode.GetComponent<stem> ().amIBaseOfPlant = false;
 
 						//Create Third Node
 						thirdNode = (GameObject)Instantiate (stemObject, stemEnd.transform.position, Quaternion.identity);
@@ -199,6 +208,7 @@ public class stem : MonoBehaviour
 						thirdNode.GetComponent<stem> ().animate = animate - 0.4f;
 						thirdNode.GetComponent<stem> ().finished = false;
 						thirdNode.GetComponent<stem> ().endScale = endScale - 0.15f;
+						thirdNode.GetComponent<stem> ().amIBaseOfPlant = false;
 
 						nextNode.transform.parent = transform;
 						secondNode.transform.parent = transform;
@@ -221,12 +231,58 @@ public class stem : MonoBehaviour
 			}
 		}
 		//Animate
-		animate += 0.004f;
-		if(animate >1)
-		{
-			animate -= 1;
+	   
+	    if(root != null){
+            var flowerLevel = root.GetComponent<flowerLevel>();
+			if (flowerLevel != null && flowerLevel.plosion != null){
+
+				//Make it ripple across planet based on distance from explosion
+				plosion = 2 + (int)Vector3.Distance(transform.position,flowerLevel.explosionPosition)/2;
+			}
 		}
-		
-		transform.localEulerAngles = new Vector3(0,0,angle +( Mathf.Sin (animate * (Mathf.PI *2)) * 5));		
+
+		if (plosion > 2) {
+			plosion -= 1;
+		}
+		//Explosion Animation
+		if(plosion >0 && plosion <= 2){
+
+			if(plosion >=1 ){
+				//In Explosion animation
+				float plosionSmoothed = Mathf.SmoothStep(0,1,2-plosion);
+				animate += 0.004f + (plosionSmoothed/10);
+				Quaternion targetRotation = Quaternion.Euler(new Vector3(0,0,(Mathf.Sin (animate * (Mathf.PI *2)) * (5 +(plosionSmoothed*5)))));
+				if(amIBaseOfPlant){
+                    var flowerLevel = root.GetComponent<flowerLevel>();
+					//Point at bomb position				
+					targetRotation = flowerLevel.explosionRotation;
+				}
+
+				transform.localRotation = Quaternion.Lerp (transform.localRotation ,targetRotation,plosionSmoothed);
+				plosion -= 0.3f;
+			}
+			if(plosion <1){
+				//Out Explosion Animation
+				float plosionSmoothed = Mathf.SmoothStep(0,1,1-plosion);
+				animate += 0.004f + ((1-plosionSmoothed)/10);
+				Quaternion targetAngle = Quaternion.Euler(new Vector3(0,0,Mathf.Sin (animate * (Mathf.PI *2)) * (5 + ((1-plosionSmoothed)*5))));
+				if(amIBaseOfPlant){
+
+					//Point at bomb position				
+                    targetAngle = root.GetComponent<flowerLevel>().explosionRotation;
+				}
+
+				transform.localRotation = Quaternion.Lerp (targetAngle,Quaternion.Euler(new Vector3(0,0,angle +( Mathf.Sin (animate * (Mathf.PI *2)) * 5))),plosionSmoothed);
+				plosion -= 0.01f;if(plosion <0){plosion = 0;}
+			}
+
+		} else {
+
+			//Swaying normally
+			animate += 0.004f;if(animate >1){animate -= 1;}
+			transform.localEulerAngles = new Vector3(0,0,angle +( Mathf.Sin (animate * (Mathf.PI *2)) * 5));
+		}
+
+				
 	}
 }

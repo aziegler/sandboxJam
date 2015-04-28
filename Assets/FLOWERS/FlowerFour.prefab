@@ -183,6 +183,8 @@ MonoBehaviour:
   angle: 0
   animate: 0
   endScale: 1
+  plosion: 0
+  amIBaseOfPlant: 1
 --- !u!114 &11473126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,13 +193,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 152442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e60749de0b0504b6eb48488384da3c3a, type: 3}
+  m_Script: {fileID: 11500000, guid: d6d05d92e330b954fbbfaba7af806fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
   level: 0
   RandomSeed: 0
   stem: {fileID: 103588}
+  plosion: 0
+  flowerAnimationManager: {fileID: 0}
+  explosionPosition: {x: 0, y: 0, z: 0}
+  explosionRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &11477240
 MonoBehaviour:
   m_ObjectHideFlags: 1
