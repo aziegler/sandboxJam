@@ -57,7 +57,13 @@ public class FlowerRoot : MonoBehaviour
         GameObject go = GameObject.Instantiate(SporePrefab);
         go.transform.parent = null;
         go.transform.localScale = new Vector3(scale,scale,scale);
-        go.transform.parent = Slot ;            
+        if(Random.value < 0.33)
+            go.transform.parent = Slot ;            
+        else if(Random.value > 0.33 && Random.value < 0.66 )
+            go.transform.parent = GameManager.Instance.Sky;            
+        else
+            go.transform.parent = GameManager.Instance.BackParallax;            
+ 
         go.transform.position = t.position;
         go.transform.localScale = new Vector3(scale, scale, scale);
         go.transform.localEulerAngles = new Vector3(0f, 0f, Random.Range(0f, 360f));
