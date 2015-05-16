@@ -141,7 +141,8 @@ public class GameManager : MonoBehaviour
 	    }
 
 	    
-	    Countdown = (int) ((_maxUnzoom * _zoomDuration) - GetTime());
+        if(!GameOver)
+    	    Countdown = (int) ((_maxUnzoom * _zoomDuration) - GetTime());
 	    if (Countdown <= 0)
 	    {
 	        ZoomOut();
@@ -162,15 +163,16 @@ public class GameManager : MonoBehaviour
     public float SecondZoomValue = 1.3f;
 
 
-    private static float _zoomDuration = 10;
+    private static float _zoomDuration = 100;
     private static float _lastZoomDate = 0f;
     private static int _maxUnzoom = 3;
     public float CurrentZoom = 0f;
     private float ShakeDuration = 0.3f;
     private float ShakeMagnitude = 0.1f;
     private float _startTime;
-    private float UnZoomDuration =1f;
+    private float UnZoomDuration =0.5f;
     private float _zoomStep;
+    private float _moveStep;
 
 
     private void ZoomOut()
@@ -178,9 +180,35 @@ public class GameManager : MonoBehaviour
 
         var mainCamera = GameObject.FindGameObjectWithTag("MainCamera").gameObject;
         var camera = mainCamera.GetComponent<Camera>();
-        
-        camera.orthographicSize = 20;
-        mainCamera.transform.localPosition = new Vector3(0f, 0f, mainCamera.transform.localPosition.z);
+
+        _moveStep = Camera.main.transform.localPosition.y;
+        _zoomStep = 21 - Camera.main.orthographicSize;
+        StartCoroutine("ZoomOutRoutine");
+    }
+
+    IEnumerator ZoomOutRoutine()
+    {
+
+        float elapsed = 0.0f;
+
+
+        while (elapsed < 2 * UnZoomDuration)
+        {
+
+            elapsed += Time.deltaTime;
+
+            float percentComplete = Time.deltaTime / UnZoomDuration;
+
+            var currentZoom = _zoomStep * percentComplete;
+            CurrentZoom += currentZoom;
+            Camera.main.orthographicSize += _zoomStep * percentComplete;
+            Camera.main.transform.localPosition = new Vector3(0f, Camera.main.transform.localPosition.y - _moveStep * percentComplete, Camera.main.transform.localPosition.z);
+
+
+
+            yield return null;
+        }
+
     }
 
     private void Unzoom()
