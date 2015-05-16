@@ -99,7 +99,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.99432659, y: 20.0899086, z: -.100000001}
+  m_LocalPosition: {x: 10.3071165, y: 20.1253414, z: -.100000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 449818}
@@ -219,6 +219,7 @@ MonoBehaviour:
   GrowthLevel: 1
   SeedSpawns: []
   SporePrefab: {fileID: 106898, guid: 152f2d95e39243e449e3fac62a602528, type: 2}
+  Slot: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
