@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
     public float SecondZoomValue = 1.3f;
 
 
-    private static float _zoomDuration = 10;
+    private static float _zoomDuration = 100;
     private static float _lastZoomDate = 0f;
     private static int _maxUnzoom = 3;
     public float CurrentZoom = 0f;
