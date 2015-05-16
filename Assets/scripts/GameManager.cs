@@ -127,6 +127,8 @@ public class GameManager : MonoBehaviour
     private static int _maxUnzoom = 3;
     private static int _unzoomDuration = 120;
     public float CurrentZoom = 0f;
+    private float ShakeDuration = 0.3f;
+    private float ShakeMagnitude = 0.1f;
 
     private void Unzoom(float deltaTime) 
     {
@@ -137,6 +139,42 @@ public class GameManager : MonoBehaviour
         camera.orthographicSize = camera.orthographicSize +zoom ;
         mainCamera.transform.localPosition = new Vector3(0f, mainCamera.transform.localPosition.y - zoom,mainCamera.transform.localPosition.z);
             
+    }
+
+    public void ShakeCam()
+    {
+        StartCoroutine("Shake");
+    }
+
+    IEnumerator Shake()
+    {
+
+        float elapsed = 0.0f;
+
+        Vector3 originalCamPos = Camera.main.transform.position;
+
+        while (elapsed < ShakeDuration)
+        {
+
+            elapsed += Time.deltaTime;
+
+            float percentComplete = elapsed / ShakeDuration;
+            float damper = 1.0f - Mathf.Clamp(4.0f * percentComplete - 3.0f, 0.0f, 1.0f);
+
+            // map value to [-1, 1]
+            float x = Random.value * 2.0f - 1.0f;
+            float y = Random.value * 2.0f - 1.0f;
+            x *= ShakeMagnitude * damper;
+            y *= ShakeMagnitude * damper;
+
+            y += originalCamPos.y;
+
+            Camera.main.transform.position = new Vector3(originalCamPos.x, y, originalCamPos.z);
+
+            yield return null;
+        }
+
+        Camera.main.transform.position = originalCamPos;
     }
 
     void OnGUI()

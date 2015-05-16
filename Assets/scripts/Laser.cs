@@ -25,6 +25,7 @@ public class Laser : MonoBehaviour
 
     public void ShootRound()
     {
+        GameManager.Instance.ShakeCam();
          GetComponent<BoxCollider2D>().enabled = true;
 
         Planet = GameObject.FindGameObjectWithTag("Planet").transform;
