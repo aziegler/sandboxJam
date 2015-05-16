@@ -28,7 +28,7 @@ public class leaf : MonoBehaviour {
 		if(root != null)
 		{
 		    var flowerLevel = root.GetComponent<flowerLevel>();
-		    if (flowerLevel != null && flowerLevel.plosion != null){
+		    if (flowerLevel != null && flowerLevel.plosion){
 				plosion = 2;
 			}
 		}

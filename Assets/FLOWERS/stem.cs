@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
+using Random = UnityEngine.Random;
 
 public class stem : MonoBehaviour
 {
@@ -234,7 +236,7 @@ public class stem : MonoBehaviour
 	   
 	    if(root != null){
             var flowerLevel = root.GetComponent<flowerLevel>();
-			if (flowerLevel != null && flowerLevel.plosion != null){
+			if (flowerLevel != null && flowerLevel.plosion){
 
 				//Make it ripple across planet based on distance from explosion
 				plosion = 2 + (int)Vector3.Distance(transform.position,flowerLevel.explosionPosition)/2;
@@ -252,6 +254,7 @@ public class stem : MonoBehaviour
 				float plosionSmoothed = Mathf.SmoothStep(0,1,2-plosion);
 				animate += 0.004f + (plosionSmoothed/10);
 				Quaternion targetRotation = Quaternion.Euler(new Vector3(0,0,(Mathf.Sin (animate * (Mathf.PI *2)) * (5 +(plosionSmoothed*5)))));
+                Console.WriteLine("Target : "+targetRotation);
 				if(amIBaseOfPlant){
                     var flowerLevel = root.GetComponent<flowerLevel>();
 					//Point at bomb position				
@@ -267,7 +270,6 @@ public class stem : MonoBehaviour
 				animate += 0.004f + ((1-plosionSmoothed)/10);
 				Quaternion targetAngle = Quaternion.Euler(new Vector3(0,0,Mathf.Sin (animate * (Mathf.PI *2)) * (5 + ((1-plosionSmoothed)*5))));
 				if(amIBaseOfPlant){
-
 					//Point at bomb position				
                     targetAngle = root.GetComponent<flowerLevel>().explosionRotation;
 				}

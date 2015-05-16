@@ -94,7 +94,7 @@ public class flowerLevel : MonoBehaviour {
 	void FixedUpdate () {
 
 		if (plosion) {
-			plosion = false;
+          	plosion = false;
 		}
 
 		//This is bit where I check to see if an explosion just happened!
@@ -105,6 +105,7 @@ public class flowerLevel : MonoBehaviour {
 			//Calculate Angle for plant to lean away from explosion
 			Vector3 targetvector = explosionPosition - transform.position;
 			float Zangle = Mathf.Atan2(targetvector.x, targetvector.y) * Mathf.Rad2Deg;
+            print("Angle for flower "+Zangle);
 			explosionRotation = Quaternion.Euler(new Vector3(0,0,Zangle)); 
 		}
 	}

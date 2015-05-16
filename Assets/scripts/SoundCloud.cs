@@ -71,8 +71,6 @@ public class SoundCloud : MonoBehaviour
         hasShot = true;
         laser.gameObject.GetComponent<Laser>().ShootRound();
        
-        print ("Shooting "+audioTime);
-        //print (nextShoot);
     }
 
     // Update is called once per frame

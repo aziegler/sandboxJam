@@ -26,6 +26,7 @@ public class flowerAnimateManager : MonoBehaviour {
 
 		if (count>0) {
 			explodeNow = true;
+            print("update with explosion");
 			count --;
 			if (count < 0) {
 				count = 0;
