@@ -141,15 +141,15 @@ public class GameManager : MonoBehaviour
 	    }
 
 	    
-	    Countdown = (int) (_maxUnzoom * _zoomDuration - GetTime());
+	    Countdown = (int) ((_maxUnzoom * _zoomDuration) - GetTime());
 	    if (Countdown <= 0)
 	    {
 	        ZoomOut();
 	        GameOver = true;
 	    }
-        if (GetTime() > _lastZoomDate + _zoomDuration && !GameOver)
+        if (GetTime() > (_lastZoomDate + _zoomDuration) && !GameOver)
         {
-            Unzoom(GetTime() - _lastZoomDate);
+            Unzoom();
             _lastZoomDate = GetTime();
         }
 
@@ -177,9 +177,9 @@ public class GameManager : MonoBehaviour
         mainCamera.transform.localPosition = new Vector3(0f, 0f, mainCamera.transform.localPosition.z);
     }
 
-    private void Unzoom(float deltaTime) 
+    private void Unzoom() 
     {
-        var zoom = ((_maxUnzoom * deltaTime) / _zoomDuration);
+        var zoom = 2f;
       
         var mainCamera = GameObject.FindGameObjectWithTag("MainCamera").gameObject;
         var camera = mainCamera.GetComponent<Camera>();
