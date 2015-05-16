@@ -5,7 +5,29 @@ public class FlowerFinder : MonoBehaviour {
 
     public Transform SporeRoot;
     public FlowerRoot Flower;
-    public bool Sterile { get; set; }
+
+    public bool Sterile
+    {
+        get { return _sterile; }
+        set
+        {
+            _sterile = value;
+            if (!value)
+            {
+
+                particle.GetComponent<ParticleSystem>().Play(true);
+       
+            }
+            else
+            {
+                Destroy(particle);
+            }
+        }
+    }
+
+    public GameObject particle;
+    private bool _sterile;
+
 
     // Use this for initialization
 	void Start () 
