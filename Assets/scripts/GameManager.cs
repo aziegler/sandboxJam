@@ -106,6 +106,9 @@ public class GameManager : MonoBehaviour
 	        
 	    }
 
+	    if (GameOver)
+	        return;
+
 	    float horizontal = Input.GetAxis("Horizontal");
 	    var planetRotation = 90f * horizontal * Time.deltaTime;
 	    PlanetObject.Rotate(new Vector3(0f, 0f, planetRotation));
@@ -120,32 +123,53 @@ public class GameManager : MonoBehaviour
 	        instantiate.GetComponent<OrbitMove>().Force = 0.02f;
 	        GetNextSeedDate();    
 	    }
-	    if (Time.time > 90f)
+	    if (Time.time > 150f)
 	    {
             GameManager.Instance.SwitchSoundSource(3);
 	    }
 
-	    if (Time.time > _lastZoomDate + 60f)
+	    
+	    Countdown = (int) (_maxUnzoom * _zoomDuration - Time.time);
+	    if (Countdown <= 0)
 	    {
-	        Unzoom(Time.time - _lastZoomDate);
-	        _lastZoomDate = Time.time;
+	        ZoomOut();
+	        GameOver = true;
 	    }
-	    Countdown = (int) (180 - Time.time);
+        if (Time.time > _lastZoomDate + _zoomDuration && !GameOver)
+        {
+            Unzoom(Time.time - _lastZoomDate);
+            _lastZoomDate = Time.time;
+        }
 
 	}
 
+    public bool GameOver { get; set; }
+
+
+    private static float _zoomDuration = 100f;
     private static float _lastZoomDate = 0f;
     private static int _maxUnzoom = 3;
-    private static int _unzoomDuration = 120;
     public float CurrentZoom = 0f;
     private float ShakeDuration = 0.3f;
     private float ShakeMagnitude = 0.1f;
 
-    private void Unzoom(float deltaTime) 
+
+    private void ZoomOut()
     {
+
         var mainCamera = GameObject.FindGameObjectWithTag("MainCamera").gameObject;
         var camera = mainCamera.GetComponent<Camera>();
-        var zoom = ((_maxUnzoom*deltaTime)/_unzoomDuration);
+        
+        camera.orthographicSize = 20;
+        mainCamera.transform.localPosition = new Vector3(0f, 0f, mainCamera.transform.localPosition.z);
+    }
+
+    private void Unzoom(float deltaTime) 
+    {
+        var zoom = ((_maxUnzoom * deltaTime) / _zoomDuration);
+      
+        var mainCamera = GameObject.FindGameObjectWithTag("MainCamera").gameObject;
+        var camera = mainCamera.GetComponent<Camera>();
         CurrentZoom += zoom;
         camera.orthographicSize = camera.orthographicSize +zoom ;
         mainCamera.transform.localPosition = new Vector3(0f, mainCamera.transform.localPosition.y - zoom,mainCamera.transform.localPosition.z);

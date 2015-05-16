@@ -68,6 +68,8 @@ public class SoundCloud : MonoBehaviour
 
     public void Shoot()
     {
+        if (GameManager.Instance.GameOver)
+            return;
         hasShot = true;
         laser.gameObject.GetComponent<Laser>().ShootRound();
        
