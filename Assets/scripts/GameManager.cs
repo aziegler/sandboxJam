@@ -170,6 +170,9 @@ public class GameManager : MonoBehaviour
 	        FinalScoreGUI.text = Score.ToString();
 	        ScoreGUI.fontSize = 60;
             ScoreGUI.GetComponent<RectTransform>().localPosition = new Vector3(0,0,0);
+            var soundCloud = GameObject.FindGameObjectWithTag("SoundSync").GetComponent<SoundCloud>();
+	        soundCloud.ShootAnim.Stop();
+	        soundCloud.LoadAnim.Stop();
 	        //ScoreGUI.enabled = false;
 	    }
         if (GetTime() > (_lastZoomDate + _zoomDuration) && !GameOver)
