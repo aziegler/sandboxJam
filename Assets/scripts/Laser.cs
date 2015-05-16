@@ -62,23 +62,28 @@ public class Laser : MonoBehaviour
                     else
                         slot.RightNeighbor.RightNeighbor.HitByLaser(hitVector);
                 }
+                if (_explosion != null)
+                {
+                    DestroyMud();
+                    CancelInvoke("DestroyMud");
+                }
+                _explosion = (Transform)
+                    Instantiate(Explosion, new Vector3(raycastHit2D.point.x, raycastHit2D.point.y, -6),
+                        Quaternion.identity);
+                _explosion.SetParent(slot.transform);
             }
 
             //Bomb
             var bomb = (Transform)Instantiate(Bomb, new Vector3(raycastHit2D.point.x, raycastHit2D.point.y), Quaternion.identity);
+            
             GameObject flowerAnimationManager = GameObject.FindGameObjectWithTag("AnimManager");
             if(flowerAnimationManager != null){
                 flowerAnimationManager.GetComponent<flowerAnimateManager>().InitExplosion(bomb.transform.position);
             }
 
-            if (_explosion != null)
-            {
-                DestroyMud();
-                CancelInvoke("DestroyMud");    
-            }
-            _explosion = (Transform)
-                Instantiate(Explosion, new Vector3(raycastHit2D.point.x, raycastHit2D.point.y,-6),
-                    Quaternion.identity);
+            
+            
+
             Invoke("DestroyMud",1f);
             bomb.GetComponent<Bomb>().Init();
             bomb.transform.parent = Planet;
