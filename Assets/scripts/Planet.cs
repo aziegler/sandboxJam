@@ -16,6 +16,15 @@ public class Planet : MonoBehaviour {
         circle = GetComponent<CircleCollider2D>();
     }
 
+    public void ResetSlots()
+    {
+        var componentInChildren = this.GetComponentsInChildren<Slot>();
+        foreach (var slot in componentInChildren)
+        {
+            slot.ShowSprites(false);
+        }
+    }
+
     void Start ()
     {
         float total = 0f;

@@ -147,6 +147,7 @@ public class GameManager : MonoBehaviour
 	        ZoomOut();
 	        GameOver = true;
             SwitchSoundSource(1);
+            PlanetObject.GetComponent<Planet>().ResetSlots();
 	    }
         if (GetTime() > (_lastZoomDate + _zoomDuration) && !GameOver)
         {
@@ -157,9 +158,11 @@ public class GameManager : MonoBehaviour
 	}
 
     public bool GameOver { get; set; }
+    public float FirstZoomValue = 1.7f;
+    public float SecondZoomValue = 1.3f;
 
 
-    private static float _zoomDuration = 100f;
+    private static float _zoomDuration = 10;
     private static float _lastZoomDate = 0f;
     private static int _maxUnzoom = 3;
     public float CurrentZoom = 0f;
@@ -178,15 +181,18 @@ public class GameManager : MonoBehaviour
         mainCamera.transform.localPosition = new Vector3(0f, 0f, mainCamera.transform.localPosition.z);
     }
 
-    private void Unzoom() 
+    private void Unzoom()
     {
-        var zoom = 1f;
-      
+        var ZoomStep = 0f;
+        if (CurrentZoom == 0f)
+            ZoomStep = FirstZoomValue;
+        else
+            ZoomStep = SecondZoomValue;
         var mainCamera = GameObject.FindGameObjectWithTag("MainCamera").gameObject;
         var camera = mainCamera.GetComponent<Camera>();
-        CurrentZoom += zoom;
-        camera.orthographicSize = camera.orthographicSize +zoom ;
-        mainCamera.transform.localPosition = new Vector3(0f, mainCamera.transform.localPosition.y - zoom,mainCamera.transform.localPosition.z);
+        CurrentZoom += ZoomStep;
+        camera.orthographicSize = camera.orthographicSize + ZoomStep;
+        mainCamera.transform.localPosition = new Vector3(0f, mainCamera.transform.localPosition.y - ZoomStep, mainCamera.transform.localPosition.z);
             
     }
 

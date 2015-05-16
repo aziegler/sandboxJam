@@ -119,7 +119,7 @@ public class Slot : MonoBehaviour {
         }
     }
 
-    void ShowSprites(bool show)
+    public void ShowSprites(bool show)
     {
         BackSprite.enabled = show;
         FrontSprite.enabled = show;
