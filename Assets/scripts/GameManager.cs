@@ -141,7 +141,8 @@ public class GameManager : MonoBehaviour
 	    }
 
 	    
-	    Countdown = (int) ((_maxUnzoom * _zoomDuration) - GetTime());
+        if(!GameOver)
+    	    Countdown = (int) ((_maxUnzoom * _zoomDuration) - GetTime());
 	    if (Countdown <= 0)
 	    {
 	        ZoomOut();
@@ -169,6 +170,9 @@ public class GameManager : MonoBehaviour
     private float ShakeDuration = 0.3f;
     private float ShakeMagnitude = 0.1f;
     private float _startTime;
+    private float UnZoomDuration =0.5f;
+    private float _zoomStep;
+    private float _moveStep;
 
 
     private void ZoomOut()
@@ -176,24 +180,71 @@ public class GameManager : MonoBehaviour
 
         var mainCamera = GameObject.FindGameObjectWithTag("MainCamera").gameObject;
         var camera = mainCamera.GetComponent<Camera>();
-        
-        camera.orthographicSize = 20;
-        mainCamera.transform.localPosition = new Vector3(0f, 0f, mainCamera.transform.localPosition.z);
+
+        _moveStep = Camera.main.transform.localPosition.y;
+        _zoomStep = 21 - Camera.main.orthographicSize;
+        StartCoroutine("ZoomOutRoutine");
+    }
+
+    IEnumerator ZoomOutRoutine()
+    {
+
+        float elapsed = 0.0f;
+
+
+        while (elapsed < 2 * UnZoomDuration)
+        {
+
+            elapsed += Time.deltaTime;
+
+            float percentComplete = Time.deltaTime / UnZoomDuration;
+
+            var currentZoom = _zoomStep * percentComplete;
+            CurrentZoom += currentZoom;
+            Camera.main.orthographicSize += _zoomStep * percentComplete;
+            Camera.main.transform.localPosition = new Vector3(0f, Camera.main.transform.localPosition.y - _moveStep * percentComplete, Camera.main.transform.localPosition.z);
+
+
+
+            yield return null;
+        }
+
     }
 
     private void Unzoom()
     {
-        var ZoomStep = 0f;
+        _zoomStep = 0f;
         if (CurrentZoom == 0f)
-            ZoomStep = FirstZoomValue;
+            _zoomStep = FirstZoomValue;
         else
-            ZoomStep = SecondZoomValue;
-        var mainCamera = GameObject.FindGameObjectWithTag("MainCamera").gameObject;
-        var camera = mainCamera.GetComponent<Camera>();
-        CurrentZoom += ZoomStep;
-        camera.orthographicSize = camera.orthographicSize + ZoomStep;
-        mainCamera.transform.localPosition = new Vector3(0f, mainCamera.transform.localPosition.y - ZoomStep, mainCamera.transform.localPosition.z);
+            _zoomStep = SecondZoomValue;
+        StartCoroutine("UnzoomRoutine");
+
+    }
+
+    IEnumerator UnzoomRoutine()
+    {
+
+        float elapsed = 0.0f;
+
+
+        while (elapsed < UnZoomDuration)
+        {
+
+            elapsed += Time.deltaTime;
+
+            float percentComplete = Time.deltaTime / UnZoomDuration;
+
+            var currentZoom = _zoomStep*percentComplete;
+            CurrentZoom += currentZoom;
+            Camera.main.orthographicSize += currentZoom;
+            Camera.main.transform.localPosition = new Vector3(0f, Camera.main.transform.localPosition.y - currentZoom, Camera.main.transform.localPosition.z);
+   
             
+
+            yield return null;
+        }
+
     }
 
     public void ShakeCam()
