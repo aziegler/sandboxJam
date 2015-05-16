@@ -1519,7 +1519,7 @@ MonoBehaviour:
   BackParallaxCoef: .300000012
   Sky: {fileID: 335527485}
   SkyCoeff: .100000001
-  Seed: {fileID: 409072, guid: 06eaec1545136ea46a3faaab5c5a51f1, type: 2}
+  Seed: {fileID: 427160, guid: 634d20bf458243c4fb351cd5652c7a64, type: 2}
   nextSeed: 0
   currentMaxLevel: 0
   currentFlowerCount: 0
