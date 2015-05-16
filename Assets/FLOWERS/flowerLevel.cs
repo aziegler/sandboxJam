@@ -10,8 +10,9 @@ public class flowerLevel : MonoBehaviour {
 	public GameObject 	flowerAnimationManager;
 	public Vector3		explosionPosition;
 	public Quaternion 	explosionRotation;
+    private float ExplosionLimit = 10f;
 
-	// Use this for initialization
+    // Use this for initialization
 	void Start () {
 		if (stem != null) {
 
@@ -99,14 +100,19 @@ public class flowerLevel : MonoBehaviour {
 
 		//This is bit where I check to see if an explosion just happened!
 		if (flowerAnimationManager != null && flowerAnimationManager.GetComponent<flowerAnimateManager> ().explodeNow) {
-			plosion = true;
 			explosionPosition = flowerAnimationManager.GetComponent<flowerAnimateManager> ().explosionPosition;
 
 			//Calculate Angle for plant to lean away from explosion
 			Vector3 targetvector = explosionPosition - transform.position;
-			float Zangle = Mathf.Atan2(targetvector.x, targetvector.y) * Mathf.Rad2Deg;
-            print("Angle for flower "+Zangle);
-			explosionRotation = Quaternion.Euler(new Vector3(0,0,Zangle)); 
+		    if (targetvector.magnitude < ExplosionLimit)
+		    {
+		        plosion = true;
+		        float Zangle = Mathf.Atan2(targetvector.x, targetvector.y)*Mathf.Rad2Deg;
+		        print("Angle for flower " + Zangle);
+		        Zangle = Zangle*(1 - (targetvector.magnitude/ExplosionLimit));
+		        print("Attenuated angle " + Zangle);
+		        explosionRotation = Quaternion.Euler(new Vector3(0, 0, Zangle));
+		    }
 		}
 	}
 }
