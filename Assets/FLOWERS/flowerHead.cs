@@ -7,6 +7,7 @@ public class flowerHead : MonoBehaviour {
 	public float 		angle;
 	public float		animate;
 	float				endscaleVariation;
+  
 
 	// Use this for initialization
 	void Start () {
