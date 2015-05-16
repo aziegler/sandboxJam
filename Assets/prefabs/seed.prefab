@@ -154,7 +154,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116886}
-  m_Mass: .00999999978
+  m_Mass: .00100000005
   m_LinearDrag: 2
   m_AngularDrag: .0500000007
   m_GravityScale: 1
@@ -225,6 +225,8 @@ MonoBehaviour:
   Planet: {fileID: 0}
   particle: {fileID: 19858888}
   IsCaptured: 0
+  firstParent: {fileID: 0}
+  secondParent: {fileID: 0}
   Sprites:
   - {fileID: 21277288}
   - {fileID: 21235224}

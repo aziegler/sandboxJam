@@ -106,6 +106,7 @@ public class GameManager : MonoBehaviour
 	    {
 	        var instantiate = (Transform) Instantiate(Seed, new Vector3(Random.Range(-10f,10f), 30f), Quaternion.identity);
 	        instantiate.gameObject.AddComponent<OrbitMove>();
+	        instantiate.GetComponent<OrbitMove>().Force = 0.02f;
 	        GetNextSeedDate();    
 	    }
 	    if (Time.time > 90f)
