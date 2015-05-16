@@ -64,12 +64,12 @@ public class Slot : MonoBehaviour {
                     {
                         previousLevel = flower.GrowthLevel;
                         PlantedFlower.GetComponent<FlowerRoot>().Kill();
-                        CreateTheFlower(seed, previousLevel + 1);
+                        CreateTheFlower(seed, previousLevel + 1,this.transform);
                     }
                 }
                 else
                 {
-                    CreateTheFlower(seed, 1);
+                    CreateTheFlower(seed, 1,this.transform);
                 }
 
                 ScaleObject scale = seed.gameObject.AddComponent<ScaleObject>();
@@ -126,13 +126,14 @@ public class Slot : MonoBehaviour {
         GetComponent<BoxCollider2D>().isTrigger = show;
     }
 
-    void CreateTheFlower (Seed seed , int growthlevel)
+    void CreateTheFlower (Seed seed , int growthlevel, Transform slot)
     {
         GameObject flower = GameObject.Instantiate(seed.Flower.gameObject);
         flower.transform.position = transform.position;
         flower.transform.rotation = transform.rotation;
         flower.transform.parent = Planet.Instance.transform;
         flower.GetComponent<FlowerRoot>().GrowthLevel = growthlevel;
+        flower.GetComponent<FlowerRoot>().Slot = slot;
         flower.GetComponent<flowerLevel>().level = (growthlevel - 1);
         PlantedFlower = flower;
 

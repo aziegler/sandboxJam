@@ -9,6 +9,7 @@ public class FlowerRoot : MonoBehaviour
 
     public Transform[] SeedSpawns;
     public GameObject SporePrefab;
+    public Transform Slot;
     private bool hasSpore;
 
     public bool HasSpore
@@ -58,7 +59,7 @@ public class FlowerRoot : MonoBehaviour
         GameObject go = GameObject.Instantiate(SporePrefab);
         go.transform.parent = null;
         go.transform.localScale = new Vector3(scale,scale,scale);
-        go.transform.parent = t;            
+        go.transform.parent = Slot ;            
         go.transform.position = t.position;
         go.transform.localScale = new Vector3(scale, scale, scale);
         go.transform.localEulerAngles = new Vector3(0f, 0f, Random.Range(0f, 360f));
