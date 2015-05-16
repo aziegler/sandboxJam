@@ -142,7 +142,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.6000004, y: 9.30000019, z: 0}
+  m_LocalPosition: {x: -17.6209488, y: 11.7096462, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 415768}
@@ -225,6 +225,8 @@ MonoBehaviour:
   Planet: {fileID: 0}
   particle: {fileID: 19875188}
   IsCaptured: 0
+  firstParent: {fileID: 0}
+  secondParent: {fileID: 0}
   Sprites:
   - {fileID: 21243146}
   - {fileID: 21250960}
@@ -1356,7 +1358,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1948157135
-  m_SortingOrder: 9
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 00e201af3b0744f48a6814e731748d24, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
