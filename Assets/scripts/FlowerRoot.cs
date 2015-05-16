@@ -46,7 +46,7 @@ public class FlowerRoot : MonoBehaviour
         HasSpore = true;
     }
 
-    public GameObject SpawnSpore(Transform t)
+    public GameObject SpawnSpore(FlowerFinder parent, Transform t)
     {
         if (Level == 3)
             return null;
@@ -65,6 +65,7 @@ public class FlowerRoot : MonoBehaviour
         go.GetComponent<Spore>().Init();
         go.GetComponent<Spore>().Level = Level;
         go.GetComponent<Spore>().Flower = this;
+        go.GetComponent<Spore>().FlowerHead = parent;
 
 
         SporeCount++;

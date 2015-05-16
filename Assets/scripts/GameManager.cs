@@ -177,6 +177,8 @@ public class GameManager : MonoBehaviour
             {
                 GameObject go = GameObject.Instantiate(Seeds[newLevel]);
                 go.transform.position = s1.transform.position;
+                go.GetComponent<Seed>().firstParent = s1.FlowerHead;
+                go.GetComponent<Seed>().secondParent = s2.FlowerHead;
                 var component = GameObject.FindGameObjectWithTag("SFXPlayerPollen").GetComponent<FX>();
                 component.PlaySound();
             }

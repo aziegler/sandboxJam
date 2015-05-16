@@ -38,6 +38,7 @@ public class Spore : MonoBehaviour {
 
     public FlowerRoot Flower { get; set; }
     public bool HasCollided { get; set; }
+    public FlowerFinder FlowerHead { get; set; }
 
     void OnCollisionEnter2D(Collision2D col)
     {

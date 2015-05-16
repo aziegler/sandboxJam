@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Runtime.Remoting.Messaging;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -51,9 +52,9 @@ public class Bomb : MonoBehaviour {
     void OnTriggerEnter2D (Collider2D other)
     {
         var head = other.GetComponent<FlowerFinder>();
-        if (head == null)
+        if (head == null || head.Sterile)
             return;
-        var spore = head.Flower.SpawnSpore(head.transform);
+        var spore = head.Flower.SpawnSpore(head,head.transform);
         if (spore == null)
             return;
         if (Random.Range(0, 20) > 15)

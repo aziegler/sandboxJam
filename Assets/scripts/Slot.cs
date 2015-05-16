@@ -141,6 +141,11 @@ public class Slot : MonoBehaviour {
         flowerObject.Voice = Instantiate(possibleVoices[Random.Range(0, possibleVoices.Length)]);
         flowerObject.Voice.transform.SetParent(flowerObject.transform);
         GameManager.Instance.Score += (flower.GetComponent<FlowerRoot>().Level + 1);
+        if(seed.firstParent != null)
+            seed.firstParent.Sterile = true;
+
+        if(seed.secondParent != null)
+            seed.secondParent.Sterile = true;
         /*if (flowerObject.Level > GameManager.Instance.currentMaxLevel)
         {
             GameManager.Instance.currentMaxLevel = flowerObject.Level;

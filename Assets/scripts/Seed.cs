@@ -8,6 +8,8 @@ public class Seed : MonoBehaviour
     public GameObject Planet;
     public ParticleSystem particle;
     public bool IsCaptured = false;
+    public FlowerFinder firstParent;
+    public FlowerFinder secondParent;
 	// Use this for initialization
     public SpriteRenderer[] Sprites;
 

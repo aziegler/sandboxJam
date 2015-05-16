@@ -5,8 +5,9 @@ public class FlowerFinder : MonoBehaviour {
 
     public Transform SporeRoot;
     public FlowerRoot Flower;
+    public bool Sterile { get; set; }
 
-	// Use this for initialization
+    // Use this for initialization
 	void Start () 
     {
         Transform root = FindRoot(transform);
