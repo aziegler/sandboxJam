@@ -381,7 +381,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void FlowerCreated()
+    public void FlowerCreated(int level)
     {
         currentFlowerCount ++;
         print("Flower Count "+currentFlowerCount);
@@ -393,6 +393,25 @@ public class GameManager : MonoBehaviour
             {
                 o.GetComponent<SpriteRenderer>().enabled = true;
             }
+        }
+        if (level == 1 && !TutoThirdStep)
+        {
+            TutoThirdStep = true;
+            var findGameObjectsWithTag = GameObject.FindGameObjectsWithTag("TutoThree");
+            foreach (var o in findGameObjectsWithTag)
+            {
+                o.GetComponent<SpriteRenderer>().enabled = true;
+            }
+            Invoke("EndThirdTuto",5f);
+        }
+    }
+
+    public void EndThirdTuto()
+    {
+        var findGameObjectsWithTag = GameObject.FindGameObjectsWithTag("TutoThree");
+        foreach (var o in findGameObjectsWithTag)
+        {
+            Destroy(o);
         }
     }
 }

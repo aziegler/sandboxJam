@@ -128,7 +128,6 @@ public class Slot : MonoBehaviour {
 
     void CreateTheFlower (Seed seed , int growthlevel, Transform slot)
     {
-        GameManager.Instance.FlowerCreated();
         GameObject flower = GameObject.Instantiate(seed.Flower.gameObject);
         flower.transform.position = transform.position;
         flower.transform.rotation = transform.rotation;
@@ -139,7 +138,8 @@ public class Slot : MonoBehaviour {
         PlantedFlower = flower;
 
         var flowerObject = PlantedFlower.GetComponent<FlowerRoot>();
-
+        GameManager.Instance.FlowerCreated(flowerObject.Level);
+       
         flowerObject.Voice = Instantiate(possibleVoices[Random.Range(0, possibleVoices.Length)]);
         flowerObject.Voice.transform.SetParent(flowerObject.transform);
         GameManager.Instance.Score += (flower.GetComponent<FlowerRoot>().Level + 1);
