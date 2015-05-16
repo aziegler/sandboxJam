@@ -179,7 +179,7 @@ public class GameManager : MonoBehaviour
 
     private void Unzoom() 
     {
-        var zoom = 2f;
+        var zoom = 1f;
       
         var mainCamera = GameObject.FindGameObjectWithTag("MainCamera").gameObject;
         var camera = mainCamera.GetComponent<Camera>();
