@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
             var soundCloud = GameObject.FindGameObjectWithTag("SoundSync").GetComponent<SoundCloud>();
 	        soundCloud.ShootAnim.Stop();
 	        soundCloud.LoadAnim.Stop();
-	        //ScoreGUI.enabled = false;
+	        ScoreGUI.enabled = false;
 	    }
         if (GetTime() > (_lastZoomDate + _zoomDuration) && !GameOver)
         {
@@ -198,7 +198,7 @@ public class GameManager : MonoBehaviour
     public float SecondZoomValue = 1.3f;
 
 
-    private static float _zoomDuration = 10;
+    private static float _zoomDuration = 100;
     private static float _lastZoomDate = 0f;
     private static int _maxUnzoom = 3;
     public float CurrentZoom = 0f;
@@ -372,6 +372,7 @@ public class GameManager : MonoBehaviour
                 go.GetComponent<Rigidbody2D>().velocity = direction*2f;
                 go.GetComponent<Seed>().firstParent = s1.FlowerHead;
                 go.GetComponent<Seed>().secondParent = s2.FlowerHead;
+                go.GetComponent<Seed>().AnimatCircle();
                 var component = GameObject.FindGameObjectWithTag("SFXPlayerPollen").GetComponent<FX>();
                 component.PlaySound();
             }
