@@ -96,7 +96,7 @@ public class Slot : MonoBehaviour {
         Seed seed = coll.gameObject.GetComponent<Seed>();
         if (null != seed)
         {
-            coll.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up*2f);
+            coll.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up*0.1f);
             seed.FadeAndKill();
         }
         Spore spore = coll.gameObject.GetComponent<Spore>();
