@@ -52,8 +52,6 @@ public class FlowerRoot : MonoBehaviour
         if (Level == 3)
             return null;
         var scale = 1f;
-        if (Level > 0)
-            scale = 1.7f;
         HasSpore = true;
        
         GameObject go = GameObject.Instantiate(SporePrefab);
