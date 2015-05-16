@@ -11,6 +11,13 @@ public class GameManager : MonoBehaviour
     public Transform Laser;
     private Transform _laser;
     public Transform PlanetObject;
+    public Transform FrontParallax;
+    public float FrontParallaxCoeff;
+    public Transform BackParallax;
+    public float BackParallaxCoef;
+    public Transform Sky;
+    public float SkyCoeff;
+
     public Transform Seed;
     public float nextSeed;
 
@@ -100,7 +107,11 @@ public class GameManager : MonoBehaviour
 	    }
 
 	    float horizontal = Input.GetAxis("Horizontal");
-        PlanetObject.Rotate(new Vector3(0f, 0f, 90f * horizontal * Time.deltaTime));
+	    var planetRotation = 90f * horizontal * Time.deltaTime;
+	    PlanetObject.Rotate(new Vector3(0f, 0f, planetRotation));
+        FrontParallax.Rotate(new Vector3(0f, 0f, planetRotation*FrontParallaxCoeff));
+        BackParallax.Rotate(new Vector3(0f, 0f, planetRotation * BackParallaxCoef));
+        Sky.Rotate(new Vector3(0f, 0f, planetRotation * SkyCoeff));
 
 	    if (Time.time > nextSeed)
 	    {
