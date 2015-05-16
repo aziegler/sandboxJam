@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
 
     private void GetNextSeedDate()
     {
-        nextSeed = Time.time + Random.Range(4f, 5f);
+        nextSeed = Time.time + Random.Range(5f, 7f);
     }
 
     public void SwitchSoundSource(int index)
