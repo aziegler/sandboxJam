@@ -38,6 +38,12 @@ public class GameManager : MonoBehaviour
     public int Score = 0;
     public int Countdown = 0;
 
+
+    public Boolean TutoFirstStep = true;
+    public Boolean TutoSecondStep = false;
+    public Boolean TutoThirdStep = false;
+ 
+
     void Awake ()
     {
 
@@ -121,6 +127,15 @@ public class GameManager : MonoBehaviour
 	   
 
 	    float horizontal = Input.GetAxis("Horizontal");
+	    if (horizontal > 0f && TutoFirstStep)
+	    {
+	        var findGameObjectsWithTag = GameObject.FindGameObjectsWithTag("TutoOne");
+	        foreach (var o in findGameObjectsWithTag)
+	        {
+	            Destroy(o);
+	        }
+	        TutoFirstStep = false;
+	    }
 	    var planetRotation = 90f * horizontal * Time.deltaTime;
 	    PlanetObject.Rotate(new Vector3(0f, 0f, planetRotation));
         FrontParallax.Rotate(new Vector3(0f, 0f, planetRotation*FrontParallaxCoeff));
@@ -315,6 +330,16 @@ public class GameManager : MonoBehaviour
     {
         if (s1.Level == s2.Level && s1.Flower != s2.Flower && !s1.HasCollided && !s2.HasCollided)
         {
+            print("Level created = " + s1.Level);
+            if (s1.Level == 0 && TutoSecondStep)
+            {
+                TutoSecondStep = false;
+                var findGameObjectsWithTag = GameObject.FindGameObjectsWithTag("TutoTwo");
+                foreach (var o in findGameObjectsWithTag)
+                {
+                   Destroy(o);
+                }
+            }
             s1.HasCollided = true;
             s2.HasCollided = true;
             int newLevel = s1.Level + 1 ;
@@ -353,6 +378,21 @@ public class GameManager : MonoBehaviour
         else
         {
             Physics2D.IgnoreCollision(s1.GetComponent<Collider2D>(), s2.GetComponent<Collider2D>());
+        }
+    }
+
+    public void FlowerCreated()
+    {
+        currentFlowerCount ++;
+        print("Flower Count "+currentFlowerCount);
+        if (currentFlowerCount == 2)
+        {
+            TutoSecondStep = true;
+            var findGameObjectsWithTag = GameObject.FindGameObjectsWithTag("TutoTwo");
+            foreach (var o in findGameObjectsWithTag)
+            {
+                o.GetComponent<SpriteRenderer>().enabled = true;
+            }
         }
     }
 }

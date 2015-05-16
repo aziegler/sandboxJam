@@ -128,6 +128,7 @@ public class Slot : MonoBehaviour {
 
     void CreateTheFlower (Seed seed , int growthlevel, Transform slot)
     {
+        GameManager.Instance.FlowerCreated();
         GameObject flower = GameObject.Instantiate(seed.Flower.gameObject);
         flower.transform.position = transform.position;
         flower.transform.rotation = transform.rotation;

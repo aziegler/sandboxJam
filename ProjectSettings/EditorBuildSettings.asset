@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/scenes/title.unity
   - enabled: 1
     path: Assets/scenes/test.unity
+  - enabled: 1
+    path: Assets/scenes/credits.unity

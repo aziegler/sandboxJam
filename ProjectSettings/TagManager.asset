@@ -21,6 +21,9 @@ TagManager:
   - Text
   - Particle
   - AnimManager
+  - TutoOne
+  - TutoTwo
+  - TutoThree
   layers:
   - Default
   - TransparentFX
