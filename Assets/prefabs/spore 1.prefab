@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11422234}
   - 58: {fileID: 5825884}
   - 50: {fileID: 5000072}
-  - 96: {fileID: 9698618}
+  - 96: {fileID: 9607938}
   m_Layer: 13
   m_Name: spore 1
   m_TagString: Spore
@@ -60,7 +60,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
---- !u!96 &9698618
+--- !u!96 &9607938
 TrailRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -84,25 +84,25 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: .5
   m_StartWidth: .300000012
   m_EndWidth: 0
   m_Colors:
     m_Color[0]:
       serializedVersion: 2
-      rgba: 2516582399
+      rgba: 3221225471
     m_Color[1]:
       serializedVersion: 2
-      rgba: 2063597567
+      rgba: 2550136831
     m_Color[2]:
       serializedVersion: 2
-      rgba: 1090519039
+      rgba: 1577058303
     m_Color[3]:
       serializedVersion: 2
-      rgba: 637534207
+      rgba: 1023410175
     m_Color[4]:
       serializedVersion: 2
-      rgba: 16777215
+      rgba: 536870911
   m_MinVertexDistance: .100000001
   m_Autodestruct: 1
 --- !u!114 &11422234
