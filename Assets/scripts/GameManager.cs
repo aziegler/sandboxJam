@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
 
 	    if (Time.time > nextSeed)
 	    {
-	        var instantiate = (Transform) Instantiate(Seed, new Vector3(Random.Range(-10f,10f), 30f), Quaternion.identity);
+	        var instantiate = (Transform) Instantiate(Seed, new Vector3(Random.Range(-5f,5f), 30f), Quaternion.identity);
 	        instantiate.gameObject.AddComponent<OrbitMove>();
 	        instantiate.GetComponent<OrbitMove>().Force = 0.02f;
 	        GetNextSeedDate();    
