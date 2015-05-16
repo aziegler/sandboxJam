@@ -118,8 +118,7 @@ public class GameManager : MonoBehaviour
 	        
 	    }
 
-	    if (GameOver)
-	        return;
+	   
 
 	    float horizontal = Input.GetAxis("Horizontal");
 	    var planetRotation = 90f * horizontal * Time.deltaTime;
@@ -128,14 +127,15 @@ public class GameManager : MonoBehaviour
         BackParallax.Rotate(new Vector3(0f, 0f, planetRotation * BackParallaxCoef));
         Sky.Rotate(new Vector3(0f, 0f, planetRotation * SkyCoeff));
 
-	    if (Time.time > nextSeed)
+
+	    if (!GameOver && Time.time > nextSeed)
 	    {
 	        var instantiate = (Transform) Instantiate(Seed, new Vector3(Random.Range(-5f,5f), 30f), Quaternion.identity);
 	        instantiate.gameObject.AddComponent<OrbitMove>();
 	        instantiate.GetComponent<OrbitMove>().Force = 0.02f;
 	        GetNextSeedDate();    
 	    }
-	    if (GetTime() > 150f)
+	    if (!GameOver && GetTime() > 150f)
 	    {
             GameManager.Instance.SwitchSoundSource(3);
 	    }
@@ -146,6 +146,7 @@ public class GameManager : MonoBehaviour
 	    {
 	        ZoomOut();
 	        GameOver = true;
+            SwitchSoundSource(1);
 	    }
         if (GetTime() > (_lastZoomDate + _zoomDuration) && !GameOver)
         {
@@ -179,7 +180,7 @@ public class GameManager : MonoBehaviour
 
     private void Unzoom() 
     {
-        var zoom = 2f;
+        var zoom = 1f;
       
         var mainCamera = GameObject.FindGameObjectWithTag("MainCamera").gameObject;
         var camera = mainCamera.GetComponent<Camera>();
