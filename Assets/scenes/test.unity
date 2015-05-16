@@ -1079,8 +1079,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   threshold: .25
-  intensity: .5
-  blurSize: .5
+  intensity: .400000006
+  blurSize: .400000006
   blurIterations: 1
   blurType: 0
   fastBloomShader: {fileID: 4800000, guid: 68a00c837b82e4c6d92e7da765dc5f1d, type: 3}
@@ -1324,6 +1324,8 @@ MonoBehaviour:
   IsNewFlowerReplaceOldOne: 1
   Score: 0
   Countdown: 180
+  FirstZoomValue: 1.70000005
+  SecondZoomValue: 1.29999995
   CurrentZoom: 0
 --- !u!1 &1771827267
 GameObject:
@@ -1440,7 +1442,7 @@ SpriteRenderer:
   m_SortingLayerID: 407846459
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c1452293b6353314b884d71fdbe11941, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: .786764741, g: .894117713, b: 1, a: 1}
 --- !u!4 &1911375538
 Transform:
   m_ObjectHideFlags: 0
