@@ -35,7 +35,7 @@ public class SoundCloud : MonoBehaviour
         _nextShootAnim = shoot - animDelay;
    }
 
-    private PlayAnimation ShootAnim
+    public PlayAnimation ShootAnim
     {
         get
         {
@@ -46,7 +46,7 @@ public class SoundCloud : MonoBehaviour
         }         
     }
 
-    private PlayAnimation LoadAnim
+    public PlayAnimation LoadAnim
     {
         get
         {
