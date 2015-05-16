@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public Transform Sky;
     public float SkyCoeff;
     public UnityEngine.UI.Text ScoreGUI;
+    public UnityEngine.UI.Text FinalScoreGUI;
 
     public Transform Seed;
     public float nextSeed;
@@ -63,7 +64,7 @@ public class GameManager : MonoBehaviour
 	    _laser = (Transform)Instantiate(Laser, new Vector3(0f,5f), Quaternion.identity);
 	    _laser.GetComponent<BoxCollider2D>().enabled = false;
 
-	 
+	    FinalScoreGUI.enabled = false;
 
 
 	}
@@ -165,6 +166,11 @@ public class GameManager : MonoBehaviour
 	        GameOver = true;
             SwitchSoundSource(1);
             PlanetObject.GetComponent<Planet>().ResetSlots();
+            FinalScoreGUI.enabled = true;
+	        FinalScoreGUI.text = Score.ToString();
+	        ScoreGUI.fontSize = 60;
+            ScoreGUI.GetComponent<RectTransform>().localPosition = new Vector3(0,0,0);
+	        //ScoreGUI.enabled = false;
 	    }
         if (GetTime() > (_lastZoomDate + _zoomDuration) && !GameOver)
         {
@@ -181,6 +187,7 @@ public class GameManager : MonoBehaviour
         get { return _score; }
         set { _score = value;
             ScoreGUI.text = Score.ToString();
+            FinalScoreGUI.text = Score.ToString();
         }
     }
 
@@ -188,7 +195,7 @@ public class GameManager : MonoBehaviour
     public float SecondZoomValue = 1.3f;
 
 
-    private static float _zoomDuration = 100;
+    private static float _zoomDuration = 10;
     private static float _lastZoomDate = 0f;
     private static int _maxUnzoom = 3;
     public float CurrentZoom = 0f;
@@ -207,7 +214,7 @@ public class GameManager : MonoBehaviour
         var camera = mainCamera.GetComponent<Camera>();
 
         _moveStep = Camera.main.transform.localPosition.y;
-        _zoomStep = 21 - Camera.main.orthographicSize;
+        _zoomStep = 26 - Camera.main.orthographicSize;
         StartCoroutine("ZoomOutRoutine");
     }
 
