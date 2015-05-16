@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public float BackParallaxCoef;
     public Transform Sky;
     public float SkyCoeff;
+    public UnityEngine.UI.Text ScoreGUI;
 
     public Transform Seed;
     public float nextSeed;
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour
     public bool IsLaserKillFlower;
     public bool IsNewFlowerReplaceOldOne;
 
-    public int Score = 0;
+    private int _score = 0;
     public int Countdown = 0;
 
 
@@ -174,6 +175,15 @@ public class GameManager : MonoBehaviour
 	}
 
     public bool GameOver { get; set; }
+
+    public int Score
+    {
+        get { return _score; }
+        set { _score = value;
+            ScoreGUI.text = Score.ToString();
+        }
+    }
+
     public float FirstZoomValue = 1.7f;
     public float SecondZoomValue = 1.3f;
 
@@ -300,9 +310,9 @@ public class GameManager : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.contentColor = Color.black;
+       /* GUI.contentColor = Color.black;
         GUI.Label(new Rect(1200,50,100,20),string.Format("Score : {0}", Score));
-        GUI.Label(new Rect(1200, 100, 100, 20), string.Format("Temps : {0}", Countdown));
+        GUI.Label(new Rect(1200, 100, 100, 20), string.Format("Temps : {0}", Countdown));*/
     }
 
     
