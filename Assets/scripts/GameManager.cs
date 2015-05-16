@@ -36,11 +36,16 @@ public class GameManager : MonoBehaviour
     public bool IsNewFlowerReplaceOldOne;
 
     public int Score = 0;
-    public int Countdown = 180;
+    public int Countdown = 0;
 
     void Awake ()
     {
+
         Instance = this;
+        Countdown = 0;
+        _startTime = Time.time;
+        _lastZoomDate = _startTime;
+        GameManager.Instance.SwitchSoundSource(2);
     }
 
     // Use this for initialization
@@ -55,6 +60,11 @@ public class GameManager : MonoBehaviour
 
 
 	}
+
+    public float GetTime()
+    {
+        return Time.time - _startTime;
+    }
 
     private void GetNextSeedDate()
     {
@@ -82,11 +92,13 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
 	void Update () {
- 	    if (Input.GetMouseButtonDown(0))
-	    {
-	        _laser.gameObject.GetComponent<Laser>().ShootRound();
-	       
-	    }
+ 	   
+
+        if (GameOver && (Input.GetButtonDown("Fire1")))
+        {
+            Application.LoadLevel(1);
+        }
+
 	    var F1 = Input.GetKeyDown(KeyCode.R);
 	    var F2 = Input.GetKeyDown(KeyCode.T);
 	    var F3 = Input.GetKeyDown(KeyCode.Y);
@@ -123,22 +135,22 @@ public class GameManager : MonoBehaviour
 	        instantiate.GetComponent<OrbitMove>().Force = 0.02f;
 	        GetNextSeedDate();    
 	    }
-	    if (Time.time > 150f)
+	    if (GetTime() > 150f)
 	    {
             GameManager.Instance.SwitchSoundSource(3);
 	    }
 
 	    
-	    Countdown = (int) (_maxUnzoom * _zoomDuration - Time.time);
+	    Countdown = (int) (_maxUnzoom * _zoomDuration - GetTime());
 	    if (Countdown <= 0)
 	    {
 	        ZoomOut();
 	        GameOver = true;
 	    }
-        if (Time.time > _lastZoomDate + _zoomDuration && !GameOver)
+        if (GetTime() > _lastZoomDate + _zoomDuration && !GameOver)
         {
-            Unzoom(Time.time - _lastZoomDate);
-            _lastZoomDate = Time.time;
+            Unzoom(GetTime() - _lastZoomDate);
+            _lastZoomDate = GetTime();
         }
 
 	}
@@ -152,6 +164,7 @@ public class GameManager : MonoBehaviour
     public float CurrentZoom = 0f;
     private float ShakeDuration = 0.3f;
     private float ShakeMagnitude = 0.1f;
+    private float _startTime;
 
 
     private void ZoomOut()
