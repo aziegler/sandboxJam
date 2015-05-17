@@ -170,7 +170,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145854}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.1040268, y: 11.3831701, z: 0}
+  m_LocalPosition: {x: -4.21985626, y: -3.36755657, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 480588}
@@ -259,7 +259,7 @@ MonoBehaviour:
   Sprites:
   - {fileID: 21279568}
   - {fileID: 21217414}
-  SeedCircle: {fileID: 0}
+  SeedCircle: {fileID: 21281120}
 --- !u!198 &19803826
 ParticleSystem:
   m_ObjectHideFlags: 1
