@@ -425,7 +425,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106300}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.95414829, y: 16.5961113, z: 0}
+  m_LocalPosition: {x: -103.761124, y: -15.4592743, z: 0}
   m_LocalScale: {x: .349999994, y: .349999994, z: .349999994}
   m_Children:
   - {fileID: 441374}
@@ -756,7 +756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SporeRoot: {fileID: 498420}
   Flower: {fileID: 0}
-  particle: {fileID: 0}
+  particle: {fileID: 156608}
 --- !u!198 &19884994
 ParticleSystem:
   m_ObjectHideFlags: 1
