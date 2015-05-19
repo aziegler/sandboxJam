@@ -38,7 +38,7 @@ public class Voices : MonoBehaviour
 
         if (source.isPlaying) return;
         source.clip = clips[Random.Range(0, clips.Length)];
-		print ("Playing "+source.clip.name);
+		//print ("Playing "+source.clip.name);
         source.Play();
     }
 }

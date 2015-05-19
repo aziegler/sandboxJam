@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
         {
             Application.LoadLevel(1);
         }
-
+		/*
 	    var F1 = Input.GetKeyDown(KeyCode.R);
 	    var F2 = Input.GetKeyDown(KeyCode.T);
 	    var F3 = Input.GetKeyDown(KeyCode.Y);
@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine("FadeInOut", thirdSource);
 	        
 	    }
-
+		*/
 	   
 
 	    float horizontal = Input.GetAxis("Horizontal");
@@ -152,7 +152,9 @@ public class GameManager : MonoBehaviour
 	        instantiate.GetComponent<OrbitMove>().Force = 0.02f;
 	        GetNextSeedDate();    
 	    }
-	    if (!GameOver && GetTime() > 150f)
+
+		/// TODO : Launch sound 3 on the second Unzoom call. Better than call this one each frame.
+	    if (!GameOver && GetTime() > (_startTime+200f))
 	    {
             GameManager.Instance.SwitchSoundSource(3);
 	    }
@@ -330,7 +332,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator  FadeInOut( AudioSource audioSource)
     {
         float time = 0f;
-        var fadeTime = 1f;
+        var fadeTime = 0.5f;
         while (time < fadeTime)
         {
             time = time + 0.1f;
@@ -350,7 +352,7 @@ public class GameManager : MonoBehaviour
     {
         if (s1.Level == s2.Level && s1.Flower != s2.Flower && !s1.HasCollided && !s2.HasCollided)
         {
-            print("Level created = " + s1.Level);
+            //print("Level created = " + s1.Level);
             if (s1.Level == 0 && TutoSecondStep)
             {
                 TutoSecondStep = false;
@@ -405,7 +407,7 @@ public class GameManager : MonoBehaviour
     public void FlowerCreated(int level)
     {
         currentFlowerCount ++;
-        print("Flower Count "+currentFlowerCount);
+        //print("Flower Count "+currentFlowerCount);
         if (currentFlowerCount == 2)
         {
             TutoSecondStep = true;

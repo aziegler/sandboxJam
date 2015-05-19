@@ -108,9 +108,9 @@ public class flowerLevel : MonoBehaviour {
 		    {
 		        plosion = true;
 		        float Zangle = Mathf.Atan2(targetvector.x, targetvector.y)*Mathf.Rad2Deg;
-		        print("Angle for flower " + Zangle);
+		        //print("Angle for flower " + Zangle);
 		        Zangle = Zangle*(1 - (targetvector.magnitude/ExplosionLimit));
-		        print("Attenuated angle " + Zangle);
+		        //print("Attenuated angle " + Zangle);
 		        explosionRotation = Quaternion.Euler(new Vector3(0, 0, Zangle));
 		    }
 		}

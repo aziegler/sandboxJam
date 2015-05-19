@@ -12,14 +12,14 @@ public class CameraScript : MonoBehaviour
 
     void Awake()
     {
-        print("Already done : " + CreditButton.wentToCredit);
+        //print("Already done : " + CreditButton.wentToCredit);
         if(CreditButton.wentToCredit)
             GoToAnimEnd();
     }
 
     void GoToAnimEnd()
     {
-        print("Setting camera");
+        //print("Setting camera");
         cameraAnim.Play("");
     }
 	
