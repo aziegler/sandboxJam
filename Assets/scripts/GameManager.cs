@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -45,6 +46,8 @@ public class GameManager : MonoBehaviour
     public Boolean TutoSecondStep = false;
     public Boolean TutoThirdStep = false;
  
+	public Text timerUIText;
+	public Image timerUIImage;
 
     void Awake ()
     {
@@ -52,7 +55,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         Countdown = 0;
         _startTime = Time.time;
-        _lastZoomDate = _startTime;
+        _lastZoomDate = GetTime();
         GameManager.Instance.SwitchSoundSource(2);
     }
 
@@ -154,14 +157,14 @@ public class GameManager : MonoBehaviour
 	    }
 
 		/// TODO : Launch sound 3 on the second Unzoom call. Better than call this one each frame.
-	    if (!GameOver && GetTime() > (_startTime+200f))
+	    if (!GameOver && GetTime() >= 200f)
 	    {
             GameManager.Instance.SwitchSoundSource(3);
 	    }
-
 	    
         if(!GameOver)
     	    Countdown = (int) ((_maxUnzoom * _zoomDuration) - GetTime());
+
 	    if (Countdown <= 0)
 	    {
 	        ZoomOut();
@@ -177,12 +180,18 @@ public class GameManager : MonoBehaviour
 	        soundCloud.LoadAnim.Stop();
 	        ScoreGUI.enabled = false;
 	    }
-        if (GetTime() > (_lastZoomDate + _zoomDuration) && !GameOver)
+        if (GetTime() > ((_lastZoomDate) + _zoomDuration) && !GameOver)
         {
             Unzoom();
             _lastZoomDate = GetTime();
         }
 
+		// SET UI
+
+		float secondTimer = Mathf.Clamp(300f - GetTime (),0f,300f);
+		float timerFillAmout = secondTimer / 300f;
+		timerUIImage.fillAmount = timerFillAmout;
+		timerUIText.text = ((int)(secondTimer)).ToString ();
 	}
 
     public bool GameOver { get; set; }
@@ -414,7 +423,13 @@ public class GameManager : MonoBehaviour
             var findGameObjectsWithTag = GameObject.FindGameObjectsWithTag("TutoTwo");
             foreach (var o in findGameObjectsWithTag)
             {
-                o.GetComponent<SpriteRenderer>().enabled = true;
+				SpriteRenderer sr = o.GetComponent<SpriteRenderer>();
+				if (null!=sr)
+					sr.enabled = true;
+
+				Image image = o.GetComponent<Image>();
+				if (null!=image)
+					image.enabled = true;
             }
         }
         if (level == 1 && !TutoThirdStep)
