@@ -8,10 +8,13 @@ Temp
 *.db
 *.db.meta
 *.unityproj
+
+Assets/UnityVS/
+
 Web
 obj
 Assembly-UnityScript-Editor-vs.unityproj
-=======
+
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
@@ -34,6 +37,6 @@ Assembly-UnityScript-Editor-vs.unityproj
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 *.orig
+*.orig.meta
 Assets/scripts/Bomb.cs.orig.meta
 finalBuild_Data/
-Assets/UnityVS/
