@@ -87,6 +87,36 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &82004148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 82004149}
+  m_Layer: 0
+  m_Name: credit_root
+  m_TagString: CreditRoot
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &82004149
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 82004148}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 306526927}
+  - {fileID: 1156636854}
+  - {fileID: 590557961}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!1 &306526922
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,21 +128,13 @@ GameObject:
   - 20: {fileID: 306526926}
   - 92: {fileID: 306526925}
   - 124: {fileID: 306526924}
-  - 81: {fileID: 306526923}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &306526923
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 306526922}
-  m_Enabled: 1
 --- !u!124 &306526924
 Behaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +191,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 82004149}
   m_RootOrder: 0
 --- !u!1 &590557959
 GameObject:
@@ -225,7 +247,7 @@ Transform:
   m_LocalPosition: {x: -8.09000015, y: -4.59000015, z: 0}
   m_LocalScale: {x: 1.61827755, y: 1.61827755, z: 1.61827755}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 82004149}
   m_RootOrder: 2
 --- !u!114 &590557962
 MonoBehaviour:
@@ -303,5 +325,5 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 82004149}
   m_RootOrder: 1

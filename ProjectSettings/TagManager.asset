@@ -24,6 +24,7 @@ TagManager:
   - TutoOne
   - TutoTwo
   - TutoThree
+  - CreditRoot
   layers:
   - Default
   - TransparentFX

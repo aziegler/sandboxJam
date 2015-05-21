@@ -17,7 +17,7 @@ public class CreditButton : MonoBehaviour {
     void OnMouseDown()
     {
         wentToCredit = true;
-        print("click start");
-        Application.LoadLevel(2);
+
+		Application.LoadLevelAdditive (2);
     }
 }
