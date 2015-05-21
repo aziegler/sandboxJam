@@ -142,7 +142,15 @@ public class Slot : MonoBehaviour {
        
         flowerObject.Voice = Instantiate(possibleVoices[Random.Range(0, possibleVoices.Length)]);
         flowerObject.Voice.transform.SetParent(flowerObject.transform);
-        GameManager.Instance.Score += (flower.GetComponent<FlowerRoot>().Level + 1);
+
+
+		int point = flower.GetComponent<FlowerRoot> ().Level + 1;
+		if (flower.GetComponent<FlowerRoot> ().Level == 3) 
+		{
+			point*=2;
+		}
+
+		GameManager.Instance.Score += point;
         if(seed.firstParent != null)
             seed.firstParent.Sterile = true;
 
