@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+	public const string HIGHSCORE_KEY = "pollinator.highscore";
     public static GameManager Instance;
 
     public Transform Bomb;
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     public float SkyCoeff;
     public UnityEngine.UI.Text ScoreGUI;
     public UnityEngine.UI.Text FinalScoreGUI;
+	public Text HighScore;
 
     public Transform Seed;
     public float nextSeed;
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     private int _score = 0;
     public int Countdown = 0;
+	bool highscoreset = false;
 
 
     public Boolean TutoFirstStep = true;
@@ -68,8 +71,7 @@ public class GameManager : MonoBehaviour
 	    _laser.GetComponent<BoxCollider2D>().enabled = false;
 
 	    FinalScoreGUI.enabled = false;
-
-
+		HighScore.enabled = false;
 	}
 
     public float GetTime()
@@ -179,6 +181,31 @@ public class GameManager : MonoBehaviour
 	        soundCloud.ShootAnim.Stop();
 	        soundCloud.LoadAnim.Stop();
 	        ScoreGUI.enabled = false;
+
+			int lastHighScore = PlayerPrefs.GetInt(HIGHSCORE_KEY,0);
+			bool newHighScore = false;
+			if(Score > lastHighScore)
+			{
+				lastHighScore = Score;
+				newHighScore = true;
+				PlayerPrefs.SetInt(HIGHSCORE_KEY,Score);
+			}
+
+			if(!highscoreset)
+			{
+				highscoreset = true;
+				HighScore.enabled = true;
+				HighScore.text = "highscore: " + lastHighScore.ToString();
+
+				if(newHighScore)
+				{
+					//Show something special ?
+					HighScore.text = "new " + HighScore.text;
+				}
+			}
+
+			timerUIImage.enabled = false;
+			timerUIText.enabled = false;
 	    }
         if (GetTime() > ((_lastZoomDate) + _zoomDuration) && !GameOver)
         {
