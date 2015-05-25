@@ -547,6 +547,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 635657922}
   - 212: {fileID: 635657921}
+  - 114: {fileID: 635657923}
   m_Layer: 0
   m_Name: sequence
   m_TagString: TutoThree
@@ -592,6 +593,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16
+--- !u!114 &635657923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 635657920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f63a80d117bbe6458cf92479dda782a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 1
 --- !u!1 &640221767
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,6 +831,7 @@ GameObject:
   - 224: {fileID: 858108617}
   - 222: {fileID: 858108616}
   - 114: {fileID: 858108615}
+  - 114: {fileID: 858108618}
   m_Layer: 5
   m_Name: SeedCreationTuto
   m_TagString: TutoTwo
@@ -869,6 +883,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -5}
   m_SizeDelta: {x: -5, y: -5}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &858108618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 858108614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3508ee0e6164fc45a7a2344aecd752d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 1
 --- !u!1 &864175398
 GameObject:
   m_ObjectHideFlags: 0
@@ -2163,6 +2189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabFlower: {fileID: 144006, guid: 97bfd9fc8efeeaa40801ef3c46972b8b, type: 2}
   FlowerSpawnAngle: 10
+  SlotFadeDelay: 1
   SlotPrefab: {fileID: 178108, guid: 7c66d166118563940aecc94e419f2bdb, type: 2}
 --- !u!58 &1771827269
 CircleCollider2D:

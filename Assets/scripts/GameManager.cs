@@ -395,7 +395,15 @@ public class GameManager : MonoBehaviour
                 var findGameObjectsWithTag = GameObject.FindGameObjectsWithTag("TutoTwo");
                 foreach (var o in findGameObjectsWithTag)
                 {
-                   Destroy(o);
+					Image image = o.GetComponent<Image>();
+					if(image==null)
+					{
+						Destroy(o);
+					}
+					else
+					{
+						image.gameObject.SendMessage(FadeTutorial.DESACTIVATE_TUTORIAL);
+					}                   
                 }
             }
             s1.HasCollided = true;
@@ -456,7 +464,15 @@ public class GameManager : MonoBehaviour
 
 				Image image = o.GetComponent<Image>();
 				if (null!=image)
+				{
+					Color c = image.color;
+					c.a = 0f;
+					image.color = c;
+
 					image.enabled = true;
+
+					image.gameObject.SendMessage(FadeTutorial.ACTIVTE_TUTORIAL);
+				}
             }
         }
         if (level == 1 && !TutoThirdStep)
@@ -465,9 +481,17 @@ public class GameManager : MonoBehaviour
             var findGameObjectsWithTag = GameObject.FindGameObjectsWithTag("TutoThree");
             foreach (var o in findGameObjectsWithTag)
             {
-                o.GetComponent<SpriteRenderer>().enabled = true;
+				SpriteRenderer sprite = o.GetComponent<SpriteRenderer>();
+
+				Color color = sprite.color;
+				color.a = 0f;
+				sprite.color = color;
+
+				sprite.enabled = true;
+
+				o.SendMessage(FadeSprite.ACTIVATE_SPRITE);
             }
-            Invoke("EndThirdTuto",5f);
+            Invoke("EndThirdTuto",8f);
         }
     }
 
@@ -476,7 +500,11 @@ public class GameManager : MonoBehaviour
         var findGameObjectsWithTag = GameObject.FindGameObjectsWithTag("TutoThree");
         foreach (var o in findGameObjectsWithTag)
         {
-            Destroy(o);
+            //Destroy(o);
+
+			SpriteRenderer sprite = o .GetComponent<SpriteRenderer>();
+			sprite.enabled = true;
+			o.SendMessage(FadeSprite.DESACTIVATE_SPRITE);
         }
     }
 }

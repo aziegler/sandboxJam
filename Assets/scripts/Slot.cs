@@ -34,7 +34,7 @@ public class Slot : MonoBehaviour {
         BackSprite.sprite = Sprites[index].BackSprite;
         FrontSprite.sprite = Sprites[index].FrontSprite;
 
-        ShowSprites(false);
+        ShowSprites(false,true);
     }
 
     public Voices[] possibleVoices; 
@@ -119,12 +119,45 @@ public class Slot : MonoBehaviour {
         }
     }
 
-    public void ShowSprites(bool show)
+    public void ShowSprites(bool show,bool force=false)
     {
-        BackSprite.enabled = show;
-        FrontSprite.enabled = show;
+		if (force) 
+		{
+			ApplyAlphaOnSprite(BackSprite,1f,0f,1f);
+			ApplyAlphaOnSprite(FrontSprite,1f,0f,1f);
+		}
+		else
+		{
+			float targetAlpha = show ? 1f : 0f;
+			StopCoroutine ("Fade");
+			StartCoroutine ("Fade", targetAlpha);
+		}
+
         GetComponent<BoxCollider2D>().isTrigger = show;
     }
+
+	void ApplyAlphaOnSprite(SpriteRenderer sprite, float startAlpha, float targetAlpha, float  t)
+	{
+		Color c = sprite.color;
+		c.a = Mathf.Lerp (startAlpha, targetAlpha, t);
+		sprite.color = c;
+	}
+
+	IEnumerator Fade(float targetAlpha)
+	{
+		float startAlpha = BackSprite.color.a;
+		float t = 0f;
+		float startTime = Time.time;
+		float delay = Planet.Instance.SlotFadeDelay;
+
+		do {
+			t = Mathf.Clamp ((Time.time - startTime) / delay, 0f, 1f);
+
+			ApplyAlphaOnSprite(BackSprite,startAlpha,targetAlpha,t);
+			ApplyAlphaOnSprite(FrontSprite,startAlpha,targetAlpha,t);
+			yield return null;
+		} while(t<1f);
+	}
 
     void CreateTheFlower (Seed seed , int growthlevel, Transform slot)
     {

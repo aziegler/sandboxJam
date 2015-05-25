@@ -7,6 +7,7 @@ public class Planet : MonoBehaviour {
     CircleCollider2D circle;
     public GameObject PrefabFlower;
     public float FlowerSpawnAngle = 10f;
+	public float SlotFadeDelay;
 
     public GameObject SlotPrefab;
 
