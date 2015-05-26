@@ -98,7 +98,7 @@ public class Laser : MonoBehaviour
 
     private void DestroyMud()
     {
-        Destroy(_explosion.gameObject);
+        Destroy(_explosion.gameObject,5F);
         _explosion = null;
     }
 
