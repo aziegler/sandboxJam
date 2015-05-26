@@ -123,14 +123,14 @@ public class Slot : MonoBehaviour {
     {
 		if (force) 
 		{
-			ApplyAlphaOnSprite(BackSprite,1f,0f,1f);
-			ApplyAlphaOnSprite(FrontSprite,1f,0f,1f);
+			ApplyScaleOnSprite(BackSprite,Vector3.one,Vector3.zero,1f);
+			ApplyScaleOnSprite(FrontSprite,Vector3.one,Vector3.zero,1f);
 		}
 		else
 		{
-			float targetAlpha = show ? 1f : 0f;
-			StopCoroutine ("Fade");
-			StartCoroutine ("Fade", targetAlpha);
+			Vector3 targetScale= show ? Vector3.one: Vector3.zero;
+			StopCoroutine ("Scale");
+			StartCoroutine ("Scale", targetScale);
 		}
 
         GetComponent<BoxCollider2D>().isTrigger = show;
@@ -143,18 +143,42 @@ public class Slot : MonoBehaviour {
 		sprite.color = c;
 	}
 
+	void ApplyScaleOnSprite(SpriteRenderer sprite, Vector3 startScale, Vector3 targetScale, float t)
+	{
+		Vector3 scale = sprite.transform.localScale;
+		scale = Vector3.Lerp (startScale, targetScale, t);
+		sprite.transform.localScale = scale;
+	}
+
 	IEnumerator Fade(float targetAlpha)
 	{
 		float startAlpha = BackSprite.color.a;
 		float t = 0f;
 		float startTime = Time.time;
-		float delay = Planet.Instance.SlotFadeDelay;
+		float delay = Planet.Instance.SlotScaleDuration;
 
 		do {
 			t = Mathf.Clamp ((Time.time - startTime) / delay, 0f, 1f);
 
 			ApplyAlphaOnSprite(BackSprite,startAlpha,targetAlpha,t);
 			ApplyAlphaOnSprite(FrontSprite,startAlpha,targetAlpha,t);
+			yield return null;
+		} while(t<1f);
+	}
+
+	IEnumerator Scale(Vector3 targetScale)
+	{
+		yield return new WaitForSeconds (Planet.Instance.SlotScaleDelay);
+		Vector3 startScale = BackSprite.transform.localScale;
+		float t = 0f;
+		float startTime = Time.time;
+		float delay = Planet.Instance.SlotScaleDuration;
+		
+		do {
+			t = Mathf.Clamp ((Time.time - startTime) / delay, 0f, 1f);
+			
+			ApplyScaleOnSprite(BackSprite,startScale,targetScale,t);
+			ApplyScaleOnSprite(FrontSprite,startScale,targetScale,t);
 			yield return null;
 		} while(t<1f);
 	}

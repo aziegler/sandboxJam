@@ -7,7 +7,8 @@ public class Planet : MonoBehaviour {
     CircleCollider2D circle;
     public GameObject PrefabFlower;
     public float FlowerSpawnAngle = 10f;
-	public float SlotFadeDelay;
+	public float SlotScaleDuration;
+	public float SlotScaleDelay;
 
     public GameObject SlotPrefab;
 
@@ -22,7 +23,7 @@ public class Planet : MonoBehaviour {
         var componentInChildren = this.GetComponentsInChildren<Slot>();
         foreach (var slot in componentInChildren)
         {
-            slot.ShowSprites(false);
+            slot.ShowSprites(false,true);
         }
     }
 
