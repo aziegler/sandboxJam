@@ -7,6 +7,13 @@ public class Spore : MonoBehaviour {
     SpriteRenderer sprite;
     TrailRenderer trail;
 
+	public float BirthTime;
+
+	void Awake ()
+	{
+		BirthTime = Time.time;
+	}
+
 	// Use this for initialization
 	public void Init ()
 	{
@@ -74,6 +81,23 @@ public class Spore : MonoBehaviour {
 
     public void Kill ()
     {
-        GameObject.Destroy(this.gameObject);
+		StartCoroutine ("Fade", 0f);
     }
+
+	IEnumerator Fade(float targetAlpha)
+	{
+		float startAlpha = sprite.color.a;
+		float t = 0f;
+		float startTime = Time.time;
+		
+		do {
+			t = Mathf.Clamp ((Time.time - startTime) / Planet.Instance.SporeFadeDuration, 0f, 1f);
+			Color c = sprite.color;
+			c.a = Mathf.Lerp (startAlpha, targetAlpha, t);
+			sprite.color = c;
+			yield return null;
+		} while(t<1f);
+
+		GameObject.Destroy(this.gameObject);
+	}
 }

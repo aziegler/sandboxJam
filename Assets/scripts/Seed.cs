@@ -5,7 +5,6 @@ public class Seed : MonoBehaviour
 {
 
     public Transform Flower;
-    public GameObject Planet;
     public ParticleSystem particle;
     public bool IsCaptured = false;
     public FlowerFinder firstParent;
@@ -68,7 +67,37 @@ public class Seed : MonoBehaviour
 
     public void Kill()
     {
-        GameObject.Destroy(gameObject);
+		StartCoroutine ("Fade", 0f);
     }
- 
+
+	public void StopFade()
+	{
+		StopCoroutine ("Fade");
+	}
+	IEnumerator Fade(float targetAlpha)
+	{
+		yield return new WaitForSeconds (0.8f);
+
+		float startAlpha = Sprites[0].color.a;
+		float t = 0f;
+		float startTime = Time.time;
+		
+		do {
+			t = Mathf.Clamp ((Time.time - startTime) / Planet.Instance.SporeFadeDuration, 0f, 1f);
+
+			ApplyAlphaOnSprite(Sprites[0], startAlpha, targetAlpha, t);
+			ApplyAlphaOnSprite(Sprites[1], startAlpha, targetAlpha, t);
+
+			yield return null;
+		} while(t<1f);
+		
+		GameObject.Destroy(this.gameObject);
+	}
+	
+	void ApplyAlphaOnSprite(SpriteRenderer sprite, float startAlpha, float targetAlpha, float  t)
+	{
+		Color c = sprite.color;
+		c.a = Mathf.Lerp (startAlpha, targetAlpha, t);
+		sprite.color = c;
+	}
 }

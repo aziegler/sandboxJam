@@ -54,6 +54,11 @@ public class Bomb : MonoBehaviour {
         var head = other.GetComponent<FlowerFinder>();
         if (head == null || head.Sterile)
             return;
+		if (head.Flower == null)
+		{
+			Debug.Log("no flower");
+			return;
+		}
         var spore = head.Flower.SpawnSpore(head,head.transform);
         if (spore == null)
             return;

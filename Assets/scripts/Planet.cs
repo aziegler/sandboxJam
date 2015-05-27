@@ -9,6 +9,7 @@ public class Planet : MonoBehaviour {
     public float FlowerSpawnAngle = 10f;
 	public float SlotScaleDuration;
 	public float SlotScaleDelay;
+	public float SporeFadeDuration;
 
     public GameObject SlotPrefab;
 

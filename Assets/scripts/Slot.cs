@@ -72,6 +72,7 @@ public class Slot : MonoBehaviour {
                     CreateTheFlower(seed, 1,this.transform);
                 }
 
+				seed.StopFade();
                 ScaleObject scale = seed.gameObject.AddComponent<ScaleObject>();
                 scale.GetComponent<Rigidbody2D>().isKinematic = true;
                 scale.Scale(0.2f, Vector3.zero, true, Center.position, AbsorbIsFinish); 
@@ -80,7 +81,10 @@ public class Slot : MonoBehaviour {
 
         if(null != spore)
         {
-            spore.Kill();
+			if(Time.time-spore.BirthTime > 0.1f)
+			{
+            	spore.Kill();
+			}
         }
     }
 
@@ -97,12 +101,15 @@ public class Slot : MonoBehaviour {
         if (null != seed)
         {
             coll.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up*0.1f);
-            seed.FadeAndKill();
-        }
+			seed.Kill();
+		}
         Spore spore = coll.gameObject.GetComponent<Spore>();
         if(null != spore && spore.IsFlying)
         {
-            spore.Kill();
+			if(Time.time - spore.BirthTime>0.1f)
+			{
+				spore.Kill();
+			}
         }
     }
 

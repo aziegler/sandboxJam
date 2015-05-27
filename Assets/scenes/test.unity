@@ -2191,6 +2191,7 @@ MonoBehaviour:
   FlowerSpawnAngle: 10
   SlotScaleDuration: .300000012
   SlotScaleDelay: .0399999991
+  SporeFadeDuration: .200000003
   SlotPrefab: {fileID: 178108, guid: 7c66d166118563940aecc94e419f2bdb, type: 2}
 --- !u!58 &1771827269
 CircleCollider2D:
