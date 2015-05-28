@@ -10,7 +10,7 @@ public class Planet : MonoBehaviour {
 	public float SlotScaleDuration;
 	public float SlotScaleDelay;
 	public float SporeFadeDuration;
-
+	public float TutoSequenceDuration;
     public GameObject SlotPrefab;
 
     void Awake ()

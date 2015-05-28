@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
 	public Text timerUIText;
 	public Image timerUIImage;
 
+	public Image TutoFour;
+
     void Awake ()
     {
 
@@ -491,7 +493,7 @@ public class GameManager : MonoBehaviour
 
 				o.SendMessage(FadeSprite.ACTIVATE_SPRITE);
             }
-            Invoke("EndThirdTuto",8f);
+            Invoke("EndThirdTuto",Planet.Instance.TutoSequenceDuration);
         }
     }
 
@@ -506,5 +508,23 @@ public class GameManager : MonoBehaviour
 			sprite.enabled = true;
 			o.SendMessage(FadeSprite.DESACTIVATE_SPRITE);
         }
+
+		Invoke ("ShowTutoFour", 5f);
     }
+
+	public void ShowTutoFour()
+	{
+		Color c = TutoFour.color;
+		c.a = 0f;
+		TutoFour.color = c;
+		TutoFour.enabled = true;
+
+		TutoFour.gameObject.SendMessage(FadeTutorial.ACTIVTE_TUTORIAL);
+		Invoke ("HideTutoFour", 10f);
+	}
+
+	public void HideTutoFour ()
+	{
+		TutoFour.gameObject.SendMessage (FadeTutorial.DESACTIVATE_TUTORIAL);
+	}
 }

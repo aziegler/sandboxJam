@@ -11,13 +11,18 @@ public class AnimationSkip : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (_skiped)
-			return;
 
-		if(Input.GetKeyDown(KeyCode.Space))
+		if(Input.anyKeyDown)
 		{
-			_skiped = true;
-			StartCoroutine("SkipAnimation");
+			if(!_skiped)
+			{
+				_skiped = true;
+				StartCoroutine("SkipAnimation");
+			}
+			else
+			{
+				Application.LoadLevel(1);
+			}
 		}
 	}
 
@@ -36,7 +41,5 @@ public class AnimationSkip : MonoBehaviour {
 		{
 			animator.speed = 1f;
 		}
-
-		GameObject.Destroy (this);
 	}
 }
