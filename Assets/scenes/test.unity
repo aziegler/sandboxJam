@@ -2191,7 +2191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabFlower: {fileID: 144006, guid: 97bfd9fc8efeeaa40801ef3c46972b8b, type: 2}
   FlowerSpawnAngle: 10
-  SlotScaleDuration: .300000012
+  SlotScaleDuration: .200000003
   SlotScaleDelay: .0399999991
   SporeFadeDuration: .200000003
   TutoSequenceDuration: 15
