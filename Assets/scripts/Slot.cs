@@ -81,7 +81,7 @@ public class Slot : MonoBehaviour {
 
         if(null != spore)
         {
-			if(Time.time-spore.BirthTime > 0.1f)
+			if((Time.time-spore.BirthTime) > 1f)
 			{
             	spore.Kill();
 			}
@@ -106,7 +106,7 @@ public class Slot : MonoBehaviour {
         Spore spore = coll.gameObject.GetComponent<Spore>();
         if(null != spore && spore.IsFlying)
         {
-			if(Time.time - spore.BirthTime>0.1f)
+			if((Time.time - spore.BirthTime)>1f)
 			{
 				spore.Kill();
 			}

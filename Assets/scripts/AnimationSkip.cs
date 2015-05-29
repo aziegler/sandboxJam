@@ -8,11 +8,28 @@ public class AnimationSkip : MonoBehaviour {
 	void Start () {
 
 	}
+
+	bool checkKeyboard()
+	{
+		
+		foreach (KeyCode code in System.Enum.GetValues(typeof(KeyCode))) 
+		{
+			if(code.ToString().Contains ("Mouse"))
+				continue;
+
+			if (Input.GetKeyDown (code))
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if(Input.anyKeyDown)
+		if(checkKeyboard())
 		{
 			if(!_skiped)
 			{
